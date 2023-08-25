@@ -42,9 +42,9 @@
     </ul>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Registration types</span></p>
+              <p class="caption"><span class="caption-text">Registrations types</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="reg_type/">WF x2 m2</a>
+                  <li class="toctree-l1"><a class="reference internal" href="wf_x2_m2/">WF x2 m2</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Modules</span></p>
@@ -53,8 +53,10 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="rg/">Red-green</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="utils/">utils</a>
-                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="utils/">Utils</a>
+                </li>
               </ul>
       </div>
     </div>
@@ -82,29 +84,43 @@
               
                 <h1 id="domb-tools">DoMB tools</h1>
 <p><strong>Python Toolkit of Department of Molecular Biophysics</strong></p>
+<h1 id="description">Description</h1>
+<p><strong>Registrations types</strong> combine acquired data (images, electrophysiological recordings, metadata) into unified data structures. Attributes within this structure support subsequent analysis through <em>modules</em> functions.</p>
+<p><strong>Modules</strong> offer distinct data analysis approaches with predefined pipelines. These pipelines transform inputs into approach-specific illustrations and organized data frames, optimized for statistical analysis. Modules require specific <em>registration types</em> as inputs.</p>
+<p><strong>Utilities</strong> provide reusable functions for multidimensional image processing, advanced visualization, and specific data format (OIF/OIB, HEKA) uploading.</p>
 <h1 id="structure-overview">Structure Overview</h1>
 <pre><code>└── domb
     ├── reg_type           # data types for different registration designs
     │   └── wf_x2_m2.py       #  widefield, 2 excitation wavelengths, 2 emission channels
     |
     |
-    ├── red_green          # translocation detection with differential images comparison
+    ├── red_green          # translocation detection using differential image comparison
     │   └── wt_vs_mut.py      # co-registration of two NCSs, requires wf_x2_m2 as input
     |
     ├── fret               # FRET detection
-    │   ├── coef_calc.py      # calibration coefficients estimation (3-cube approach)
+    │   ├── coef_calc.py      # estimation of calibration coefficients (3-cube approach)
     │   └── e_app.py          # FRET calculation (3-cube approach), requires wf_x2_m2 as input
     |
     └── util               # utilities
-        ├── masking.py        # functions for multi-dimensional images masking
+        ├── masking.py        # functions for masking multi-dimensional images
         └── plot.py           # functions for various pretty plotting
 
+</code></pre>
+<h1 id="instalation">Instalation</h1>
+<p>Go ahead and clone the package repository. As a starting point, set up a fresh conda environment using this command:</p>
+<pre><code>conda env create -n domb
+</code></pre>
+<p>Once the environment is ready to go, activate it. To install the package, simply navigate to the repository folder and run: </p>
+<pre><code>pip install .
+</code></pre>
+<p>But if you're planning to make changes and work on the source code actively, you might want to consider using the editable mode:</p>
+<pre><code>pip install -e .
 </code></pre>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="reg_type/" class="btn btn-neutral float-right" title="WF x2 m2">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="wf_x2_m2/" class="btn btn-neutral float-right" title="WF x2 m2">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -128,7 +144,7 @@
     
     
     
-      <span><a href="reg_type/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="wf_x2_m2/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
@@ -147,5 +163,5 @@
 
 <!--
 MkDocs version : 1.5.2
-Build Date UTC : 2023-08-25 13:54:43.569167+00:00
+Build Date UTC : 2023-08-25 16:55:08.349789+00:00
 -->

@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>WF x2 m2 - DoMB</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "WF x2 m2";
+        var mkdocs_page_input_path = "wf_x2_m2.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> DoMB
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Registrations types</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">WF x2 m2</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#domb.reg_type.wf_x2_m2">domb.reg_type.wf_x2_m2</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.reg_type.wf_x2_m2.WF_2x_2m">WF_2x_2m</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.reg_type.wf_x2_m2.WF_2x_2m.ch_pic">ch_pic()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.reg_type.wf_x2_m2.WF_2x_2m.hist_pic">hist_pic()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.reg_type.wf_x2_m2.WF_2x_2m.processes_mask_pic">processes_mask_pic()</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modules</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../fret/">FRET</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rg/">Red-green</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../utils/">Utils</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">DoMB</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+          <li>Registrations types &raquo;</li>
+      <li class="breadcrumb-item active">WF x2 m2</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/wisstock/DoMB_tools/edit/master/docs/wf_x2_m2.md">Edit on DoMB</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="wide-field-with-2-excitation-wavelengths-2-emission-channels">Wide field with 2 excitation wavelengths &amp; 2 emission channels</h1>
+
+
+<div class="doc doc-object doc-module">
+
+
+<a id="domb.reg_type.wf_x2_m2"></a>
+  <div class="doc doc-contents first">
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="domb.reg_type.wf_x2_m2.WF_2x_2m" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">WF_2x_2m</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+
+  
+      <p>This class is designed to conduct wide-field imaging experiments using
+two different excitation wavelengths and capture data through two emission channels.
+It's specially optimized for the results of individual neuron imaging.</p>
+
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b>img_path</b>
+                  (<code>str</code>)
+              –
+              <div class="doc-md-description">
+                <p>path to the image series TIFF file</p>
+              </div>
+            </li>
+            <li>
+              <b>img_name</b>
+                  (<code>str</code>)
+              –
+              <div class="doc-md-description">
+                <p>registration name</p>
+              </div>
+            </li>
+            <li>
+              <b>ch_order</b>
+                  (<code>dict[str:int]</code>)
+              –
+              <div class="doc-md-description">
+                <p>indexes of 1st and 2nd fluorescence proteins channels,
+if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</code>)</p>
+              </div>
+            </li>
+            <li>
+              <b>wf_sigma</b>
+                  (<code>float</code>, default:
+                      <code>0.5</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>sigma value for Gaussian filter applied to input image series</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b>img_raw</b>
+                  (<code>ndarray[t, x, y, c]</code>)
+              –
+              <div class="doc-md-description">
+                <p>raw input image series</p>
+              </div>
+            </li>
+            <li>
+              <b>img_name</b>
+                  (<code>str</code>)
+              –
+              <div class="doc-md-description">
+                <p>registration name</p>
+              </div>
+            </li>
+            <li>
+              <b>ch0_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>0 channel image series</p>
+              </div>
+            </li>
+            <li>
+              <b>ch1_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>1 channel image series</p>
+              </div>
+            </li>
+            <li>
+              <b>ch2_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>2 channel image series</p>
+              </div>
+            </li>
+            <li>
+              <b>ch3_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>3 channel image series</p>
+              </div>
+            </li>
+            <li>
+              <b>fp1_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>1st fluorescence protein image series</p>
+              </div>
+            </li>
+            <li>
+              <b>fp2_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>2nd fluorescence protein image series</p>
+              </div>
+            </li>
+            <li>
+              <b>fp1_mean_img_raw</b>
+                  (<code>ndarray[x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>1st fluorescence protein</p>
+              </div>
+            </li>
+            <li>
+              <b>fp2_mean_img_raw</b>
+                  (<code>ndarray[x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>2nd fluorescence protein</p>
+              </div>
+            </li>
+            <li>
+              <b>proc_mask</b>
+                  (<code>ndarray[x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>cell processes boolean mask, extended (created with <code>utils.masking.proc_mask()</code>)</p>
+              </div>
+            </li>
+            <li>
+              <b>narrow_proc_mask</b>
+                  (<code>ndarray[x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>cell processes boolean mask, unextended (created with <code>utils.masking.proc_mask()</code>)</p>
+              </div>
+            </li>
+            <li>
+              <b>mask_arr</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>cell processes mask array, series of <code>proc_mask</code></p>
+              </div>
+            </li>
+            <li>
+              <b>masked_fp1_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>1st fluorescence protein image series masked frame-by-frame with <code>proc_mask</code>,
+out of mask pixels set as 0    </p>
+              </div>
+            </li>
+            <li>
+              <b>masked_fp2_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>2nd fluorescence protein image series masked frame-by-frame with <code>proc_mask</code>,
+out of mask pixels set as 0</p>
+              </div>
+            </li>
+            <li>
+              <b>corr_fp1_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>1st fluorescence protein masked image series
+with photobleaching correction (constant by mask)</p>
+              </div>
+            </li>
+            <li>
+              <b>corr_fp2_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>2nd fluorescence protein masked image series
+with photobleaching correction (constant by mask)</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+              <details class="quote">
+                <summary>Source code in <code>src/domb/reg_type/wf_x2_m2.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">img_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="n">ch_order</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">:</span><span class="nb">int</span><span class="p">],</span> <span class="n">wf_sigma</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    This class is designed to conduct wide-field imaging experiments using</span>
+<span class="sd">    two different excitation wavelengths and capture data through two emission channels.</span>
+<span class="sd">    It&#39;s specially optimized for the results of individual neuron imaging.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    img_path: str</span>
+<span class="sd">        path to the image series TIFF file</span>
+<span class="sd">    img_name: str</span>
+<span class="sd">        registration name</span>
+<span class="sd">    ch_order: dict</span>
+<span class="sd">        indexes of 1st and 2nd fluorescence proteins channels,</span>
+<span class="sd">        if fluorescence proteins doesn&#39;t overlap (`{&#39;fp1&#39;: index, &#39;fp2&#39;: index}`)</span>
+<span class="sd">    wf_sigma: float</span>
+<span class="sd">        sigma value for Gaussian filter applied to input image series</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    img_raw: ndarray [t,x,y,c]</span>
+<span class="sd">        raw input image series</span>
+<span class="sd">    img_name: str</span>
+<span class="sd">        registration name</span>
+<span class="sd">    ch0_img: ndarray [t,x,y]</span>
+<span class="sd">        0 channel image series</span>
+<span class="sd">    ch1_img: ndarray [t,x,y]</span>
+<span class="sd">        1 channel image series</span>
+<span class="sd">    ch2_img: ndarray [t,x,y]</span>
+<span class="sd">        2 channel image series</span>
+<span class="sd">    ch3_img: ndarray [t,x,y]</span>
+<span class="sd">        3 channel image series</span>
+<span class="sd">    fp1_img: ndarray [t,x,y]</span>
+<span class="sd">        1st fluorescence protein image series</span>
+<span class="sd">    fp2_img: ndarray [t,x,y]</span>
+<span class="sd">        2nd fluorescence protein image series</span>
+<span class="sd">    fp1_mean_img_raw: ndarray [x,y]</span>
+<span class="sd">        1st fluorescence protein</span>
+<span class="sd">    fp2_mean_img_raw: ndarray [x,y]</span>
+<span class="sd">        2nd fluorescence protein</span>
+<span class="sd">    proc_mask: ndarray [x,y]</span>
+<span class="sd">        cell processes boolean mask, extended (created with `utils.masking.proc_mask()`)</span>
+<span class="sd">    narrow_proc_mask: ndarray [x,y]</span>
+<span class="sd">        cell processes boolean mask, unextended (created with `utils.masking.proc_mask()`)</span>
+<span class="sd">    mask_arr: ndarray [t,x,y]</span>
+<span class="sd">        cell processes mask array, series of `proc_mask`</span>
+<span class="sd">    masked_fp1_img: ndarray [t,x,y]</span>
+<span class="sd">        1st fluorescence protein image series masked frame-by-frame with `proc_mask`,</span>
+<span class="sd">        out of mask pixels set as 0    </span>
+<span class="sd">    masked_fp2_img: ndarray [t,x,y]</span>
+<span class="sd">        2nd fluorescence protein image series masked frame-by-frame with `proc_mask`,</span>
+<span class="sd">        out of mask pixels set as 0</span>
+<span class="sd">    corr_fp1_img: ndarray [t,x,y]</span>
+<span class="sd">        1st fluorescence protein masked image series</span>
+<span class="sd">        with photobleaching correction (constant by mask)</span>
+<span class="sd">    corr_fp2_img: ndarray [t,x,y]</span>
+<span class="sd">        2nd fluorescence protein masked image series</span>
+<span class="sd">        with photobleaching correction (constant by mask)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span>
+    <span class="c1"># self.frame_max = filters.gaussian(np.mean(self.img_raw[:,:,:,3], axis=0),</span>
+    <span class="c1">#                                   sigma=1)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">img_name</span> <span class="o">=</span> <span class="n">img_name</span>
+
+    <span class="c1"># chennels split</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ch0_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">filters</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">wf_sigma</span><span class="p">)</span> \
+                               <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">0</span><span class="p">]])</span>  <span class="c1"># 435-fp1  DD</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ch1_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">filters</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">wf_sigma</span><span class="p">)</span> \
+                               <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">1</span><span class="p">]])</span>  <span class="c1"># 435-fp2  DA</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ch2_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">filters</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">wf_sigma</span><span class="p">)</span> \
+                               <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">2</span><span class="p">]])</span>  <span class="c1"># 505-fp1  AD</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ch3_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">filters</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">wf_sigma</span><span class="p">)</span> \
+                               <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">3</span><span class="p">]])</span>  <span class="c1"># 505-fp2  AA</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">ch_list</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ch0_img</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch1_img</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch2_img</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch3_img</span><span class="p">]</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">fp1_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_list</span><span class="p">[</span><span class="n">ch_order</span><span class="p">[</span><span class="s1">&#39;fp1&#39;</span><span class="p">]]</span>  <span class="c1"># CFP</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fp2_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_list</span><span class="p">[</span><span class="n">ch_order</span><span class="p">[</span><span class="s1">&#39;fp2&#39;</span><span class="p">]]</span>  <span class="c1"># YFP</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">fp1_mean_img_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="n">ch_order</span><span class="p">[</span><span class="s1">&#39;fp1&#39;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fp2_mean_img_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="n">ch_order</span><span class="p">[</span><span class="s1">&#39;fp2&#39;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="c1"># mask creation</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">proc_mask</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">proc_mask</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp2_mean_img_raw</span><span class="p">,</span>
+                                       <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">narrow_proc_mask</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">proc_mask</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp2_mean_img_raw</span><span class="p">,</span>
+                                              <span class="n">ext_fin_mask</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># img maskings</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mask_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">z</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">proc_mask</span> <span class="k">for</span> <span class="n">z</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp1_img</span><span class="p">)],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;bool&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">masked_fp1_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp1_img</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">masked_fp1_img</span><span class="p">[</span><span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">mask_arr</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">masked_fp2_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp2_img</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">masked_fp2_img</span><span class="p">[</span><span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">mask_arr</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># pb corr with constant val</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">corr_fp1_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">img</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">masked_fp1_img</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">img</span><span class="p">)))</span> \
+                                      <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">masked_fp1_img</span><span class="p">])</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">corr_fp2_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">img</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">masked_fp2_img</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">img</span><span class="p">)))</span> \
+                                      <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">masked_fp2_img</span><span class="p">])</span>
+</code></pre></div></td></tr></table></div>
+              </details>
+
+  
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h3 id="domb.reg_type.wf_x2_m2.WF_2x_2m.ch_pic" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">ch_pic</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Plotting of registration control image: mean intensity frames
+(<code>fp1_mean_img_raw</code> and <code>fp1_mean_img_raw</code>)
+and histogra for each channel,
+full-frame intensity profile along time series.</p>
+
+          <details class="quote">
+            <summary> <code>src/domb/reg_type/wf_x2_m2.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ch_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Plotting of registration control image: mean intensity frames</span>
+<span class="sd">    (`fp1_mean_img_raw` and `fp1_mean_img_raw`)</span>
+<span class="sd">    and histogra for each channel,</span>
+<span class="sd">    full-frame intensity profile along time series.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">v_min</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">)</span>
+    <span class="n">v_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">)</span> <span class="o">*</span> <span class="mf">.25</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+    <span class="n">ax0</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Ch. fp1&#39;</span><span class="p">)</span>
+    <span class="n">img0</span> <span class="o">=</span> <span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp1_mean_img_raw</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">CMaps</span><span class="p">()</span><span class="o">.</span><span class="n">cmap_cyan</span><span class="p">)</span>
+    <span class="n">img0</span><span class="o">.</span><span class="n">set_clim</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">v_min</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">v_max</span><span class="p">)</span>
+    <span class="n">div0</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">ax0</span><span class="p">)</span>
+    <span class="n">cax0</span> <span class="o">=</span> <span class="n">div0</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;3%&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img0</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax0</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Ch. fp2&#39;</span><span class="p">)</span>
+    <span class="n">img1</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp2_mean_img_raw</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">CMaps</span><span class="p">()</span><span class="o">.</span><span class="n">cmap_yellow</span><span class="p">)</span>
+    <span class="n">img1</span><span class="o">.</span><span class="n">set_clim</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">v_min</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">v_max</span><span class="p">)</span>
+    <span class="n">div1</span> <span class="o">=</span> <span class="n">make_axes_locatable</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>
+    <span class="n">cax1</span> <span class="o">=</span> <span class="n">div1</span><span class="o">.</span><span class="n">append_axes</span><span class="p">(</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;3%&#39;</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">cax</span><span class="o">=</span><span class="n">cax1</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">414</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fp1&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fp2&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frame num&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Int, a.u.&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="n">ax3</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">413</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp1_mean_img_raw</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fp1&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp2_mean_img_raw</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fp2&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Int, a.u.&#39;</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;N&#39;</span><span class="p">)</span>
+    <span class="n">ax3</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h3 id="domb.reg_type.wf_x2_m2.WF_2x_2m.hist_pic" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">hist_pic</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Plotting of histogram for individual channels
+(for channel mean intensity frame).</p>
+
+          <details class="quote">
+            <summary> <code>src/domb/reg_type/wf_x2_m2.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">hist_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Plotting of histogram for individual channels</span>
+<span class="sd">    (for channel mean intensity frame).</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">ch0_ctrl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ch1_ctrl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ch2_ctrl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">ch3_ctrl</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+    <span class="n">ax0</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">()</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ch0_ctrl</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ch 0 (fp1-435)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ch1_ctrl</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ch 1 (fp2-435)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ch2_ctrl</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ch 2 (fp1-505)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ch3_ctrl</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">256</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ch 3 (fp2-505)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+<h3 id="domb.reg_type.wf_x2_m2.WF_2x_2m.processes_mask_pic" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">processes_mask_pic</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Plotting of cell processes mask (narrow and extended)
+overlay with control fluorescence image (<code>fp2_mean_img_raw</code>).</p>
+
+          <details class="quote">
+            <summary> <code>src/domb/reg_type/wf_x2_m2.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">processes_mask_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Plotting of cell processes mask (narrow and extended)</span>
+<span class="sd">    overlay with control fluorescence image (`fp2_mean_img_raw`).</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
+    <span class="n">ax0</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Narrow mask (dentrites contours)&#39;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp2_mean_img_raw</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">narrow_proc_mask</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">narrow_proc_mask</span><span class="p">),</span>
+               <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.45</span><span class="p">)</span>
+    <span class="n">ax0</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+    <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Processes mask&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp2_mean_img_raw</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;jet&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="o">~</span><span class="bp">self</span><span class="o">.</span><span class="n">proc_mask</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">proc_mask</span><span class="p">),</span>
+               <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.45</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+
+  </div>
+
+  </div>
+
+</div>
+
+
+
+
+  </div>
+
+  </div>
+
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../fret/" class="btn btn-neutral float-right" title="FRET">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../fret/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
