@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Utils - DoMB</title>
+    <title>OIF File - DoMB</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Utils";
-        var mkdocs_page_input_path = "utils.md";
+        var mkdocs_page_name = "OIF File";
+        var mkdocs_page_input_path = "oiffile.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -40,7 +40,7 @@
                 <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
                 </li>
               </ul>
-              <p class="caption"><span class="caption-text">Registrations types</span></p>
+              <p class="caption"><span class="caption-text">Registrations Types</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../wf_x2_m2/">WF x2 m2</a>
                   </li>
@@ -52,11 +52,118 @@
                   <li class="toctree-l1"><a class="reference internal" href="../rg/">Red-green</a>
                   </li>
               </ul>
+              <p class="caption"><span class="caption-text">Utils</span></p>
               <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Utils</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../masking/">Masking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../plotting/">Plotting</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">OIF File</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile">domb.utils.oiffile</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile--requirements">Requirements</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile--revisions">Revisions</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile--notes">Notes</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile.CompoundFile">CompoundFile</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.CompoundFile.__str__">__str__()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.CompoundFile.close">close()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.CompoundFile.direntry">direntry()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.CompoundFile.files">files()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.CompoundFile.format_tree">format_tree()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.CompoundFile.open_file">open_file()</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile.DirectoryEntry">DirectoryEntry</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.DirectoryEntry.__str__">__str__()</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile.OibFileSystem">OibFileSystem</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OibFileSystem.__str__">__str__()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OibFileSystem.close">close()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OibFileSystem.files">files()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OibFileSystem.open_file">open_file()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OibFileSystem.saveas_oif">saveas_oif()</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile.OifFile">OifFile</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFile.axes">axes</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFile.dtype">dtype</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFile.shape">shape</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFile.tiffs">tiffs</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFile.__str__">__str__()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFile.asarray">asarray()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFile.close">close()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFile.glob">glob()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFile.open_file">open_file()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFile.series">series()</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile.OifFileError">OifFileError</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile.OifFileSystem">OifFileSystem</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFileSystem.__str__">__str__()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFileSystem.close">close()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFileSystem.files">files()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFileSystem.glob">glob()</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.OifFileSystem.open_file">open_file()</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile.SettingsFile">SettingsFile</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile.SettingsFile.__str__">__str__()</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile.OibImread">OibImread()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile.astype">astype()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile.filetime">filetime()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile.format_dict">format_dict()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile.oib2oif">oib2oif()</a>
+    </li>
     </ul>
-                </li>
+                  </li>
               </ul>
       </div>
     </div>
@@ -72,9 +179,10 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
-      <li class="breadcrumb-item active">Utils</li>
+          <li>Utils &raquo;</li>
+      <li class="breadcrumb-item active">OIF File</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/wisstock/DoMB_tools/edit/master/docs/utils.md">Edit on DoMB</a>
+          <a href="https://github.com/wisstock/DoMB_tools/edit/master/docs/oiffile.md">Edit on DoMB</a>
     </li>
   </ul>
   <hr/>
@@ -82,1303 +190,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="utils">Utils</h1>
-<h1 id="masking">Masking</h1>
-
-
-<div class="doc doc-object doc-module">
-
-
-<a id="domb.utils.masking"></a>
-  <div class="doc doc-contents first">
-  
-      <p>Functions for masking multidimensional arrays using binary masks and label</p>
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="domb.utils.masking.label_prof_arr" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">label_prof_arr</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Calc labeled ROIs profiles for time series </p>
-
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b>input_label</b>
-                  (<code><span title="numpy.ndarray">ndarray</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>label image</p>
-              </div>
-            </li>
-            <li>
-              <b>input_img_series</b>
-                  (<code><span title="numpy.ndarray">ndarray</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>image time series, frames must be the same size with label array</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-<b>prof_arr</b>(                <code>ndarray[intensity_value, t]</code>
-)            –
-            <div class="doc-md-description">
-              <p>intensity profiles for each label elements</p>
-            </div>
-          </li>
-          <li>
-<b>prof_df_arr</b>(                <code>ndarray[dF_value, t]</code>
-)            –
-            <div class="doc-md-description">
-              <p>ΔF/F profiles for each label elements</p>
-            </div>
-          </li>
-      </ul>
-    </td>
-    </tr>
-  </tbody>
-</table>
-          <details class="quote">
-            <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">label_prof_arr</span><span class="p">(</span><span class="n">input_label</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">input_img_series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Calc labeled ROIs profiles for time series </span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    input_label: ndarray [x,y]</span>
-<span class="sd">        label image</span>
-<span class="sd">    input_img_series: ndarray [t,x,y]</span>
-<span class="sd">        image time series, frames must be the same size with label array</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    prof_arr: ndarray [intensity_value,t]</span>
-<span class="sd">        intensity profiles for each label elements</span>
-<span class="sd">    prof_df_arr: ndarray [dF_value,t]</span>
-<span class="sd">        ΔF/F profiles for each label elements</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">output_dict</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="n">prof_arr</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">prof_df_arr</span><span class="o">=</span><span class="p">[]</span>
-    <span class="k">for</span> <span class="n">label_num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">input_label</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">region_mask</span> <span class="o">=</span> <span class="n">input_label</span> <span class="o">==</span> <span class="n">label_num</span>
-        <span class="n">prof</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="o">~</span><span class="n">region_mask</span><span class="p">,</span> <span class="n">img</span><span class="p">))</span> <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">input_img_series</span><span class="p">])</span>
-        <span class="n">F_0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prof</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
-        <span class="n">df_prof</span> <span class="o">=</span> <span class="p">(</span><span class="n">prof</span><span class="o">-</span><span class="n">F_0</span><span class="p">)</span><span class="o">/</span><span class="n">F_0</span>
-        <span class="n">output_dict</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="n">label_num</span><span class="p">:[</span><span class="n">prof</span><span class="p">,</span> <span class="n">df_prof</span><span class="p">]})</span>
-
-        <span class="n">prof_arr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prof</span><span class="p">)</span>
-        <span class="n">prof_df_arr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df_prof</span><span class="p">)</span>
-
-
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">prof_df_arr</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">prof_arr</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="domb.utils.masking.mask_along_frames" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">mask_along_frames</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Time series masking along the time axis.
-Func fills the area around the mask with a fixed value (1/4 of outer mean intensity).</p>
-
-          <details class="quote">
-            <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">mask_along_frames</span><span class="p">(</span><span class="n">series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Time series masking along the time axis.</span>
-<span class="sd">    Func fills the area around the mask with a fixed value (1/4 of outer mean intensity).</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">masked_series</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">series</span><span class="p">:</span>
-        <span class="n">back_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
-        <span class="n">masked_frame</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
-        <span class="n">masked_frame</span><span class="p">[</span><span class="o">~</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="n">back_mean</span> <span class="o">/</span> <span class="mi">4</span>
-        <span class="n">masked_series</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">masked_frame</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">masked_series</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="domb.utils.masking.pb_corr" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">pb_corr</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>ftame series photobleaxhing crrection with exponential fit</p>
-
-          <details class="quote">
-            <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pb_corr</span><span class="p">(</span><span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">base_win</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;exp&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; ftame series photobleaxhing crrection with exponential fit</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;exp&#39;</span><span class="p">:</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">img</span><span class="p">])</span>
-
-        <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">p</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="n">b</span> <span class="o">=</span> <span class="n">p</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-        <span class="n">fit</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">b</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
-        <span class="n">fit_arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">z</span><span class="o">+</span><span class="n">f</span> <span class="k">for</span> <span class="n">z</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">img</span><span class="p">),</span> <span class="n">fit</span><span class="p">)])</span>
-        <span class="n">img_corr</span> <span class="o">=</span> <span class="p">(</span><span class="n">img</span><span class="o">*</span><span class="n">fit_arr</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">img</span><span class="p">[:</span><span class="n">base_win</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-        <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">img_corr</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;corr&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">img</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;raw&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fit</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fit&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-    <span class="k">return</span> <span class="n">img_corr</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="domb.utils.masking.proc_mask" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">proc_mask</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Mask for single neuron images with bright soma region.
-Fiunc drops soma and returns the mask for processes only.</p>
-
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b>input_img</b>
-                  (<code><span title="numpy.ndarray">ndarray</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>input img for mask creation,
-recomend choose max int projection of brighter channel (YFP)</p>
-              </div>
-            </li>
-            <li>
-              <b>soma_mask</b>
-                  (<code>bool</code>, default:
-                      <code>True</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>if True brighter region on image will identified and masked as soma</p>
-              </div>
-            </li>
-            <li>
-              <b>soma_th</b>
-                  (<code>float</code>, default:
-                      <code>0.5</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>soma detection threshold in % of max img int</p>
-              </div>
-            </li>
-            <li>
-              <b>soma_ext</b>
-                  (<code>int</code>, default:
-                      <code>20</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>soma mask extension size in px</p>
-              </div>
-            </li>
-            <li>
-              <b>proc_ext</b>
-                  (<code>int</code>, default:
-                      <code>5</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>cell processes mask extention in px</p>
-              </div>
-            </li>
-            <li>
-              <b>ext_fin_mask</b>
-                  (<code>bool</code>, default:
-                      <code>True</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>if True - final processes mask will be extended on proc_ext val</p>
-              </div>
-            </li>
-            <li>
-              <b>proc_sigma</b>
-                  (<code>float</code>, default:
-                      <code>0.5</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>sigma value for gaussian blur of input image</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-<b>proc_mask_fin</b>(                <code>ndarray, dtype boolean</code>
-)            –
-            <div class="doc-md-description">
-              <p>extented cell processes mask</p>
-            </div>
-          </li>
-      </ul>
-    </td>
-    </tr>
-  </tbody>
-</table>
-          <details class="quote">
-            <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">proc_mask</span><span class="p">(</span><span class="n">input_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-              <span class="n">soma_mask</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">soma_th</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">soma_ext</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
-              <span class="n">proc_ext</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ext_fin_mask</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">proc_sigma</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">.5</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Mask for single neuron images with bright soma region.</span>
-<span class="sd">    Fiunc drops soma and returns the mask for processes only.</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    input_img: ndarray</span>
-<span class="sd">        input img for mask creation,</span>
-<span class="sd">        recomend choose max int projection of brighter channel (YFP)</span>
-<span class="sd">    soma_mask: boolean, optional</span>
-<span class="sd">        if True brighter region on image will identified and masked as soma</span>
-<span class="sd">    soma_th: float, optional</span>
-<span class="sd">        soma detection threshold in % of max img int</span>
-<span class="sd">    soma_ext: int, optional</span>
-<span class="sd">        soma mask extension size in px</span>
-<span class="sd">    proc_ext: int</span>
-<span class="sd">        cell processes mask extention in px</span>
-<span class="sd">    ext_fin_mask: bool, optional</span>
-<span class="sd">        if True - final processes mask will be extended on proc_ext val</span>
-<span class="sd">    proc_sigma: float</span>
-<span class="sd">        sigma value for gaussian blur of input image</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    proc_mask_fin: ndarray, dtype boolean</span>
-<span class="sd">       extented cell processes mask</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># soma masking</span>
-    <span class="n">input_img</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="n">input_img</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">proc_sigma</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">soma_mask</span><span class="p">:</span>
-        <span class="n">soma_region</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">input_img</span><span class="p">)</span>
-        <span class="n">soma_region</span> <span class="o">=</span> <span class="n">soma_region</span> <span class="o">&gt;</span> <span class="n">soma_region</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="n">soma_th</span>
-        <span class="n">soma_region</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">opening</span><span class="p">(</span><span class="n">soma_region</span><span class="p">,</span> <span class="n">footprint</span><span class="o">=</span><span class="n">morphology</span><span class="o">.</span><span class="n">disk</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-        <span class="c1"># soma_region = morphology.dilation(soma_region, footprint=morphology.disk(10))</span>
-        <span class="n">soma_dist</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">distance_transform_edt</span><span class="p">(</span><span class="o">~</span><span class="n">soma_region</span><span class="p">,</span> <span class="n">return_indices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">soma_mask</span> <span class="o">=</span> <span class="n">soma_dist</span> <span class="o">&lt;</span> <span class="n">soma_ext</span>
-        <span class="n">input_img</span> <span class="o">=</span> <span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="n">soma_mask</span><span class="p">,</span> <span class="n">input_img</span><span class="p">)</span>
-
-        <span class="n">th</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">threshold_otsu</span><span class="p">(</span><span class="n">input_img</span><span class="o">.</span><span class="n">compressed</span><span class="p">())</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">th</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">threshold_otsu</span><span class="p">(</span><span class="n">input_img</span><span class="p">)</span>
-
-    <span class="c1"># processes masking</span>
-    <span class="n">proc_mask</span> <span class="o">=</span> <span class="n">input_img</span> <span class="o">&gt;</span> <span class="n">th</span>
-    <span class="n">proc_mask</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">closing</span><span class="p">(</span><span class="n">proc_mask</span><span class="p">,</span> <span class="n">footprint</span><span class="o">=</span><span class="n">morphology</span><span class="o">.</span><span class="n">disk</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
-    <span class="k">if</span> <span class="n">ext_fin_mask</span><span class="p">:</span>
-        <span class="n">proc_dist</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">distance_transform_edt</span><span class="p">(</span><span class="o">~</span><span class="n">proc_mask</span><span class="p">,</span> <span class="n">return_indices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">proc_mask_fin</span> <span class="o">=</span> <span class="n">proc_dist</span> <span class="o">&lt;=</span> <span class="n">proc_ext</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">proc_mask_fin</span> <span class="o">=</span> <span class="n">proc_mask</span>
-    <span class="n">proc_mask_fin</span><span class="p">[</span><span class="n">soma_mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="k">return</span> <span class="n">proc_mask_fin</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="domb.utils.masking.trans_prof_arr" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">trans_prof_arr</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Calc ratio mask int/ROIs int for time series </p>
-
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b>input_total_mask</b>
-                  (<code><span title="numpy.ndarray">ndarray</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>cell mask</p>
-              </div>
-            </li>
-            <li>
-              <b>input_label</b>
-                  (<code><span title="numpy.ndarray">ndarray</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>ROIs label array</p>
-              </div>
-            </li>
-            <li>
-              <b>input_img_series</b>
-                  (<code><span title="numpy.ndarray">ndarray</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>Series of images as 3D array with dim. order (time,x,y),
-each frame should be same size wiht cell mask array.</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-<b>trans_rois_arr</b>(                <code>ndarray</code>
-)            –
-            <div class="doc-md-description">
-              <p>2D array with dim. order (t,translocation profile)</p>
-            </div>
-          </li>
-          <li>
-<b>prof_df_arr</b>(                <code>ndarray</code>
-)            –
-            <div class="doc-md-description">
-              <p>array with ratio "all ROIs int/cell mask int" for each frame</p>
-            </div>
-          </li>
-      </ul>
-    </td>
-    </tr>
-  </tbody>
-</table>
-          <details class="quote">
-            <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">trans_prof_arr</span><span class="p">(</span><span class="n">input_total_mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-                   <span class="n">input_label</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-                   <span class="n">input_img_series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Calc ratio mask int/ROIs int for time series </span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    input_total_mask: ndarray, dtype boolean</span>
-<span class="sd">        cell mask</span>
-<span class="sd">    input_label: ndarray</span>
-<span class="sd">        ROIs label array</span>
-<span class="sd">    input_img_series: ndarray</span>
-<span class="sd">        Series of images as 3D array with dim. order (time,x,y),</span>
-<span class="sd">        each frame should be same size wiht cell mask array.</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    trans_rois_arr: ndarray</span>
-<span class="sd">        2D array with dim. order (t,translocation profile)</span>
-<span class="sd">    prof_df_arr: ndarray</span>
-<span class="sd">        array with ratio &quot;all ROIs int/cell mask int&quot; for each frame</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">trans_rois_arr</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">label_num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">input_label</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">region_mask</span> <span class="o">=</span> <span class="n">input_label</span> <span class="o">==</span> <span class="n">label_num</span>
-        <span class="n">prof</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">region_mask</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">input_total_mask</span><span class="p">)</span> \
-                           <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">input_img_series</span><span class="p">])</span>
-        <span class="n">trans_rois_arr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prof</span><span class="p">)</span>
-
-    <span class="n">total_rois</span> <span class="o">=</span> <span class="n">input_total_mask</span> <span class="o">!=</span><span class="mi">0</span>    
-    <span class="n">trans_total_arr</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">total_rois</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">input_total_mask</span><span class="p">)</span> \
-                       <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">input_img_series</span><span class="p">]</span>
-
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">trans_rois_arr</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">trans_total_arr</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-
-  </div>
-
-  </div>
-
-</div><h1 id="plotting">Plotting</h1>
-
-
-<div class="doc doc-object doc-module">
-
-
-<a id="domb.utils.plot"></a>
-  <div class="doc doc-contents first">
-  
-      <p>Functions for plotting, image creation, cmaps</p>
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="domb.utils.plot.CMaps" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">CMaps</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-
-  
-      <p>Class for custom colormaps storage.
-To use colormaps with <code>matplotlib.imshow</code> just call <code>plot.CMaps().cmap_name</code>.</p>
-
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Attributes:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b>cmap_cyan</b>
-                  (<code>matplotlib cmap</code>)
-              –
-              <div class="doc-md-description">
-                <p>cyan colormap</p>
-              </div>
-            </li>
-            <li>
-              <b>cmap_yellow</b>
-                  (<code>matplotlib cmap</code>)
-              –
-              <div class="doc-md-description">
-                <p>yellow colormap</p>
-              </div>
-            </li>
-            <li>
-              <b>cmap_red_green</b>
-                  (<code>matplotlib cmap</code>)
-              –
-              <div class="doc-md-description">
-                <p>red-green colormap (low-green, zero-black, high-red),
-especially suitable for differential images</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-              <details class="quote">
-                <summary>Source code in <code>src/domb/utils/plot.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Class for custom colormaps storage.</span>
-<span class="sd">    To use colormaps with `matplotlib.imshow` just call `plot.CMaps().cmap_name`.</span>
-
-<span class="sd">    Attributes</span>
-<span class="sd">    ----------</span>
-<span class="sd">    cmap_cyan: matplotlib cmap</span>
-<span class="sd">        cyan colormap</span>
-<span class="sd">    cmap_yellow: matplotlib cmap</span>
-<span class="sd">        yellow colormap</span>
-<span class="sd">    cmap_red_green: matplotlib cmap</span>
-<span class="sd">        red-green colormap (low-green, zero-black, high-red),</span>
-<span class="sd">        especially suitable for differential images</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># CFP cmap</span>
-    <span class="n">dict_cyan</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">:(</span>
-                <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
-                <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span>
-                <span class="s1">&#39;blue&#39;</span><span class="p">:(</span>
-                <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
-                <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)),</span>
-                <span class="s1">&#39;green&#39;</span><span class="p">:(</span>
-                <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
-                <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))}</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">cmap_cyan</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="p">(</span><span class="s1">&#39;Cyan&#39;</span><span class="p">,</span> <span class="n">dict_cyan</span><span class="p">)</span>
-
-    <span class="c1"># YFP cmap</span>
-    <span class="n">dict_yellow</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">:(</span>
-                <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
-                <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)),</span>
-                <span class="s1">&#39;blue&#39;</span><span class="p">:(</span>
-                <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
-                <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span>
-                <span class="s1">&#39;green&#39;</span><span class="p">:(</span>
-                <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
-                <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">))}</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">cmap_yellow</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="p">(</span><span class="s1">&#39;Yellow&#39;</span><span class="p">,</span> <span class="n">dict_yellow</span><span class="p">)</span>
-
-    <span class="c1"># red-green cmap creation</span>
-    <span class="n">dict_red_green</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;red&#39;</span><span class="p">:(</span>
-                    <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
-                    <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
-                    <span class="p">(</span><span class="mf">0.55</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">),</span>
-                    <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)),</span>
-                    <span class="s1">&#39;blue&#39;</span><span class="p">:(</span>
-                    <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
-                    <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)),</span>
-                    <span class="s1">&#39;green&#39;</span><span class="p">:(</span>
-                    <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">),</span>
-                    <span class="p">(</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">),</span>
-                    <span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">),</span>
-                    <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))}</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">cmap_red_green</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="p">(</span><span class="s1">&#39;RedGreen&#39;</span><span class="p">,</span> <span class="n">dict_red_green</span><span class="p">)</span>
-
-
-    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">plot_linearmap</span><span class="p">(</span><span class="n">cdict</span><span class="p">):</span>
-        <span class="n">newcmp</span> <span class="o">=</span> <span class="n">LinearSegmentedColormap</span><span class="p">(</span><span class="s1">&#39;testCmap&#39;</span><span class="p">,</span> <span class="n">segmentdata</span><span class="o">=</span><span class="n">cdict</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">256</span><span class="p">)</span>
-        <span class="n">rgba</span> <span class="o">=</span> <span class="n">newcmp</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">256</span><span class="p">))</span>
-        <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">constrained_layout</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="n">col</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">xx</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">]:</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;0.7&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
-            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">256</span><span class="p">)</span><span class="o">/</span><span class="mi">256</span><span class="p">,</span> <span class="n">rgba</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">col</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
-        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-              </details>
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-  </div>
-
-</div>
-
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="domb.utils.plot.stat_line_plot" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">stat_line_plot</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Line plot with variance wiskers for set of arrays <code>[t,val],
-could take as input results of</code>util.masking.label_prof_arr()` function</p>
-
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b>arr_list</b>
-                  (<code>list</code>)
-              –
-              <div class="doc-md-description">
-                <p>list of 2D arrays with profiles <code>[t, val]</code></p>
-              </div>
-            </li>
-            <li>
-              <b>lab_list</b>
-                  (<code>list</code>)
-              –
-              <div class="doc-md-description">
-                <p>list of labels for lines, should be same len with arr_list</p>
-              </div>
-            </li>
-            <li>
-              <b>stat_method</b>
-                  (<code>str</code>, default:
-                      <code>&#39;se&#39;</code>
-)
-              –
-              <div class="doc-md-description">
-                <p>method for line plot calculation: <code>se</code> - mean +/- standat error of mean,
-<code>iqr</code> - median +/- IQR, <code>ci</code> - mean +/- 95% confidence interval</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-          <details class="quote">
-            <summary> <code>src/domb/utils/plot.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">stat_line_plot</span><span class="p">(</span><span class="n">arr_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
-                   <span class="n">lab_list</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span>
-                   <span class="n">stat_method</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;se&#39;</span><span class="p">,</span>
-                   <span class="n">stim_t</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">show_stim</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">t_scale</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                   <span class="n">figsize</span><span class="p">:</span><span class="nb">tuple</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">x_lab</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">y_lab</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">plot_title</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;NA&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Line plot with variance wiskers for set of arrays `[t,val],</span>
-<span class="sd">    could take as input results of `util.masking.label_prof_arr()` function</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    arr_list: list</span>
-<span class="sd">        list of 2D arrays with profiles `[t, val]`</span>
-<span class="sd">    lab_list: list</span>
-<span class="sd">        list of labels for lines, should be same len with arr_list</span>
-<span class="sd">    stat_method: str, optional {&#39;se&#39;, &#39;iqr&#39;, &#39;ci&#39;}</span>
-<span class="sd">        method for line plot calculation: `se` - mean +/- standat error of mean,</span>
-<span class="sd">        `iqr` - median +/- IQR, `ci` - mean +/- 95% confidence interval</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">time_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">arr_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">t_scale</span><span class="p">,</span> \
-                            <span class="n">num</span><span class="o">=</span><span class="n">arr_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-    <span class="c1"># https://aegis4048.github.io/comprehensive_confidence_intervals_for_python_developers</span>
-
-    <span class="c1"># mean, se</span>
-    <span class="n">arr_se_stat</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> \
-                             <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>  <span class="c1"># mean, se</span>
-
-    <span class="c1"># meadian, IQR</span>
-    <span class="n">arr_iqr_stat</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> \
-                              <span class="n">stats</span><span class="o">.</span><span class="n">iqr</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
-
-    <span class="c1"># mean, CI</span>
-    <span class="n">arr_ci_stat</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.05</span><span class="p">:</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> \
-                                         <span class="n">stats</span><span class="o">.</span><span class="n">t</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">alpha</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> \
-                                                    <span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
-
-    <span class="n">stat_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;se&#39;</span><span class="p">:</span><span class="n">arr_se_stat</span><span class="p">,</span>
-                 <span class="s1">&#39;iqr&#39;</span><span class="p">:</span><span class="n">arr_iqr_stat</span><span class="p">,</span>
-                 <span class="s1">&#39;ci&#39;</span><span class="p">:</span><span class="n">arr_ci_stat</span><span class="p">}</span>
-
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr_list</span><span class="p">)):</span>
-        <span class="n">arr</span> <span class="o">=</span> <span class="n">arr_list</span><span class="p">[</span><span class="n">num</span><span class="p">]</span>
-        <span class="n">lab</span> <span class="o">=</span> <span class="n">lab_list</span><span class="p">[</span><span class="n">num</span><span class="p">]</span>
-        <span class="n">arr_val</span><span class="p">,</span> <span class="n">arr_var</span> <span class="o">=</span> <span class="n">stat_dict</span><span class="p">[</span><span class="n">stat_method</span><span class="p">](</span><span class="n">arr</span><span class="p">)</span>
-
-        <span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">time_line</span><span class="p">,</span> <span class="n">arr_val</span><span class="p">,</span>
-                     <span class="n">yerr</span> <span class="o">=</span> <span class="n">arr_var</span><span class="p">,</span>
-                     <span class="n">fmt</span> <span class="o">=</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">lab</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">show_stim</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">stim_t</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">x_lab</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">y_lab</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">plot_title</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h2 id="domb.utils.plot.toRGB" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">toRGB</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Convert three 2d arrays to RGB (input arrays must have same size).</p>
-
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-      <th class="field-name">Parameters:</th>
-      <td class="field-body">
-        <ul class="first simple">
-            <li>
-              <b>r_img</b>
-                  (<code><span title="numpy.ndarray">ndarray</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>2D array for red chennel</p>
-              </div>
-            </li>
-            <li>
-              <b>g_img</b>
-                  (<code><span title="numpy.ndarray">ndarray</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>2D array for green chennel</p>
-              </div>
-            </li>
-            <li>
-              <b>b_img</b>
-                  (<code><span title="numpy.ndarray">ndarray</span></code>)
-              –
-              <div class="doc-md-description">
-                <p>2D array for blue chennel</p>
-              </div>
-            </li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-<table class="field-list">
-  <colgroup>
-    <col class="field-name" />
-    <col class="field-body" />
-  </colgroup>
-  <tbody valign="top">
-    <tr class="field">
-    <th class="field-name">Returns:</th>
-    <td class="field-body">
-      <ul class="first simple">
-          <li>
-<b>rgb_img</b>(                <code>ndarray[x, y]</code>
-)            –
-            <div class="doc-md-description">
-              <p>RGB image</p>
-            </div>
-          </li>
-      </ul>
-    </td>
-    </tr>
-  </tbody>
-</table>
-          <details class="quote">
-            <summary> <code>src/domb/utils/plot.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">toRGB</span><span class="p">(</span><span class="n">r_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">g_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">b_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Convert three 2d arrays to RGB (input arrays must have same size).</span>
-
-<span class="sd">    Parameters</span>
-<span class="sd">    ----------</span>
-<span class="sd">    r_img: ndarray [x,y]</span>
-<span class="sd">        2D array for red chennel</span>
-<span class="sd">    g_img: ndarray [x,y]</span>
-<span class="sd">        2D array for green chennel</span>
-<span class="sd">    b_img: ndarray [x,y]</span>
-<span class="sd">        2D array for blue chennel</span>
-
-<span class="sd">    Returns</span>
-<span class="sd">    -------</span>
-<span class="sd">    rgb_img: ndarray [x,y]</span>
-<span class="sd">        RGB image</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">r_norm_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">r_img</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
-    <span class="n">r_norm_img</span> <span class="o">=</span> <span class="p">(</span><span class="n">r_norm_img</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">r_norm_img</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">r_norm_img</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">r_norm_img</span><span class="p">))</span>
-    <span class="n">g_norm_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">g_img</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
-    <span class="n">g_norm_img</span> <span class="o">=</span> <span class="p">(</span><span class="n">g_norm_img</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">g_norm_img</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">g_norm_img</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">g_norm_img</span><span class="p">))</span>
-    <span class="n">b_norm_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">b_img</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
-    <span class="n">b_norm_img</span> <span class="o">=</span> <span class="p">(</span><span class="n">b_norm_img</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">b_norm_img</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">b_norm_img</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">b_norm_img</span><span class="p">))</span>
-
-    <span class="n">rgb_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">r_norm_img</span><span class="p">,</span> <span class="n">g_norm_img</span><span class="p">,</span> <span class="n">b_norm_img</span><span class="p">],</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span> 
-    <span class="k">return</span> <span class="n">rgb_img</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-
-  </div>
-
-  </div>
-
-</div><h1 id="oif-file">OIF File</h1>
+                <h1 id="oif-file-uploading">OIF File Uploading</h1>
 
 
 <div class="doc doc-object doc-module">
@@ -3574,7 +2386,7 @@ File objects are closed by this function.</p>
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../rg/" class="btn btn-neutral float-left" title="Red-green"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../plotting/" class="btn btn-neutral float-left" title="Plotting"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -3597,7 +2409,7 @@ File objects are closed by this function.</p>
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../rg/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../plotting/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
   </span>
