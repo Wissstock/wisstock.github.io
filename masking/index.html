@@ -49,7 +49,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../fret/">FRET</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../rg/">Red-green</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../rg/">Red-Green</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Utils</span></p>
@@ -204,7 +204,9 @@
 </table>
           <details class="quote">
             <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">112</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
 <span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span>
@@ -234,9 +236,7 @@
 <span class="normal">139</span>
 <span class="normal">140</span>
 <span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">label_prof_arr</span><span class="p">(</span><span class="n">input_label</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">input_img_series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="normal">142</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">label_prof_arr</span><span class="p">(</span><span class="n">input_label</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">input_img_series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calc labeled ROIs profiles for time series </span>
 
 <span class="sd">    Parameters</span>
@@ -293,7 +293,8 @@ Func fills the area around the mask with a fixed value (1/4 of outer mean intens
 
           <details class="quote">
             <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 95</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 94</span>
+<span class="normal"> 95</span>
 <span class="normal"> 96</span>
 <span class="normal"> 97</span>
 <span class="normal"> 98</span>
@@ -305,11 +306,8 @@ Func fills the area around the mask with a fixed value (1/4 of outer mean intens
 <span class="normal">104</span>
 <span class="normal">105</span>
 <span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">mask_along_frames</span><span class="p">(</span><span class="n">series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Time series masking along the time axis.</span>
+<span class="normal">107</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">mask_along_frames</span><span class="p">(</span><span class="n">series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Time series masking along the time axis.</span>
 <span class="sd">    Func fills the area around the mask with a fixed value (1/4 of outer mean intensity).</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -345,7 +343,9 @@ Func fills the area around the mask with a fixed value (1/4 of outer mean intens
 
           <details class="quote">
             <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">230</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
 <span class="normal">231</span>
 <span class="normal">232</span>
 <span class="normal">233</span>
@@ -367,9 +367,7 @@ Func fills the area around the mask with a fixed value (1/4 of outer mean intens
 <span class="normal">249</span>
 <span class="normal">250</span>
 <span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pb_corr</span><span class="p">(</span><span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">base_win</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;exp&#39;</span><span class="p">):</span>
+<span class="normal">252</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pb_corr</span><span class="p">(</span><span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">base_win</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;exp&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; ftame series photobleaxhing crrection with exponential fit</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -583,12 +581,10 @@ recomend choose max int projection of brighter channel (YFP)</p>
 <span class="normal">88</span>
 <span class="normal">89</span>
 <span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">proc_mask</span><span class="p">(</span><span class="n">input_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">proc_mask</span><span class="p">(</span><span class="n">input_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
               <span class="n">soma_mask</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">soma_th</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">soma_ext</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
               <span class="n">proc_ext</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ext_fin_mask</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">proc_sigma</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">.5</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Mask for single neuron images with bright soma region.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Mask for single neuron images with bright soma region.</span>
 <span class="sd">    Fiunc drops soma and returns the mask for processes only.</span>
 
 <span class="sd">    Parameters</span>
@@ -737,7 +733,9 @@ each frame should be same size wiht cell mask array.</p>
 </table>
           <details class="quote">
             <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">147</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
 <span class="normal">148</span>
 <span class="normal">149</span>
 <span class="normal">150</span>
@@ -769,9 +767,7 @@ each frame should be same size wiht cell mask array.</p>
 <span class="normal">176</span>
 <span class="normal">177</span>
 <span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">trans_prof_arr</span><span class="p">(</span><span class="n">input_total_mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<span class="normal">179</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">trans_prof_arr</span><span class="p">(</span><span class="n">input_total_mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
                    <span class="n">input_label</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
                    <span class="n">input_img_series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calc ratio mask int/ROIs int for time series </span>
@@ -823,7 +819,7 @@ each frame should be same size wiht cell mask array.</p>
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../rg/" class="btn btn-neutral float-left" title="Red-green"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../rg/" class="btn btn-neutral float-left" title="Red-Green"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../plotting/" class="btn btn-neutral float-right" title="Plotting">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 

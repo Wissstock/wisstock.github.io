@@ -51,7 +51,7 @@
     <ul class="current">
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../rg/">Red-green</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../rg/">Red-Green</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Utils</span></p>
@@ -88,475 +88,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="fret">FRET</h1>
+                <h1 id="forster-resonance-energy-transfer-fret-efficiency-estimation">Förster Resonance Energy Transfer (FRET) Efficiency Estimation</h1>
 <p>Based on <em><a href="https://pubmed.ncbi.nlm.nih.gov/15189889/">Zal and Gascoigne, 2004</a></em></p>
-<h1 id="coefficients-calculation">Coefficients calculation</h1>
-
-
-<div class="doc doc-object doc-module">
-
-
-<a id="domb.fret.coef_calc"></a>
-  <div class="doc doc-contents first">
-  
-      <p>Calculation of Unmixing Coefficients and G Parameter</p>
-<p>Require series of calibrationregistrations</p>
-<p>Based on Zal and Gascoigne, 2004, doi: 10.1529/biophysj.103.022087</p>
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="domb.fret.coef_calc.CrossReg" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">CrossReg</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-
-  
-      <p>Class for one 3-cube FRET method crosstalk calibration registration</p>
-
-              <details class="quote">
-                <summary>Source code in <code>src/domb/fret/coef_calc.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_path</span><span class="p">,</span> <span class="n">data_name</span><span class="p">,</span> <span class="n">exp_list</span><span class="p">,</span> <span class="n">reg_type</span><span class="p">,</span> <span class="n">trim_frame</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">img_name</span> <span class="o">=</span> <span class="n">data_name</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">img_type</span> <span class="o">=</span> <span class="n">reg_type</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">img_path</span> <span class="o">=</span> <span class="n">data_path</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_path</span><span class="p">)[:</span><span class="n">trim_frame</span><span class="p">]</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">D_exp</span> <span class="o">=</span> <span class="n">exp_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">A_exp</span> <span class="o">=</span> <span class="n">exp_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">DD_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># CFP-435  DD</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">DA_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># YFP-435  DA</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">AD_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># CFP-505  AD</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">AA_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># YFP-505  AA</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">DD_mean_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DD_img</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">DA_mean_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DA_img</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">AD_mean_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AD_img</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">AA_mean_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AA_img</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">img_type</span> <span class="o">==</span> <span class="s1">&#39;A&#39;</span><span class="p">:</span>
-        <span class="n">raw_mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">AA_mean_img</span> <span class="o">&gt;</span> <span class="n">filters</span><span class="o">.</span><span class="n">threshold_otsu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AA_mean_img</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">img_type</span> <span class="o">==</span> <span class="s1">&#39;D&#39;</span><span class="p">:</span>
-        <span class="n">raw_mask</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DD_mean_img</span> <span class="o">&gt;</span> <span class="n">filters</span><span class="o">.</span><span class="n">threshold_otsu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DD_mean_img</span><span class="p">)</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">closing</span><span class="p">(</span><span class="n">raw_mask</span><span class="p">,</span> <span class="n">footprint</span><span class="o">=</span><span class="n">morphology</span><span class="o">.</span><span class="n">disk</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">mask</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">erosion</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mask</span><span class="p">,</span> <span class="n">footprint</span><span class="o">=</span><span class="n">morphology</span><span class="o">.</span><span class="n">disk</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">measure</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">DD_img</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">mask_along_frames</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DD_img</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">DA_img</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">mask_along_frames</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DA_img</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">AD_img</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">mask_along_frames</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AD_img</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">AA_img</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">mask_along_frames</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">AA_img</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mask</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-              </details>
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-
-  </div>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="domb.fret.coef_calc.CrossRegSet" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">CrossRegSet</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-
-  
-      <p>Class processing set of 3-cube FRET method crosstalk calibration registrations</p>
-<p>Requires sets of (A) and (D) registrations</p>
-
-              <details class="quote">
-                <summary>Source code in <code>src/domb/fret/coef_calc.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_path</span><span class="p">,</span> <span class="n">donor_reg_dict</span><span class="p">,</span> <span class="n">acceptor_reg_dict</span><span class="p">,</span> <span class="n">trim_frame</span><span class="o">=-</span><span class="mi">1</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">donor_reg</span> <span class="o">=</span> <span class="n">donor_reg_dict</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">acceptor_reg</span> <span class="o">=</span> <span class="n">acceptor_reg_dict</span>
-
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">donor_reg_list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">reg_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">donor_reg</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="n">name_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">reg_name</span><span class="si">}</span><span class="s1">.tif&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">donor_reg_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CrossReg</span><span class="p">(</span><span class="n">data_path</span><span class="o">=</span><span class="n">name_path</span><span class="p">,</span>
-                                    <span class="n">data_name</span><span class="o">=</span><span class="n">reg_name</span><span class="p">,</span>
-                                    <span class="n">exp_list</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">donor_reg</span><span class="p">[</span><span class="n">reg_name</span><span class="p">],</span>
-                                    <span class="n">reg_type</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">,</span>
-                                    <span class="n">trim_frame</span><span class="o">=</span><span class="n">trim_frame</span><span class="p">))</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">acceptor_reg_list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">reg_name</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">acceptor_reg</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="n">name_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">reg_name</span><span class="si">}</span><span class="s1">.tif&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">acceptor_reg_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">CrossReg</span><span class="p">(</span><span class="n">data_path</span><span class="o">=</span><span class="n">name_path</span><span class="p">,</span>
-                                               <span class="n">data_name</span><span class="o">=</span><span class="n">reg_name</span><span class="p">,</span>
-                                               <span class="n">exp_list</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">acceptor_reg</span><span class="p">[</span><span class="n">reg_name</span><span class="p">],</span>
-                                               <span class="n">reg_type</span><span class="o">=</span><span class="s1">&#39;A&#39;</span><span class="p">,</span>
-                                               <span class="n">trim_frame</span><span class="o">=</span><span class="n">trim_frame</span><span class="p">))</span>
-</code></pre></div></td></tr></table></div>
-              </details>
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h3 id="domb.fret.coef_calc.CrossRegSet.get_abcd" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_abcd</span></code>
-
-</h3>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Create data frame with calculated crosstalc coeficients for each calibration registration</p>
-
-          <details class="quote">
-            <summary> <code>src/domb/fret/coef_calc.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">265</span>
-<span class="normal">266</span>
-<span class="normal">267</span>
-<span class="normal">268</span>
-<span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span>
-<span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
-<span class="normal">279</span>
-<span class="normal">280</span>
-<span class="normal">281</span>
-<span class="normal">282</span>
-<span class="normal">283</span>
-<span class="normal">284</span>
-<span class="normal">285</span>
-<span class="normal">286</span>
-<span class="normal">287</span>
-<span class="normal">288</span>
-<span class="normal">289</span>
-<span class="normal">290</span>
-<span class="normal">291</span>
-<span class="normal">292</span>
-<span class="normal">293</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">get_abcd</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">show_pic</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create data frame with calculated crosstalc coeficients for each calibration registration</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">cross_raw_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span>  <span class="c1"># df with raw results</span>
-                                               <span class="s1">&#39;type&#39;</span><span class="p">,</span>
-                                               <span class="s1">&#39;A_exp&#39;</span><span class="p">,</span>
-                                               <span class="s1">&#39;D_exp&#39;</span><span class="p">,</span>
-                                               <span class="s1">&#39;frame&#39;</span><span class="p">,</span>
-                                               <span class="s1">&#39;coef&#39;</span><span class="p">,</span>
-                                               <span class="s1">&#39;val&#39;</span><span class="p">])</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">cross_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span>
-                                              <span class="s1">&#39;type&#39;</span><span class="p">,</span>
-                                              <span class="s1">&#39;A_exp&#39;</span><span class="p">,</span>
-                                              <span class="s1">&#39;D_exp&#39;</span><span class="p">,</span>
-                                              <span class="s1">&#39;coef&#39;</span><span class="p">,</span>
-                                              <span class="s1">&#39;val&#39;</span><span class="p">,</span>
-                                              <span class="s1">&#39;sd&#39;</span><span class="p">])</span>
-
-    <span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">acceptor_reg_list</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">donor_reg_list</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">show_pic</span><span class="p">:</span>
-            <span class="n">reg</span><span class="o">.</span><span class="n">ch_pic</span><span class="p">()</span>
-        <span class="n">reg</span><span class="o">.</span><span class="n">cross_calc</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cross_raw_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">cross_raw_df</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">cross_raw_df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">cross_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">cross_df</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">cross_df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">cross_df</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-
-  </div>
-
-  </div>
-
-</div>
-
-<div class="doc doc-object doc-class">
-
-
-
-<h2 id="domb.fret.coef_calc.GRegSet" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">GRegSet</span></code>
-
-</h2>
-
-
-  <div class="doc doc-contents ">
-
-
-              <details class="quote">
-                <summary>Source code in <code>src/domb/fret/coef_calc.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">577</span>
-<span class="normal">578</span>
-<span class="normal">579</span>
-<span class="normal">580</span>
-<span class="normal">581</span>
-<span class="normal">582</span>
-<span class="normal">583</span>
-<span class="normal">584</span>
-<span class="normal">585</span>
-<span class="normal">586</span>
-<span class="normal">587</span>
-<span class="normal">588</span>
-<span class="normal">589</span>
-<span class="normal">590</span>
-<span class="normal">591</span>
-<span class="normal">592</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data_path</span><span class="p">,</span> <span class="n">tandem_reg_dict</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">tandem_reg_list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">reg_name</span> <span class="ow">in</span> <span class="n">tandem_reg_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-        <span class="n">reg_params</span> <span class="o">=</span> <span class="n">tandem_reg_dict</span><span class="p">[</span><span class="n">reg_name</span><span class="p">]</span>
-        <span class="n">raw_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">reg_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1">.tif&#39;</span>
-        <span class="n">bleach_path</span> <span class="o">=</span> <span class="n">data_path</span> <span class="o">+</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">reg_params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s1">.tif&#39;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">tandem_reg_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">GReg</span><span class="p">(</span><span class="n">img_name</span><span class="o">=</span><span class="n">reg_name</span><span class="p">,</span>
-                                         <span class="n">raw_path</span><span class="o">=</span><span class="n">raw_path</span><span class="p">,</span>
-                                         <span class="n">bleach_path</span><span class="o">=</span><span class="n">bleach_path</span><span class="p">,</span>
-                                         <span class="n">bleach_frame</span><span class="o">=</span><span class="n">reg_params</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-                                         <span class="n">bleach_exp</span><span class="o">=</span><span class="n">reg_params</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
-                                         <span class="n">A_exp</span><span class="o">=</span><span class="n">reg_params</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
-                                         <span class="n">D_exp</span><span class="o">=</span><span class="n">reg_params</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span>
-                                         <span class="o">**</span><span class="n">kwargs</span><span class="p">))</span>
-
-    <span class="bp">self</span><span class="o">.</span><span class="n">G_df</span> <span class="o">=</span>  <span class="bp">self</span><span class="o">.</span><span class="n">get_G</span><span class="p">(</span><span class="n">reg_list</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">tandem_reg_list</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-              </details>
-
-  
-
-  <div class="doc doc-children">
-
-
-
-
-
-
-
-
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h3 id="domb.fret.coef_calc.GRegSet.draw_pic" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">draw_pic</span></code>
-
-</h3>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Return selected plotting methods results
-Requires previous execution of 'get_G'</p>
-
-          <details class="quote">
-            <summary> <code>src/domb/fret/coef_calc.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">613</span>
-<span class="normal">614</span>
-<span class="normal">615</span>
-<span class="normal">616</span>
-<span class="normal">617</span>
-<span class="normal">618</span>
-<span class="normal">619</span>
-<span class="normal">620</span>
-<span class="normal">621</span>
-<span class="normal">622</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">draw_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Return selected plotting methods results</span>
-<span class="sd">    Requires previous execution of &#39;get_G&#39;</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">tandem_reg_list</span><span class="p">:</span>
-        <span class="n">reg</span><span class="o">.</span><span class="n">Fc_plot</span><span class="p">()</span>
-        <span class="n">reg</span><span class="o">.</span><span class="n">pre_post_plot</span><span class="p">()</span>
-        <span class="n">reg</span><span class="o">.</span><span class="n">G_plot</span><span class="p">()</span>
-        <span class="n">reg</span><span class="o">.</span><span class="n">G_plot_by_label</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-<div class="doc doc-object doc-function">
-
-
-
-<h3 id="domb.fret.coef_calc.GRegSet.get_G" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">get_G</span></code>
-  
-  <span class="doc doc-labels">
-      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
-  </span>
-
-</h3>
-
-
-  <div class="doc doc-contents ">
-  
-      <p>Create data frame with calculated crosstalc coeficients for each calibration registration</p>
-
-          <details class="quote">
-            <summary> <code>src/domb/fret/coef_calc.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">595</span>
-<span class="normal">596</span>
-<span class="normal">597</span>
-<span class="normal">598</span>
-<span class="normal">599</span>
-<span class="normal">600</span>
-<span class="normal">601</span>
-<span class="normal">602</span>
-<span class="normal">603</span>
-<span class="normal">604</span>
-<span class="normal">605</span>
-<span class="normal">606</span>
-<span class="normal">607</span>
-<span class="normal">608</span>
-<span class="normal">609</span>
-<span class="normal">610</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="o">@</span> <span class="nb">staticmethod</span>
-<span class="k">def</span> <span class="nf">get_G</span><span class="p">(</span><span class="n">reg_list</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Create data frame with calculated crosstalc coeficients for each calibration registration</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">G_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span>
-                                 <span class="s1">&#39;A_exp&#39;</span><span class="p">,</span>
-                                 <span class="s1">&#39;D_exp&#39;</span><span class="p">,</span>
-                                 <span class="s1">&#39;val&#39;</span><span class="p">,</span>
-                                 <span class="s1">&#39;sd&#39;</span><span class="p">])</span>
-
-    <span class="k">for</span> <span class="n">reg</span> <span class="ow">in</span> <span class="n">reg_list</span><span class="p">:</span>
-        <span class="n">reg</span><span class="o">.</span><span class="n">G_calc</span><span class="p">()</span>
-        <span class="n">G_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">G_df</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">G_df</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">G_df</span>
-</code></pre></div></td></tr></table></div>
-          </details>
-  </div>
-
-</div>
-
-
-
-  </div>
-
-  </div>
-
-</div>
-
-
-
-
-  </div>
-
-  </div>
-
-</div><h1 id="fret_1">FRET</h1>
+<h1 id="e-fret">E-FRET</h1>
 
 
 <div class="doc doc-object doc-module">
@@ -564,9 +98,393 @@ Requires previous execution of 'get_G'</p>
 
 <a id="domb.fret.e_app"></a>
   <div class="doc doc-contents first">
+
   
-      <p>E app calculation for FRET estimation</p>
-<p>Based on Zal and Gascoigne, 2004, doi: 10.1529/biophysj.103.022087</p>
+
+  <div class="doc doc-children">
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-class">
+
+
+
+<h2 id="domb.fret.e_app.Eapp" class="doc doc-heading">
+<code class="highlight language-python"><span class="n">Eapp</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+
+  
+      <p>Class for estimating FRET efficiency in image time series.</p>
+<p><strong>WF_2x_2m instance type as input is recommended</strong></p>
+
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b>dd_img</b>
+                  (<code><span title="numpy.ndarray">ndarray</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>image time series with donor excitation-donor emission</p>
+              </div>
+            </li>
+            <li>
+              <b>da_img</b>
+                  (<code><span title="numpy.ndarray">ndarray</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>image time series with donor excitation-acceptor emission</p>
+              </div>
+            </li>
+            <li>
+              <b>ad_img</b>
+                  (<code><span title="numpy.ndarray">ndarray</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>image time series with acceptor excitation-donor emission</p>
+              </div>
+            </li>
+            <li>
+              <b>aa_img</b>
+                  (<code><span title="numpy.ndarray">ndarray</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>image time series with acceptor excitation-acceptor emission</p>
+              </div>
+            </li>
+            <li>
+              <b>abcd_list</b>
+                  (<code>list(int)</code>)
+              –
+              <div class="doc-md-description">
+                <p>list of crosstalk coefficients</p>
+              </div>
+            </li>
+            <li>
+              <b>G_val</b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>gauge ("G") parameter of imaging system</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Attributes:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b>DD_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>image time series with donor excitation-donor emission
+(e.g. 435 nm - CFP ch.)</p>
+              </div>
+            </li>
+            <li>
+              <b>DA_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>image time series with donor excitation-acceptor emission
+(e.g. 435 nm - YFP ch.)</p>
+              </div>
+            </li>
+            <li>
+              <b>AD_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>image time series with acceptor excitation-donor emission
+(e.g. 505 nm - CFP ch.)</p>
+              </div>
+            </li>
+            <li>
+              <b>AA_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>image time series with acceptor excitation-acceptor emission            (e.g. 505 nm - YFP ch.)</p>
+              </div>
+            </li>
+            <li>
+              <b>a</b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>acceptor bleedthrough coefficient (I_DA(A) / I_AA(A))</p>
+              </div>
+            </li>
+            <li>
+              <b>b</b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>acceptor bleedthrough coefficient (I_DD(A) / I_AA(A))</p>
+              </div>
+            </li>
+            <li>
+              <b>c</b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>donor bleedthrough coefficient (I_AA(D) / I_DD(D))</p>
+              </div>
+            </li>
+            <li>
+              <b>d</b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>donor bleedthrough coefficient (I_DA(D) / I_DD(D))</p>
+              </div>
+            </li>
+            <li>
+              <b>G</b>
+                  (<code>float</code>)
+              –
+              <div class="doc-md-description">
+                <p>gauge ("G") parameter of imaging system</p>
+              </div>
+            </li>
+            <li>
+              <b>Fc_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>image time series of sensitized fluorescence</p>
+              </div>
+            </li>
+            <li>
+              <b>R_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>image time series of sensitized fluorescence to donor emission ratio
+(F_c / I_DD)</p>
+              </div>
+            </li>
+            <li>
+              <b>Eapp_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>image time series of E-FRET</p>
+              </div>
+            </li>
+            <li>
+              <b>Ecorr_img</b>
+                  (<code>ndarray[t, x, y]</code>)
+              –
+              <div class="doc-md-description">
+                <p>image time series of E-FRET corrected for photobleaching</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+              <details class="quote">
+                <summary>Source code in <code>src/domb/fret/e_app.py</code></summary>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dd_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">da_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+             <span class="n">ad_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">aa_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> 
+             <span class="n">abcd_list</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">G_val</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Class for estimating FRET efficiency in image time series.</span>
+
+<span class="sd">    __WF_2x_2m instance type as input is recommended__</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    dd_img: ndarray [t,x,y]</span>
+<span class="sd">       image time series with donor excitation-donor emission</span>
+<span class="sd">    da_img: ndarray [t,x,y]</span>
+<span class="sd">        image time series with donor excitation-acceptor emission</span>
+<span class="sd">    ad_img: ndarray [t,x,y]</span>
+<span class="sd">        image time series with acceptor excitation-donor emission</span>
+<span class="sd">    aa_img: ndarray [t,x,y]</span>
+<span class="sd">        image time series with acceptor excitation-acceptor emission</span>
+<span class="sd">    abcd_list: list</span>
+<span class="sd">        list of crosstalk coefficients</span>
+<span class="sd">    G_val: float</span>
+<span class="sd">        gauge (&quot;G&quot;) parameter of imaging system</span>
+
+<span class="sd">    Attributes</span>
+<span class="sd">    ----------</span>
+<span class="sd">    DD_img: ndarray [t,x,y]</span>
+<span class="sd">        image time series with donor excitation-donor emission</span>
+<span class="sd">        (e.g. 435 nm - CFP ch.)</span>
+<span class="sd">    DA_img: ndarray [t,x,y]</span>
+<span class="sd">        image time series with donor excitation-acceptor emission</span>
+<span class="sd">        (e.g. 435 nm - YFP ch.)</span>
+<span class="sd">    AD_img: ndarray [t,x,y]</span>
+<span class="sd">        image time series with acceptor excitation-donor emission</span>
+<span class="sd">        (e.g. 505 nm - CFP ch.)</span>
+<span class="sd">    AA_img: ndarray [t,x,y]</span>
+<span class="sd">        image time series with acceptor excitation-acceptor emission\</span>
+<span class="sd">        (e.g. 505 nm - YFP ch.)</span>
+<span class="sd">    a: float</span>
+<span class="sd">        acceptor bleedthrough coefficient (I_DA(A) / I_AA(A))</span>
+<span class="sd">    b: float</span>
+<span class="sd">        acceptor bleedthrough coefficient (I_DD(A) / I_AA(A))</span>
+<span class="sd">    c: float</span>
+<span class="sd">        donor bleedthrough coefficient (I_AA(D) / I_DD(D))</span>
+<span class="sd">    d: float</span>
+<span class="sd">        donor bleedthrough coefficient (I_DA(D) / I_DD(D))</span>
+<span class="sd">    G: float</span>
+<span class="sd">        gauge (&quot;G&quot;) parameter of imaging system</span>
+<span class="sd">    Fc_img: ndarray [t,x,y]</span>
+<span class="sd">        image time series of sensitized fluorescence</span>
+<span class="sd">    R_img: ndarray [t,x,y]</span>
+<span class="sd">        image time series of sensitized fluorescence to donor emission ratio</span>
+<span class="sd">        (F_c / I_DD)</span>
+<span class="sd">    Eapp_img: ndarray [t,x,y]</span>
+<span class="sd">        image time series of E-FRET</span>
+<span class="sd">    Ecorr_img: ndarray [t,x,y]</span>
+<span class="sd">        image time series of E-FRET corrected for photobleaching</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">DD_img</span> <span class="o">=</span> <span class="n">dd_img</span>  <span class="c1"># 435-CFP  DD</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">DA_img</span> <span class="o">=</span> <span class="n">da_img</span>  <span class="c1"># 435-YFP  DA</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">AD_img</span> <span class="o">=</span> <span class="n">ad_img</span>  <span class="c1"># 505-CFP  AD</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">AA_img</span> <span class="o">=</span> <span class="n">aa_img</span>  <span class="c1"># 505-YFP  AA</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">a</span> <span class="o">=</span> <span class="n">abcd_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">b</span> <span class="o">=</span> <span class="n">abcd_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">c</span> <span class="o">=</span> <span class="n">abcd_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">d</span> <span class="o">=</span> <span class="n">abcd_list</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">G</span> <span class="o">=</span> <span class="n">G_val</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">Fc_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Fc_calc</span><span class="p">(</span><span class="n">dd_img</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">DD_img</span><span class="p">,</span>
+                               <span class="n">da_img</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">DA_img</span><span class="p">,</span>
+                               <span class="n">aa_img</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">AA_img</span><span class="p">,</span>
+                               <span class="n">a</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">d</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">R_img</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">Eapp_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_app_calc</span><span class="p">(</span><span class="n">fc_img</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Fc_img</span><span class="p">,</span>
+                                                <span class="n">dd_img</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">DD_img</span><span class="p">,</span>
+                                                <span class="n">G</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">G</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">Ecorr_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">E_cor_calc</span><span class="p">(</span><span class="n">e_app_img</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">Eapp_img</span><span class="p">,</span>
+                                     <span class="n">aa_img</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">AA_img</span><span class="p">,</span>
+                                     <span class="n">dd_img</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">DD_img</span><span class="p">,</span>
+                                     <span class="n">c</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">c</span><span class="p">,</span>
+                                     <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+              </details>
 
   
 
@@ -587,12 +505,23 @@ Requires previous execution of 'get_G'</p>
   </div>
 
 </div>
+
+
+
+
+  </div>
+
+  </div>
+
+</div><h1 id="coefficients-calculation">Coefficients Calculation</h1>
+<p><strong><em>in progress</em></strong></p>
+<!-- ::: domb.fret.coef_calc -->
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../wf_x2_m2/" class="btn btn-neutral float-left" title="WF x2 m2"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../rg/" class="btn btn-neutral float-right" title="Red-green">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../rg/" class="btn btn-neutral float-right" title="Red-Green">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>

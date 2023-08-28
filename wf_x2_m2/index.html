@@ -63,7 +63,7 @@
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../fret/">FRET</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../rg/">Red-green</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../rg/">Red-Green</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Utils</span></p>
@@ -133,9 +133,9 @@
   <div class="doc doc-contents ">
 
   
-      <p>This class is designed to conduct wide-field imaging experiments using
-two different excitation wavelengths and capture data through two emission channels.
-It's specially optimized for the results of individual neuron imaging.</p>
+      <p>Class is designed to store experiment data from wide-field imaging
+using two different excitation wavelengths and two emission channels.
+It's specifically optimized for the results of individual neuron imaging.</p>
 
 
 
@@ -450,14 +450,12 @@ with photobleaching correction (constant by mask)</p>
 <span class="normal">131</span>
 <span class="normal">132</span>
 <span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">img_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="normal">134</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">img_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
             <span class="n">ch_order</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">:</span><span class="nb">int</span><span class="p">],</span> <span class="n">wf_sigma</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; </span>
-<span class="sd">    This class is designed to conduct wide-field imaging experiments using</span>
-<span class="sd">    two different excitation wavelengths and capture data through two emission channels.</span>
-<span class="sd">    It&#39;s specially optimized for the results of individual neuron imaging.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Class is designed to store experiment data from wide-field imaging</span>
+<span class="sd">    using two different excitation wavelengths and two emission channels.</span>
+<span class="sd">    It&#39;s specifically optimized for the results of individual neuron imaging.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -590,7 +588,8 @@ full-frame intensity profile along time series.</p>
 
           <details class="quote">
             <summary> <code>src/domb/reg_type/wf_x2_m2.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">160</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">159</span>
+<span class="normal">160</span>
 <span class="normal">161</span>
 <span class="normal">162</span>
 <span class="normal">163</span>
@@ -633,8 +632,7 @@ full-frame intensity profile along time series.</p>
 <span class="normal">200</span>
 <span class="normal">201</span>
 <span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ch_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">203</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ch_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Plotting of registration control image: mean intensity frames</span>
 <span class="sd">    (`fp1_mean_img_raw` and `fp1_mean_img_raw`)</span>
 <span class="sd">    and histogra for each channel,</span>
@@ -703,7 +701,8 @@ full-frame intensity profile along time series.</p>
 
           <details class="quote">
             <summary> <code>src/domb/reg_type/wf_x2_m2.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">138</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">137</span>
+<span class="normal">138</span>
 <span class="normal">139</span>
 <span class="normal">140</span>
 <span class="normal">141</span>
@@ -721,8 +720,7 @@ full-frame intensity profile along time series.</p>
 <span class="normal">153</span>
 <span class="normal">154</span>
 <span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">hist_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">156</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">hist_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Plotting of histogram for individual channels</span>
 <span class="sd">    (for channel mean intensity frame).</span>
 
@@ -766,7 +764,8 @@ overlay with control fluorescence image (<code>fp2_mean_img_raw</code>).</p>
 
           <details class="quote">
             <summary> <code>src/domb/reg_type/wf_x2_m2.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">207</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">206</span>
+<span class="normal">207</span>
 <span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
@@ -786,8 +785,7 @@ overlay with control fluorescence image (<code>fp2_mean_img_raw</code>).</p>
 <span class="normal">224</span>
 <span class="normal">225</span>
 <span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">processes_mask_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">227</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">processes_mask_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Plotting of cell processes mask (narrow and extended)</span>
 <span class="sd">    overlay with control fluorescence image (`fp2_mean_img_raw`).</span>
 
