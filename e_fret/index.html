@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>FRET - DoMB</title>
+    <title>E-FRET - DoMB</title>
     <link rel="stylesheet" href="../css/theme.css" />
     <link rel="stylesheet" href="../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -13,8 +13,8 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "FRET";
-        var mkdocs_page_input_path = "fret.md";
+        var mkdocs_page_name = "E-FRET";
+        var mkdocs_page_input_path = "e_fret.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -47,8 +47,14 @@
               </ul>
               <p class="caption"><span class="caption-text">Modules</span></p>
               <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">FRET</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FRET</a>
     <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">E-FRET</a>
+    <ul class="current">
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../b_fret/">B-FRET</a>
+                </li>
     </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../rg/">Red-Green</a>
@@ -78,9 +84,10 @@
   <ul class="wy-breadcrumbs">
     <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
           <li>Modules &raquo;</li>
-      <li class="breadcrumb-item active">FRET</li>
+          <li>FRET &raquo;</li>
+      <li class="breadcrumb-item active">E-FRET</li>
     <li class="wy-breadcrumbs-aside">
-          <a href="https://github.com/wisstock/DoMB_tools/edit/master/docs/fret.md">Edit on DoMB</a>
+          <a href="https://github.com/wisstock/DoMB_tools/edit/master/docs/e_fret.md">Edit on DoMB</a>
     </li>
   </ul>
   <hr/>
@@ -88,7 +95,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="forster-resonance-energy-transfer-fret-efficiency-estimation">Förster Resonance Energy Transfer (FRET) Efficiency Estimation</h1>
+                <h1 id="3-cube-fret-efficiency-estimation">3-cube FRET Efficiency Estimation</h1>
 <p>Based on <em><a href="https://pubmed.ncbi.nlm.nih.gov/15189889/">Zal and Gascoigne, 2004</a></em></p>
 <h1 id="e-fret">E-FRET</h1>
 
@@ -96,7 +103,8 @@
 <div class="doc doc-object doc-module">
 
 
-<a id="domb.fret.e_app"></a>
+
+<a id="domb.fret.e_fret.e_app"></a>
   <div class="doc doc-contents first">
 
   
@@ -114,8 +122,9 @@
 
 
 
-<h2 id="domb.fret.e_app.Eapp" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">Eapp</span></code>
+
+<h2 id="domb.fret.e_fret.e_app.Eapp" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">Eapp</span></code>
 
 </h2>
 
@@ -139,7 +148,7 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>dd_img</b>
+              <b><code>dd_img</code></b>
                   (<code><span title="numpy.ndarray">ndarray</span></code>)
               –
               <div class="doc-md-description">
@@ -147,7 +156,7 @@
               </div>
             </li>
             <li>
-              <b>da_img</b>
+              <b><code>da_img</code></b>
                   (<code><span title="numpy.ndarray">ndarray</span></code>)
               –
               <div class="doc-md-description">
@@ -155,7 +164,7 @@
               </div>
             </li>
             <li>
-              <b>ad_img</b>
+              <b><code>ad_img</code></b>
                   (<code><span title="numpy.ndarray">ndarray</span></code>)
               –
               <div class="doc-md-description">
@@ -163,7 +172,7 @@
               </div>
             </li>
             <li>
-              <b>aa_img</b>
+              <b><code>aa_img</code></b>
                   (<code><span title="numpy.ndarray">ndarray</span></code>)
               –
               <div class="doc-md-description">
@@ -171,15 +180,15 @@
               </div>
             </li>
             <li>
-              <b>abcd_list</b>
-                  (<code>list(int)</code>)
+              <b><code>abcd_list</code></b>
+                  (<code>list[int, ...]</code>)
               –
               <div class="doc-md-description">
                 <p>list of crosstalk coefficients</p>
               </div>
             </li>
             <li>
-              <b>G_val</b>
+              <b><code>G_val</code></b>
                   (<code>float</code>)
               –
               <div class="doc-md-description">
@@ -204,7 +213,7 @@
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>DD_img</b>
+              <b><code>DD_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -213,7 +222,7 @@
               </div>
             </li>
             <li>
-              <b>DA_img</b>
+              <b><code>DA_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -222,7 +231,7 @@
               </div>
             </li>
             <li>
-              <b>AD_img</b>
+              <b><code>AD_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -231,7 +240,7 @@
               </div>
             </li>
             <li>
-              <b>AA_img</b>
+              <b><code>AA_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -239,7 +248,7 @@
               </div>
             </li>
             <li>
-              <b>a</b>
+              <b><code>a</code></b>
                   (<code>float</code>)
               –
               <div class="doc-md-description">
@@ -247,7 +256,7 @@
               </div>
             </li>
             <li>
-              <b>b</b>
+              <b><code>b</code></b>
                   (<code>float</code>)
               –
               <div class="doc-md-description">
@@ -255,7 +264,7 @@
               </div>
             </li>
             <li>
-              <b>c</b>
+              <b><code>c</code></b>
                   (<code>float</code>)
               –
               <div class="doc-md-description">
@@ -263,7 +272,7 @@
               </div>
             </li>
             <li>
-              <b>d</b>
+              <b><code>d</code></b>
                   (<code>float</code>)
               –
               <div class="doc-md-description">
@@ -271,7 +280,7 @@
               </div>
             </li>
             <li>
-              <b>G</b>
+              <b><code>G</code></b>
                   (<code>float</code>)
               –
               <div class="doc-md-description">
@@ -279,7 +288,7 @@
               </div>
             </li>
             <li>
-              <b>Fc_img</b>
+              <b><code>Fc_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -287,7 +296,7 @@
               </div>
             </li>
             <li>
-              <b>R_img</b>
+              <b><code>R_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -296,7 +305,7 @@
               </div>
             </li>
             <li>
-              <b>Eapp_img</b>
+              <b><code>Eapp_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -304,7 +313,7 @@
               </div>
             </li>
             <li>
-              <b>Ecorr_img</b>
+              <b><code>Ecorr_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -317,7 +326,7 @@
   </tbody>
 </table>
               <details class="quote">
-                <summary>Source code in <code>src/domb/fret/e_app.py</code></summary>
+                <summary>Source code in <code>src/domb/fret/e_fret/e_app.py</code></summary>
                 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 31</span>
 <span class="normal"> 32</span>
 <span class="normal"> 33</span>
@@ -401,8 +410,8 @@
 <span class="normal">111</span>
 <span class="normal">112</span>
 <span class="normal">113</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dd_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">da_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-             <span class="n">ad_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">aa_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> 
-             <span class="n">abcd_list</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">G_val</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+             <span class="n">ad_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">aa_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+             <span class="n">abcd_list</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span><span class="o">...</span><span class="p">],</span> <span class="n">G_val</span><span class="p">:</span><span class="nb">float</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Class for estimating FRET efficiency in image time series.</span>
 
 <span class="sd">    __WF_2x_2m instance type as input is recommended__</span>
@@ -521,7 +530,7 @@
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../wf_x2_m2/" class="btn btn-neutral float-left" title="WF x2 m2"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../rg/" class="btn btn-neutral float-right" title="Red-Green">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../b_fret/" class="btn btn-neutral float-right" title="B-FRET">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -547,7 +556,7 @@
       <span><a href="../wf_x2_m2/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../rg/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../b_fret/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

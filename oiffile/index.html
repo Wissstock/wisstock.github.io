@@ -47,7 +47,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Modules</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../fret/">FRET</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">FRET</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../e_fret/">E-FRET</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../b_fret/">B-FRET</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../rg/">Red-Green</a>
                   </li>
@@ -60,7 +66,7 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">OIF File</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile">domb.utils.oiffile</a>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.oiffile">oiffile</a>
         <ul>
     <li class="toctree-l3"><a class="reference internal" href="#domb.utils.oiffile--requirements">Requirements</a>
     </li>
@@ -196,6 +202,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="domb.utils.oiffile"></a>
   <div class="doc doc-contents first">
   
@@ -307,8 +314,9 @@ software for confocal microscopy.</p>
 
 
 
+
 <h2 id="domb.utils.oiffile.CompoundFile" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">CompoundFile</span></code>
+            <code class="highlight language-python"><span class="n">CompoundFile</span></code>
 
 </h2>
 
@@ -590,8 +598,9 @@ Binary File Format" specification by Microsoft Corporation.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.CompoundFile.__str__" class="doc doc-heading">
-<code class="highlight language-python"><span class="fm">__str__</span></code>
+          <code class="highlight language-python"><span class="fm">__str__</span></code>
 
 </h3>
 
@@ -638,8 +647,9 @@ Binary File Format" specification by Microsoft Corporation.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.CompoundFile.close" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">close</span></code>
+          <code class="highlight language-python"><span class="n">close</span></code>
 
 </h3>
 
@@ -666,8 +676,9 @@ Binary File Format" specification by Microsoft Corporation.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.CompoundFile.direntry" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">direntry</span></code>
+          <code class="highlight language-python"><span class="n">direntry</span></code>
 
 </h3>
 
@@ -694,8 +705,9 @@ Binary File Format" specification by Microsoft Corporation.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.CompoundFile.files" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">files</span></code>
+          <code class="highlight language-python"><span class="n">files</span></code>
 
 </h3>
 
@@ -722,8 +734,9 @@ Binary File Format" specification by Microsoft Corporation.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.CompoundFile.format_tree" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">format_tree</span></code>
+          <code class="highlight language-python"><span class="n">format_tree</span></code>
 
 </h3>
 
@@ -750,8 +763,9 @@ Binary File Format" specification by Microsoft Corporation.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.CompoundFile.open_file" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">open_file</span></code>
+          <code class="highlight language-python"><span class="n">open_file</span></code>
 
 </h3>
 
@@ -785,8 +799,9 @@ Binary File Format" specification by Microsoft Corporation.</p>
 
 
 
+
 <h2 id="domb.utils.oiffile.DirectoryEntry" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">DirectoryEntry</span></code>
+            <code class="highlight language-python"><span class="n">DirectoryEntry</span></code>
 
 </h2>
 
@@ -885,8 +900,9 @@ Binary File Format" specification by Microsoft Corporation.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.DirectoryEntry.__str__" class="doc doc-heading">
-<code class="highlight language-python"><span class="fm">__str__</span></code>
+          <code class="highlight language-python"><span class="fm">__str__</span></code>
 
 </h3>
 
@@ -926,8 +942,9 @@ Binary File Format" specification by Microsoft Corporation.</p>
 
 
 
+
 <h2 id="domb.utils.oiffile.OibFileSystem" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">OibFileSystem</span></code>
+            <code class="highlight language-python"><span class="n">OibFileSystem</span></code>
 
 </h2>
 
@@ -1000,8 +1017,9 @@ Binary File Format" specification by Microsoft Corporation.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OibFileSystem.__str__" class="doc doc-heading">
-<code class="highlight language-python"><span class="fm">__str__</span></code>
+          <code class="highlight language-python"><span class="fm">__str__</span></code>
 
 </h3>
 
@@ -1042,8 +1060,9 @@ Binary File Format" specification by Microsoft Corporation.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OibFileSystem.close" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">close</span></code>
+          <code class="highlight language-python"><span class="n">close</span></code>
 
 </h3>
 
@@ -1070,8 +1089,9 @@ Binary File Format" specification by Microsoft Corporation.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OibFileSystem.files" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">files</span></code>
+          <code class="highlight language-python"><span class="n">files</span></code>
 
 </h3>
 
@@ -1098,8 +1118,9 @@ Binary File Format" specification by Microsoft Corporation.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OibFileSystem.open_file" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">open_file</span></code>
+          <code class="highlight language-python"><span class="n">open_file</span></code>
 
 </h3>
 
@@ -1132,8 +1153,9 @@ Binary File Format" specification by Microsoft Corporation.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OibFileSystem.saveas_oif" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">saveas_oif</span></code>
+          <code class="highlight language-python"><span class="n">saveas_oif</span></code>
 
 </h3>
 
@@ -1230,8 +1252,9 @@ OibInfo.txt settings.</p>
 
 
 
+
 <h2 id="domb.utils.oiffile.OifFile" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">OifFile</span></code>
+            <code class="highlight language-python"><span class="n">OifFile</span></code>
 
 </h2>
 
@@ -1254,7 +1277,7 @@ OibInfo.txt settings.</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>mainfile</b>
+              <b><code>mainfile</code></b>
                   (<code><a class="autorefs autorefs-internal" title="domb.utils.oiffile.SettingsFile" href="#domb.utils.oiffile.SettingsFile">SettingsFile</a></code>)
               –
               <div class="doc-md-description">
@@ -1262,7 +1285,7 @@ OibInfo.txt settings.</p>
               </div>
             </li>
             <li>
-              <b>filesystem</b>
+              <b><code>filesystem</code></b>
                   (<code><a class="autorefs autorefs-internal" title="domb.utils.oiffile.OibFileSystem" href="#domb.utils.oiffile.OibFileSystem">OibFileSystem</a> or <a class="autorefs autorefs-internal" title="domb.utils.oiffile.OifFileSystem" href="#domb.utils.oiffile.OifFileSystem">OifFileSystem</a></code>)
               –
               <div class="doc-md-description">
@@ -1270,7 +1293,7 @@ OibInfo.txt settings.</p>
               </div>
             </li>
             <li>
-              <b>series</b>
+              <b><code>series</code></b>
                   (<code>tuple of tifffile.TiffSequence</code>)
               –
               <div class="doc-md-description">
@@ -1278,7 +1301,7 @@ OibInfo.txt settings.</p>
               </div>
             </li>
             <li>
-              <b>is_oib</b>
+              <b><code>is_oib</code></b>
                   (<code>bool</code>)
               –
               <div class="doc-md-description">
@@ -1336,8 +1359,9 @@ OibInfo.txt settings.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFile.axes" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">axes</span></code>
+          <code class="highlight language-python"><span class="n">axes</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
@@ -1357,8 +1381,9 @@ OibInfo.txt settings.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFile.dtype" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">dtype</span></code>
+          <code class="highlight language-python"><span class="n">dtype</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
@@ -1378,8 +1403,9 @@ OibInfo.txt settings.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFile.shape" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">shape</span></code>
+          <code class="highlight language-python"><span class="n">shape</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
@@ -1399,8 +1425,9 @@ OibInfo.txt settings.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFile.tiffs" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">tiffs</span></code>
+          <code class="highlight language-python"><span class="n">tiffs</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-property"><code>property</code></small>
@@ -1423,8 +1450,9 @@ OibInfo.txt settings.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFile.__str__" class="doc doc-heading">
-<code class="highlight language-python"><span class="fm">__str__</span></code>
+          <code class="highlight language-python"><span class="fm">__str__</span></code>
 
 </h3>
 
@@ -1477,8 +1505,9 @@ OibInfo.txt settings.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFile.asarray" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">asarray</span></code>
+          <code class="highlight language-python"><span class="n">asarray</span></code>
 
 </h3>
 
@@ -1533,8 +1562,9 @@ TiffFile or TiffSequence instances.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFile.close" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">close</span></code>
+          <code class="highlight language-python"><span class="n">close</span></code>
 
 </h3>
 
@@ -1561,8 +1591,9 @@ TiffFile or TiffSequence instances.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFile.glob" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">glob</span></code>
+          <code class="highlight language-python"><span class="n">glob</span></code>
 
 </h3>
 
@@ -1597,8 +1628,9 @@ TiffFile or TiffSequence instances.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFile.open_file" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">open_file</span></code>
+          <code class="highlight language-python"><span class="n">open_file</span></code>
 
 </h3>
 
@@ -1633,8 +1665,9 @@ TiffFile or TiffSequence instances.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFile.series" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">series</span></code>
+          <code class="highlight language-python"><span class="n">series</span></code>
 
 </h3>
 
@@ -1698,6 +1731,7 @@ TiffFile or TiffSequence instances.</p>
 
 
 
+
 <h2 id="domb.utils.oiffile.OifFileError" class="doc doc-heading">
           <code>OifFileError</code>
 
@@ -1721,8 +1755,9 @@ TiffFile or TiffSequence instances.</p>
 
 
 
+
 <h2 id="domb.utils.oiffile.OifFileSystem" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">OifFileSystem</span></code>
+            <code class="highlight language-python"><span class="n">OifFileSystem</span></code>
 
 </h2>
 
@@ -1789,8 +1824,9 @@ TiffFile or TiffSequence instances.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFileSystem.__str__" class="doc doc-heading">
-<code class="highlight language-python"><span class="fm">__str__</span></code>
+          <code class="highlight language-python"><span class="fm">__str__</span></code>
 
 </h3>
 
@@ -1829,8 +1865,9 @@ TiffFile or TiffSequence instances.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFileSystem.close" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">close</span></code>
+          <code class="highlight language-python"><span class="n">close</span></code>
 
 </h3>
 
@@ -1855,8 +1892,9 @@ TiffFile or TiffSequence instances.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFileSystem.files" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">files</span></code>
+          <code class="highlight language-python"><span class="n">files</span></code>
 
 </h3>
 
@@ -1883,8 +1921,9 @@ TiffFile or TiffSequence instances.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFileSystem.glob" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">glob</span></code>
+          <code class="highlight language-python"><span class="n">glob</span></code>
 
 </h3>
 
@@ -1915,8 +1954,9 @@ TiffFile or TiffSequence instances.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.OifFileSystem.open_file" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">open_file</span></code>
+          <code class="highlight language-python"><span class="n">open_file</span></code>
 
 </h3>
 
@@ -1950,8 +1990,9 @@ TiffFile or TiffSequence instances.</p>
 
 
 
+
 <h2 id="domb.utils.oiffile.SettingsFile" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">SettingsFile</span></code>
+            <code class="highlight language-python"><span class="n">SettingsFile</span></code>
 
 </h2>
 
@@ -1982,7 +2023,7 @@ except for {'ColorLUTData': numpy array}.</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>arg</b>
+              <b><code>arg</code></b>
                   (<code>str or file object</code>)
               –
               <div class="doc-md-description">
@@ -1991,7 +2032,7 @@ File objects are closed by this function.</p>
               </div>
             </li>
             <li>
-              <b>name</b>
+              <b><code>name</code></b>
                   (<code>str</code>, default:
                       <code>None</code>
 )
@@ -2138,8 +2179,9 @@ File objects are closed by this function.</p>
 
 
 
+
 <h3 id="domb.utils.oiffile.SettingsFile.__str__" class="doc doc-heading">
-<code class="highlight language-python"><span class="fm">__str__</span></code>
+          <code class="highlight language-python"><span class="fm">__str__</span></code>
 
 </h3>
 
@@ -2175,8 +2217,9 @@ File objects are closed by this function.</p>
 
 
 
+
 <h2 id="domb.utils.oiffile.OibImread" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">OibImread</span></code>
+          <code class="highlight language-python"><span class="n">OibImread</span></code>
 
 </h2>
 
@@ -2216,8 +2259,9 @@ File objects are closed by this function.</p>
 
 
 
+
 <h2 id="domb.utils.oiffile.astype" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">astype</span></code>
+          <code class="highlight language-python"><span class="n">astype</span></code>
 
 </h2>
 
@@ -2262,8 +2306,9 @@ File objects are closed by this function.</p>
 
 
 
+
 <h2 id="domb.utils.oiffile.filetime" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">filetime</span></code>
+          <code class="highlight language-python"><span class="n">filetime</span></code>
 
 </h2>
 
@@ -2296,8 +2341,9 @@ File objects are closed by this function.</p>
 
 
 
+
 <h2 id="domb.utils.oiffile.format_dict" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">format_dict</span></code>
+          <code class="highlight language-python"><span class="n">format_dict</span></code>
 
 </h2>
 
@@ -2350,8 +2396,9 @@ File objects are closed by this function.</p>
 
 
 
+
 <h2 id="domb.utils.oiffile.oib2oif" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">oib2oif</span></code>
+          <code class="highlight language-python"><span class="n">oib2oif</span></code>
 
 </h2>
 

@@ -44,7 +44,7 @@
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">WF x2 m2</a>
     <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#domb.reg_type.wf_x2_m2">domb.reg_type.wf_x2_m2</a>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.reg_type.wf_x2_m2">wf_x2_m2</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#domb.reg_type.wf_x2_m2.WF_2x_2m">WF_2x_2m</a>
         <ul>
@@ -61,7 +61,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Modules</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../fret/">FRET</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">FRET</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../e_fret/">E-FRET</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../b_fret/">B-FRET</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../rg/">Red-Green</a>
                   </li>
@@ -106,6 +112,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="domb.reg_type.wf_x2_m2"></a>
   <div class="doc doc-contents first">
 
@@ -124,8 +131,9 @@
 
 
 
+
 <h2 id="domb.reg_type.wf_x2_m2.WF_2x_2m" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">WF_2x_2m</span></code>
+            <code class="highlight language-python"><span class="n">WF_2x_2m</span></code>
 
 </h2>
 
@@ -150,7 +158,7 @@ It's specifically optimized for the results of individual neuron imaging.</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>img_path</b>
+              <b><code>img_path</code></b>
                   (<code>str</code>)
               –
               <div class="doc-md-description">
@@ -158,7 +166,7 @@ It's specifically optimized for the results of individual neuron imaging.</p>
               </div>
             </li>
             <li>
-              <b>img_name</b>
+              <b><code>img_name</code></b>
                   (<code>str</code>)
               –
               <div class="doc-md-description">
@@ -166,7 +174,7 @@ It's specifically optimized for the results of individual neuron imaging.</p>
               </div>
             </li>
             <li>
-              <b>ch_order</b>
+              <b><code>ch_order</code></b>
                   (<code>dict[str:int]</code>)
               –
               <div class="doc-md-description">
@@ -175,7 +183,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
               </div>
             </li>
             <li>
-              <b>wf_sigma</b>
+              <b><code>wf_sigma</code></b>
                   (<code>float</code>, default:
                       <code>0.5</code>
 )
@@ -202,7 +210,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>img_raw</b>
+              <b><code>img_raw</code></b>
                   (<code>ndarray[t, x, y, c]</code>)
               –
               <div class="doc-md-description">
@@ -210,7 +218,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
               </div>
             </li>
             <li>
-              <b>img_name</b>
+              <b><code>img_name</code></b>
                   (<code>str</code>)
               –
               <div class="doc-md-description">
@@ -218,7 +226,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
               </div>
             </li>
             <li>
-              <b>ch0_img</b>
+              <b><code>ch0_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -226,7 +234,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
               </div>
             </li>
             <li>
-              <b>ch1_img</b>
+              <b><code>ch1_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -234,7 +242,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
               </div>
             </li>
             <li>
-              <b>ch2_img</b>
+              <b><code>ch2_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -242,7 +250,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
               </div>
             </li>
             <li>
-              <b>ch3_img</b>
+              <b><code>ch3_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -250,7 +258,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
               </div>
             </li>
             <li>
-              <b>fp1_img</b>
+              <b><code>fp1_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -258,7 +266,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
               </div>
             </li>
             <li>
-              <b>fp2_img</b>
+              <b><code>fp2_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -266,7 +274,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
               </div>
             </li>
             <li>
-              <b>fp1_mean_img_raw</b>
+              <b><code>fp1_mean_img_raw</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -274,7 +282,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
               </div>
             </li>
             <li>
-              <b>fp2_mean_img_raw</b>
+              <b><code>fp2_mean_img_raw</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -282,7 +290,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
               </div>
             </li>
             <li>
-              <b>proc_mask</b>
+              <b><code>proc_mask</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -290,7 +298,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
               </div>
             </li>
             <li>
-              <b>narrow_proc_mask</b>
+              <b><code>narrow_proc_mask</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -298,7 +306,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
               </div>
             </li>
             <li>
-              <b>mask_arr</b>
+              <b><code>mask_arr</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -306,7 +314,7 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
               </div>
             </li>
             <li>
-              <b>masked_fp1_img</b>
+              <b><code>masked_fp1_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -315,7 +323,7 @@ out of mask pixels set as 0    </p>
               </div>
             </li>
             <li>
-              <b>masked_fp2_img</b>
+              <b><code>masked_fp2_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -324,7 +332,7 @@ out of mask pixels set as 0</p>
               </div>
             </li>
             <li>
-              <b>corr_fp1_img</b>
+              <b><code>corr_fp1_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -333,7 +341,7 @@ with photobleaching correction (constant by mask)</p>
               </div>
             </li>
             <li>
-              <b>corr_fp2_img</b>
+              <b><code>corr_fp2_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -450,7 +458,8 @@ with photobleaching correction (constant by mask)</p>
 <span class="normal">131</span>
 <span class="normal">132</span>
 <span class="normal">133</span>
-<span class="normal">134</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">img_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+<span class="normal">134</span>
+<span class="normal">135</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">img_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
             <span class="n">ch_order</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">:</span><span class="nb">int</span><span class="p">],</span> <span class="n">wf_sigma</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Class is designed to store experiment data from wide-field imaging</span>
@@ -515,6 +524,7 @@ with photobleaching correction (constant by mask)</p>
     <span class="c1"># self.frame_max = filters.gaussian(np.mean(self.img_raw[:,:,:,3], axis=0),</span>
     <span class="c1">#                                   sigma=1)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">img_name</span> <span class="o">=</span> <span class="n">img_name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ch_order</span> <span class="o">=</span> <span class="n">ch_order</span>
 
     <span class="c1"># chennels split</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">ch0_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">([</span><span class="n">filters</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="n">frame</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">wf_sigma</span><span class="p">)</span> \
@@ -528,8 +538,8 @@ with photobleaching correction (constant by mask)</p>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">ch_list</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ch0_img</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch1_img</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch2_img</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch3_img</span><span class="p">]</span>
 
-    <span class="bp">self</span><span class="o">.</span><span class="n">fp1_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_list</span><span class="p">[</span><span class="n">ch_order</span><span class="p">[</span><span class="s1">&#39;fp1&#39;</span><span class="p">]]</span>  <span class="c1"># CFP</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">fp2_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_list</span><span class="p">[</span><span class="n">ch_order</span><span class="p">[</span><span class="s1">&#39;fp2&#39;</span><span class="p">]]</span>  <span class="c1"># YFP</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fp1_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_list</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ch_order</span><span class="p">[</span><span class="s1">&#39;fp1&#39;</span><span class="p">]]</span>  <span class="c1"># CFP</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fp2_img</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">ch_list</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">ch_order</span><span class="p">[</span><span class="s1">&#39;fp2&#39;</span><span class="p">]]</span>  <span class="c1"># YFP</span>
 
     <span class="bp">self</span><span class="o">.</span><span class="n">fp1_mean_img_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="n">ch_order</span><span class="p">[</span><span class="s1">&#39;fp1&#39;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">fp2_mean_img_raw</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="n">ch_order</span><span class="p">[</span><span class="s1">&#39;fp2&#39;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
@@ -573,8 +583,9 @@ with photobleaching correction (constant by mask)</p>
 
 
 
+
 <h3 id="domb.reg_type.wf_x2_m2.WF_2x_2m.ch_pic" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">ch_pic</span></code>
+          <code class="highlight language-python"><span class="n">ch_pic</span></code>
 
 </h3>
 
@@ -588,8 +599,7 @@ full-frame intensity profile along time series.</p>
 
           <details class="quote">
             <summary> <code>src/domb/reg_type/wf_x2_m2.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">159</span>
-<span class="normal">160</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">160</span>
 <span class="normal">161</span>
 <span class="normal">162</span>
 <span class="normal">163</span>
@@ -632,7 +642,10 @@ full-frame intensity profile along time series.</p>
 <span class="normal">200</span>
 <span class="normal">201</span>
 <span class="normal">202</span>
-<span class="normal">203</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ch_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ch_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Plotting of registration control image: mean intensity frames</span>
 <span class="sd">    (`fp1_mean_img_raw` and `fp1_mean_img_raw`)</span>
 <span class="sd">    and histogra for each channel,</span>
@@ -662,8 +675,10 @@ full-frame intensity profile along time series.</p>
     <span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 
     <span class="n">ax2</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">414</span><span class="p">)</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fp1&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
-    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="mi">3</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">)),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fp2&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="bp">self</span><span class="o">.</span><span class="n">ch_order</span><span class="p">[</span><span class="s1">&#39;fp1&#39;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proc_mask</span><span class="p">),</span>
+             <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fp1&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_raw</span><span class="p">[:,:,:,</span><span class="bp">self</span><span class="o">.</span><span class="n">ch_order</span><span class="p">[</span><span class="s1">&#39;fp2&#39;</span><span class="p">]],</span> <span class="n">axis</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">proc_mask</span><span class="p">),</span>
+             <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fp2&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Frame num&#39;</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Int, a.u.&#39;</span><span class="p">)</span>
     <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -688,8 +703,9 @@ full-frame intensity profile along time series.</p>
 
 
 
+
 <h3 id="domb.reg_type.wf_x2_m2.WF_2x_2m.hist_pic" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">hist_pic</span></code>
+          <code class="highlight language-python"><span class="n">hist_pic</span></code>
 
 </h3>
 
@@ -701,8 +717,7 @@ full-frame intensity profile along time series.</p>
 
           <details class="quote">
             <summary> <code>src/domb/reg_type/wf_x2_m2.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">137</span>
-<span class="normal">138</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">138</span>
 <span class="normal">139</span>
 <span class="normal">140</span>
 <span class="normal">141</span>
@@ -720,7 +735,8 @@ full-frame intensity profile along time series.</p>
 <span class="normal">153</span>
 <span class="normal">154</span>
 <span class="normal">155</span>
-<span class="normal">156</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">hist_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">156</span>
+<span class="normal">157</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">hist_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Plotting of histogram for individual channels</span>
 <span class="sd">    (for channel mean intensity frame).</span>
 
@@ -751,8 +767,9 @@ full-frame intensity profile along time series.</p>
 
 
 
+
 <h3 id="domb.reg_type.wf_x2_m2.WF_2x_2m.processes_mask_pic" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">processes_mask_pic</span></code>
+          <code class="highlight language-python"><span class="n">processes_mask_pic</span></code>
 
 </h3>
 
@@ -764,10 +781,7 @@ overlay with control fluorescence image (<code>fp2_mean_img_raw</code>).</p>
 
           <details class="quote">
             <summary> <code>src/domb/reg_type/wf_x2_m2.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">209</span>
 <span class="normal">210</span>
 <span class="normal">211</span>
 <span class="normal">212</span>
@@ -785,7 +799,10 @@ overlay with control fluorescence image (<code>fp2_mean_img_raw</code>).</p>
 <span class="normal">224</span>
 <span class="normal">225</span>
 <span class="normal">226</span>
-<span class="normal">227</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">processes_mask_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">processes_mask_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Plotting of cell processes mask (narrow and extended)</span>
 <span class="sd">    overlay with control fluorescence image (`fp2_mean_img_raw`).</span>
 
@@ -834,7 +851,7 @@ overlay with control fluorescence image (<code>fp2_mean_img_raw</code>).</p>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../fret/" class="btn btn-neutral float-right" title="FRET">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../e_fret/" class="btn btn-neutral float-right" title="E-FRET">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -860,7 +877,7 @@ overlay with control fluorescence image (<code>fp2_mean_img_raw</code>).</p>
       <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../fret/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../e_fret/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

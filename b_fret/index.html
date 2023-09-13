@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>B-FRET - DoMB</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "B-FRET";
+        var mkdocs_page_input_path = "b_fret.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> DoMB
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Registrations Types</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../wf_x2_m2/">WF x2 m2</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modules</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FRET</a>
+    <ul class="current">
+                <li class="toctree-l2"><a class="reference internal" href="../e_fret/">E-FRET</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">B-FRET</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#main-run-script">Main run script</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#input-data">Input data</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#analysis-parameters">Analysis parameters</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#model-functions">Model functions</a>
+    </li>
+    </ul>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../rg/">Red-Green</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utils</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../masking/">Masking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../plotting/">Plotting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../oiffile/">OIF File</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">DoMB</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+          <li>Modules &raquo;</li>
+          <li>FRET &raquo;</li>
+      <li class="breadcrumb-item active">B-FRET</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/wisstock/DoMB_tools/edit/master/docs/b_fret.md">Edit on DoMB</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="b-fret">B-FRET</h1>
+<p><em>based on autors <a href="https://github.com/emonetlab/B-FRET">README-python</a></em></p>
+<p>This package uses Bayesian inference to generate posterior distributions of FRET signals from noisy measured FRET data. </p>
+<h2 id="installation">Installation</h2>
+<p><code>bayesian-efret-py</code> is a standalone package in Python 3. The code has been tested on Python 3.9.0. The following packages and the versions tested on the code are needed, all available on PIP:</p>
+<ol>
+<li><a href="https://numpy.org/">NumPy</a> 1.20.2</li>
+<li><a href="https://scipy.org/">SciPy</a> 1.6.2</li>
+<li><a href="https://pypi.org/project/autograd/">Autograd</a> 1.3 needed for automatic differentiation of the cost function</li>
+<li><a href="https://matplotlib.org/">matplotlib</a> 3.3.4</li>
+<li><a href="https://pypi.org/project/pathos/">pathos</a> 0.2.8 needed for multicore processing (even if not used; install using pip)</li>
+<li><a href="https://github.com/minaskar/zeus">zeus-mcmc</a> 2.3.0 needed for MCMC sampling (optional)</li>
+</ol>
+<h2 id="main-run-script">Main run script</h2>
+<p>In the <code>scripts/</code> folder of the repository, copy <code>sample_run_script.py</code> to a <code>.py</code> file of any name (this will not be tracked by git).  The run file contains the following simple code:</p>
+<pre><code>import sys
+sys.path.append('../src')
+from load_save import load_data
+from main import analyze_FRET_data
+
+DATA_DIR = r'../example'
+EXP_DIR = r'../example/gauss_noise/sinusoids'
+
+def run():
+
+    data = load_data(DATA_DIR, 'data_sinusoids')
+    a = analyze_FRET_data(data, EXP_DIR)
+    a.run()
+
+if __name__ == '__main__':
+    run()
+</code></pre>
+<p>For a given estimation, the general structure will remain as such. In particular, for the multiprocessing aspects of the code to function properly, the script guard  <code>if __name == '__main':run()</code> must be present at the end of the script, and all code to be executed must be in the function <code>run()</code> . </p>
+<p>For most estimations, the user will only need to change <code>DATA_DIR</code> to the directory where  the measured input data (see <strong>Input data</strong> section below) is stored and <code>EXP_DIR</code> to the directory where the estimation specifications and models (see <strong>Analysis parameters</strong> and <strong>Model functions</strong> sections below) and output data is to be stored.</p>
+<h2 id="input-data">Input data</h2>
+<p>Input (measured) data should be a dictionary saved in <code>.pkl</code> format. The dictionary must have the following keys:</p>
+<ol>
+<li>'IDD': representing the quantity I<sub>DD</sub>,  which is the time series of the fluorescence intensity from donor emission due to donor excitation. This quantity is an array of shape either (N<sub>T,DD</sub>) if there is 1 measured dataset, or (N<sub>data</sub>, N<sub>T,DD</sub>) if there are multiple datasets, where N<sub>T,DD</sub> is  the number of measured timepoints and N<sub>data</sub> is the number of datasets. </li>
+<li>'IDA': representing the quantity I<sub>DA</sub>,  which is the time series of the fluorescence intensity from acceptor emission due to donor excitation. This quantity is an also array of shape either (N<sub>T,DD</sub>) or (N<sub>data</sub>, N<sub>T,DD</sub>). </li>
+<li>
+<p>'IAA':  representing the quantity I<sub>AA</sub>,  which is the time series of the fluorescence intensity from acceptor emission due to acceptor excitation. This quantity is an array of shape either (N<sub>T,AA</sub>) or (N<sub>data</sub>, N<sub>T,AA</sub>). Note that N<sub>T,AA</sub> does is not necessarily the same as N<sub>T,DD</sub>. </p>
+</li>
+<li>
+<p>'tDD': the times at which I<sub>DD</sub> and N<sub>DA</sub> are measured; a vector of length N<sub>T,DD</sub>. </p>
+</li>
+<li>'tAA': the times at which I<sub>AA</sub> is measured; a vector of length N<sub>T,AA</sub>.  </li>
+<li>'IDD_noise_sd': The standard deviation of the measurement noise of  I<sub>DD</sub> at each timepoint;  a vector of length N<sub>T,DD</sub>.  </li>
+<li>'IDA_noise_sd': The standard deviation of the measurement noise of  I<sub>DA</sub> at each timepoint;  a vector of length N<sub>T,DD</sub>.  </li>
+<li>'IAA_noise_sd': The standard deviation of the measurement noise of  I<sub>AA</sub> at each timepoint;  a vector of length N<sub>T,AA</sub>.  </li>
+<li>'crstlk', a dictionary which contains keys 'a' and 'd', whose values (each floats) represent cross-excitation and bleedthrough, respectively, as well as an 'G', representing the optical parameter. </li>
+</ol>
+<p>The user can also provide an optional 'E' key which is an array of the same shape as 'IDD', and contains the ground-truth FRET index, to be compared against the estimated FRET index. </p>
+<h2 id="analysis-parameters">Analysis parameters</h2>
+<p>These are the hyperparameters of the inference procedure, and are all defined within the <code>anl_params</code> class in the <code>define_analysis_params.py</code> module. The hyperparameters of the inference are all set as attributes of the <code>anl_params</code> class, for example:</p>
+<pre><code>class anl_params():
+
+    def __init__(a):
+
+        a.process_noise = 'Gaussian'
+        a.state_est_all_cores = True
+
+    if a.process_noise == 'Non-Gaussian':
+        a.Q_tilde_prior_modes = [100, 1]
+        a.Q_tilde_prior_FC = [30, 10]
+        a.state_est_method = 'integrate'
+        a.chi_interval_width = 8
+        a.chi_num_of_subintervals = 400
+    else:
+        a.sigma_chi_prior_FC = 30
+        a.sigma_chi_prior_mode = 100
+
+    # list further attributes below...
+</code></pre>
+<p>This module is placed in the <code>EXP_DIR</code> folder defined above in the main run script.  See the example in the <code>example/gauss_noise/steps</code> directory for the general structure. </p>
+<p>The full list of attributes that one can set are:</p>
+<ol>
+<li><code>process_noise</code>: string, setting the statistics of the process noise; 'Gaussian' or 'Non-Gaussian'. In general, for situations in which the FRET index has small, nearly continuous changes in time, Gaussian noise should be chosen. </li>
+</ol>
+<p><strong>If Gaussian process noise is used</strong>, the process noise is parameterized only by the standard deviation SD. This SD is unknown, and is inferred during the estimation procedure using Bayesian inference with a prior, which is assumed lognormal. The prior then has its own hyperparameters -- the mode and fold change of the lognormal -- which must be set here. Here, <code>sigma_chi_prior_mode</code> is a float setting the mode and <code>sigma_chi_prior_FC</code> is a positive float setting fold change  (or geometric standard deviation, essentially the 'spread' in log space) of the lognormal prior of the SD.</p>
+<p><code>python
+   a.sigma_chi_prior_FC = 30
+   a.sigma_chi_prior_mode = 100</code></p>
+<p><strong>If non-Gaussian process noise is used</strong>, then the following procedures should be taken:</p>
+<p>A. The distribution of the noise, which we call <em>Q_tilde</em>, is defined as a subclass in the model class (see the <strong>Model functions</strong> section for how to do this). </p>
+<p>B. The parameters of <em>Q_tilde</em> must themselves be estimated, and each is assumed lognormal. For example, if <em>Q_tilde</em> is a mean-zero generalized Student's t-distribution, then it is parameterized by hyperparameters <em>sigma</em> and <em>nu</em>. We must define the lognormals for each of these, by their mode and fold-change:</p>
+<p><code>python
+   a.Q_tilde_prior_modes = [100, 1]
+   a.Q_tilde_prior_FC = [30, 10]</code></p>
+<p>Thus, <em>sigma</em> is chosen from a lognormal with mode 100 and fold-change 30, while nu is chosen from a lognormal with mode 1 and fold change 10. The ordering of sigma and nu is defined where <em>Q_tilde</em> is defined in <strong>Model functions</strong> (see below).</p>
+<p>C. Non-gaussian process noise requires either using a particle filter (sequential Monte Carlo) or direct integration for the Bayesian integrals, specifically, integrating over the variable <em>chi</em>. The preferred method is set with<code>state_est_method</code>, which can be set to 'SMC' or 'integrate'. If the evaluation method is 'integrate', then one must set:</p>
+<p><code>python
+   a.state_est_method = 'integrate'
+   a.chi_interval_width = 8
+   a.chi_num_of_subintervals = 400</code></p>
+<p>This chooses an integration range whose width is 8x the width of 95% of the chi values, and which is partitioned into 400 intervals to approximate the Reimann integral. Typically, 8 is a conservative width and one can choose a smaller multiplier (say 2 or 4) without much loss of precision. If the evaluation method is 'SMC', one must set the number of particles for the particle filter using <code>num_SMC_samples</code> -- typically 300 is fine.  </p>
+<ol>
+<li>
+<p><code>state_est_all_cores</code>: boolean. If True, use all available CPU cores in the state estimation, otherwise only run on a single core.</p>
+</li>
+<li>
+<p><code>do_MCMC</code>: boolean. If True, use MCMC sampling to get the posterior distributions of the dynamical states; otherwise they are estimated using the Laplace approximation. If True, set the following attributes:</p>
+</li>
+</ol>
+<p>A. <code>MCMC_all_cores</code>: boolean. If True, use all available CPU cores.</p>
+<p>B. <code>MCMC_d_init</code>: float, setting the size of the ball, in logspace, over which the workers are initialized. ~0.1 seems appropriate.</p>
+<p>C. <code>MCMC_num_workers</code>: integer. Number of parallel walkers.</p>
+<p>D. <code>MCMC_num_samples</code>: integer. Number of samples per walker.</p>
+<p>E. <code>MCMC_burnin</code> : integer. Burn-in length.</p>
+<ol>
+<li>
+<p><code>curve_fit_options</code>: dictionary, which sets the parameters of the optimization for the initial curve fitting to get an initial estimate on the parameters. Its keys are 'ftol', 'maxfun', and 'maxiter', which are the tolerate, maximum number of function evaluations, and maximum number of iterations for the optimization. Reasonable values are &lt;1e-6, &gt;1e4, and &gt;1e3, respectively. </p>
+</li>
+<li>
+<p><code>P0_x1</code>: float, setting the variance of the Gaussian prior on the constant dynamical state. It should be very small ~1e-10.</p>
+</li>
+<li>
+<p><code>m0_chi</code> and <code>P0_chi</code> are the mean and variance of the Gaussian prior on the <em>chi</em> dynamical state. One should generally chose a rather uniformed prior, suggested values are  <code>m0_chi</code> = 0 and <code>P0_chi</code> = 1e6. </p>
+</li>
+</ol>
+<h2 id="model-functions">Model functions</h2>
+<p>This module contains the <code>model</code> class used to define the functions pertaining to the bleaching curve. There is a good deal of flexibility here in that these functions can contain any functional forms and an arbitrary number of unknown parameters. There are 4 subclasses in <code>model</code>.  The example in <code>example/gauss_noise_estimated_G</code> should be followed closely, in the following manner:</p>
+<ol>
+<li>subclass <code>f_D()</code> defines the bleaching curve for the donor channel.</li>
+</ol>
+<p>```
+   class f_D():
+       def <strong>init</strong>(self):</p>
+<pre><code>       self.p_name = ['tau_D1', 'tau_D2', 'delta_D']
+       self.p_init = [100, 100, 0.5]
+       self.p_lo_bnd = [0, 0, 0]
+       self.p_hi_bnd = [np.inf, np.inf, 1]
+
+       def func(self, t, params):
+
+           return params[2]*np.exp(-t/params[0]) + (1 - params[2])*np.exp(-t/params[1])
+</code></pre>
+<p>```</p>
+<pre><code>This curve is parameterized by *p* parameters -- each of the lists in the constructor should be *p*-element lists (in the example, *p* = 3). The `p_init` is the values of the initial guesses for these, while `p_lo_bnd` and `p_hi_bnd` are the hard bounds for each parameter. This function should have 1 method, `func(self, t, params)`, which returns the bleaching function as a function of the time *t* and the parameters *params*, which is the *p*-element list as in the constructor. Obviously, the ordering of the 4 lists defined in `__init__` must be consistent.
+</code></pre>
+<ol>
+<li>
+<p>subclass <code>f_A()</code> is analogous for the bleaching curve for the acceptor channel.</p>
+</li>
+<li>
+<p>subclass <code>Q_tilde()</code> defines the statistics of the process noise, <em>if the process noise is non-Gaussian</em> (see <strong>Analysis parameters</strong> above). </p>
+</li>
+</ol>
+<p>```
+   class Q_tilde():</p>
+<pre><code>def __init__(self):
+    self.p_name = ['sigma_chi', 'nu']
+
+def _f(self, x):
+    val = 1/self.sd*gamma(self.nu/2 + 0.5)/np.sqrt(np.pi*self.nu)\
+          /gamma(self.nu/2)*(1 + (x/self.sd)**2/self.nu)\
+          **(-self.nu/2 - 0.5)
+    return val
+
+def sample(self, params, size=1):
+    sd, nu = params
+    return t.rvs(df=nu, scale=sd, size=size)
+
+def pdf(self, params):
+    self.sd, self.nu = params
+    return self._f
+</code></pre>
+<p>```</p>
+<p>The general structure of this class can be inferred from the example. Here, there are two hyperparameters defining the <em>Q_tilde</em> distribution (in this case, the student's t-distribution), <em>sigma_chi</em> and <em>nu</em>. The class has 2 methods: <code>pdf</code> and <code>sample</code>. The method <code>pdf(self, params)</code> returns the pdf of the process noise with hyperparameters set to <em>params</em>. Thus, <code>pdf(self, params)</code>  <em>returns a function</em> defining the pdf of the data. In the example, we used the auxiliary method <code>_f(self, x)</code> to define this pdf. The method <code>sample(self, params, size=1)</code> returns <em>N = size</em> independence samples from the process noise pdf (in the example, we use a built-in function).</p>
+<ol>
+<li>subclass <code>prior_dict(object)</code>. The example should be closely followed, and only a few portions should be modified.  This object defines the pdfs for the priors on <em>all</em> <em>p</em> unknown parameters. The class has one method, <code>func(self, anl_params)</code>, which returns a dictionary with <em>p</em> entries. </li>
+</ol>
+<p>```
+   class prior_dict(object):
+       def func(self, anl_params):</p>
+<pre><code>       pdfs_dict = dict()
+
+       # DT, AT
+       pdfs_dict['DT'] = lognorm_pdf(sigma=np.log(2)).pdf
+       pdfs_dict['AT'] = lognorm_pdf(sigma=np.log(1.1)).pdf
+
+       # Add further pdfs in their respective keys below ...
+</code></pre>
+<p>```</p>
+<p><code>pdfs_dict</code> is a dictionary, with one key for each parameter being estimated.  The necessary keys are: DT, AT, all of the parameters of f_D and f_A (the entries of <code>f_D.p_name</code> and <code>f_A.p_name</code>), and either</p>
+<p>​     i) sigma_chi (if model noise is Gaussian), or </p>
+<p>​    ii) the entries of<code>Q_tilde.p_name</code> if the noise is non-Gaussian.</p>
+<p><em>The value of each entry of <code>pdfs_dict</code> is a single-argument function returning the pdf whose mode is the argument</em>. In the first part of the estimation, the mode for all of these priors will be determined by simple curve fitting. This will then define the prior distribution once and for all (all hyperparameters are now fixed). There are useful helper functions in <code>src/utils.py</code> for common distributions -- normal, lognormal, and standard uniform. </p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../e_fret/" class="btn btn-neutral float-left" title="E-FRET"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../rg/" class="btn btn-neutral float-right" title="Red-Green">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../e_fret/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../rg/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

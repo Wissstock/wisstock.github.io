@@ -47,7 +47,13 @@
               </ul>
               <p class="caption"><span class="caption-text">Modules</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../fret/">FRET</a>
+                  <li class="toctree-l1"><a class="reference internal" href="#">FRET</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../e_fret/">E-FRET</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../b_fret/">B-FRET</a>
+                </li>
+    </ul>
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="./">Red-Green</a>
     <ul class="current">
@@ -98,6 +104,7 @@
 <div class="doc doc-object doc-module">
 
 
+
 <a id="domb.red_green.wt_vs_mut"></a>
   <div class="doc doc-contents first">
 
@@ -116,8 +123,9 @@
 
 
 
+
 <h2 id="domb.red_green.wt_vs_mut.WTvsMut" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">WTvsMut</span></code>
+            <code class="highlight language-python"><span class="n">WTvsMut</span></code>
 
 </h2>
 
@@ -146,7 +154,7 @@ and corresponding profiles for these masks (raw intensity and ΔF/F profiles).</
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>wt_img</b>
+              <b><code>wt_img</code></b>
                   (<code><span title="numpy.ndarray">ndarray</span></code>)
               –
               <div class="doc-md-description">
@@ -154,7 +162,7 @@ and corresponding profiles for these masks (raw intensity and ΔF/F profiles).</
               </div>
             </li>
             <li>
-              <b>mut_img</b>
+              <b><code>mut_img</code></b>
                   (<code><span title="numpy.ndarray">ndarray</span></code>)
               –
               <div class="doc-md-description">
@@ -162,7 +170,7 @@ and corresponding profiles for these masks (raw intensity and ΔF/F profiles).</
               </div>
             </li>
             <li>
-              <b>proc_mask</b>
+              <b><code>proc_mask</code></b>
                   (<code><span title="numpy.ndarray">ndarray</span></code>)
               –
               <div class="doc-md-description">
@@ -170,7 +178,7 @@ and corresponding profiles for these masks (raw intensity and ΔF/F profiles).</
               </div>
             </li>
             <li>
-              <b>narrow_proc_mask</b>
+              <b><code>narrow_proc_mask</code></b>
                   (<code><span title="numpy.ndarray">ndarray</span></code>)
               –
               <div class="doc-md-description">
@@ -195,7 +203,7 @@ and corresponding profiles for these masks (raw intensity and ΔF/F profiles).</
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>wt_img</b>
+              <b><code>wt_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -203,7 +211,7 @@ and corresponding profiles for these masks (raw intensity and ΔF/F profiles).</
               </div>
             </li>
             <li>
-              <b>mut_img</b>
+              <b><code>mut_img</code></b>
                   (<code>ndarray[t, x, y]</code>)
               –
               <div class="doc-md-description">
@@ -211,7 +219,7 @@ and corresponding profiles for these masks (raw intensity and ΔF/F profiles).</
               </div>
             </li>
             <li>
-              <b>proc_mask</b>
+              <b><code>proc_mask</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -219,7 +227,7 @@ and corresponding profiles for these masks (raw intensity and ΔF/F profiles).</
               </div>
             </li>
             <li>
-              <b>narrow_proc_mask</b>
+              <b><code>narrow_proc_mask</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -227,7 +235,7 @@ and corresponding profiles for these masks (raw intensity and ΔF/F profiles).</
               </div>
             </li>
             <li>
-              <b>wt_up_mask</b>
+              <b><code>wt_up_mask</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -236,7 +244,7 @@ created with <code>red_green.wt_ws_mut.up_mask_calc()</code></p>
               </div>
             </li>
             <li>
-              <b>wt_up_label</b>
+              <b><code>wt_up_label</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -245,7 +253,7 @@ created with <code>red_green.wt_ws_mut.up_mask_calc()</code></p>
               </div>
             </li>
             <li>
-              <b>wt_diff_img</b>
+              <b><code>wt_diff_img</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -254,7 +262,7 @@ created with <code>red_green.wt_ws_mut.up_mask_calc()</code></p>
               </div>
             </li>
             <li>
-              <b>mut_up_mask</b>
+              <b><code>mut_up_mask</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -263,7 +271,7 @@ created with <code>red_green.wt_ws_mut.up_mask_calc()</code></p>
               </div>
             </li>
             <li>
-              <b>mut_up_label</b>
+              <b><code>mut_up_label</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -272,7 +280,7 @@ created with <code>red_green.wt_ws_mut.up_mask_calc()</code></p>
               </div>
             </li>
             <li>
-              <b>mut_diff_img</b>
+              <b><code>mut_diff_img</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -281,7 +289,7 @@ created with <code>red_green.wt_ws_mut.up_mask_calc()</code></p>
               </div>
             </li>
             <li>
-              <b>connected_up_mask</b>
+              <b><code>connected_up_mask</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -290,7 +298,7 @@ created with <code>red_green.wt_ws_mut.up_mask_connection()</code></p>
               </div>
             </li>
             <li>
-              <b>halo_up_mask</b>
+              <b><code>halo_up_mask</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -298,7 +306,7 @@ created with <code>red_green.wt_ws_mut.up_mask_connection()</code></p>
               </div>
             </li>
             <li>
-              <b>init_up_mask</b>
+              <b><code>init_up_mask</code></b>
                   (<code>ndarray[x, y]</code>)
               –
               <div class="doc-md-description">
@@ -307,7 +315,7 @@ created with <code>red_green.wt_ws_mut.up_mask_connection()</code></p>
               </div>
             </li>
             <li>
-              <b>wt_conn_arr</b>
+              <b><code>wt_conn_arr</code></b>
                   (<code>ndarray[int, t]</code>)
               –
               <div class="doc-md-description">
@@ -316,7 +324,7 @@ created with <code>utils.masking.label_prof_arr()</code></p>
               </div>
             </li>
             <li>
-              <b>wt_conn_df_arr</b>
+              <b><code>wt_conn_df_arr</code></b>
                   (<code>ndarray[ΔF / F, t]</code>)
               –
               <div class="doc-md-description">
@@ -325,7 +333,7 @@ created with <code>utils.masking.label_prof_arr()</code></p>
               </div>
             </li>
             <li>
-              <b>wt_halo_arr</b>
+              <b><code>wt_halo_arr</code></b>
                   (<code>ndarray[int, t]</code>)
               –
               <div class="doc-md-description">
@@ -334,7 +342,7 @@ created with <code>utils.masking.label_prof_arr()</code></p>
               </div>
             </li>
             <li>
-              <b>wt_halo_df_arr</b>
+              <b><code>wt_halo_df_arr</code></b>
                   (<code>ndarray[ΔF / F, t]</code>)
               –
               <div class="doc-md-description">
@@ -343,7 +351,7 @@ created with <code>utils.masking.label_prof_arr()</code></p>
               </div>
             </li>
             <li>
-              <b>wt_init_arr</b>
+              <b><code>wt_init_arr</code></b>
                   (<code>ndarray[int, t]</code>)
               –
               <div class="doc-md-description">
@@ -352,7 +360,7 @@ created with <code>utils.masking.label_prof_arr()</code></p>
               </div>
             </li>
             <li>
-              <b>wt_init_df_arr</b>
+              <b><code>wt_init_df_arr</code></b>
                   (<code>ndarray[ΔF / F, t]</code>)
               –
               <div class="doc-md-description">
@@ -361,7 +369,7 @@ created with <code>utils.masking.label_prof_arr()</code></p>
               </div>
             </li>
             <li>
-              <b>mut_conn_arr</b>
+              <b><code>mut_conn_arr</code></b>
                   (<code>ndarray[int, t]</code>)
               –
               <div class="doc-md-description">
@@ -370,7 +378,7 @@ created with <code>utils.masking.label_prof_arr()</code></p>
               </div>
             </li>
             <li>
-              <b>mut_conn_df_arr</b>
+              <b><code>mut_conn_df_arr</code></b>
                   (<code>ndarray[ΔF / F, t]</code>)
               –
               <div class="doc-md-description">
@@ -379,7 +387,7 @@ created with <code>utils.masking.label_prof_arr()</code></p>
               </div>
             </li>
             <li>
-              <b>mut_halo_arr</b>
+              <b><code>mut_halo_arr</code></b>
                   (<code>ndarray[int, t]</code>)
               –
               <div class="doc-md-description">
@@ -388,7 +396,7 @@ created with <code>utils.masking.label_prof_arr()</code></p>
               </div>
             </li>
             <li>
-              <b>mut_halo_df_arr</b>
+              <b><code>mut_halo_df_arr</code></b>
                   (<code>ndarray[ΔF / F, t]</code>)
               –
               <div class="doc-md-description">
@@ -397,7 +405,7 @@ created with <code>utils.masking.label_prof_arr()</code></p>
               </div>
             </li>
             <li>
-              <b>mut_init_arr</b>
+              <b><code>mut_init_arr</code></b>
                   (<code>ndarray[int, t]</code>)
               –
               <div class="doc-md-description">
@@ -406,7 +414,7 @@ created with <code>utils.masking.label_prof_arr()</code></p>
               </div>
             </li>
             <li>
-              <b>mut_init_df_arr</b>
+              <b><code>mut_init_df_arr</code></b>
                   (<code>ndarray[ΔF / F, t]</code>)
               –
               <div class="doc-md-description">
@@ -421,7 +429,10 @@ created with <code>utils.masking.label_prof_arr()</code></p>
 </table>
               <details class="quote">
                 <summary>Source code in <code>src/domb/red_green/wt_vs_mut.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 23</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
 <span class="normal"> 24</span>
 <span class="normal"> 25</span>
 <span class="normal"> 26</span>
@@ -568,10 +579,7 @@ created with <code>utils.masking.label_prof_arr()</code></p>
 <span class="normal">167</span>
 <span class="normal">168</span>
 <span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wt_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mut_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<span class="normal">170</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wt_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mut_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
              <span class="n">proc_mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">narrow_proc_mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Class is designed to create differential images and insertion masks</span>
 <span class="sd">    for two separate image time series (for instance, wild-type NCS and mutant NCS,</span>
@@ -697,11 +705,11 @@ created with <code>utils.masking.label_prof_arr()</code></p>
     <span class="bp">self</span><span class="o">.</span><span class="n">init_up_label</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">halo_up_mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="c1"># WT ins profiles calc</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">wt_conn_df_arr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wt_conn_arr</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">label_prof_arr</span><span class="p">(</span><span class="n">input_labels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">connected_up_label</span><span class="p">,</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">wt_conn_df_arr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wt_conn_arr</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">label_prof_arr</span><span class="p">(</span><span class="n">input_label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">connected_up_label</span><span class="p">,</span>
                                                                    <span class="n">input_img_series</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">wt_img</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">wt_halo_df_arr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wt_halo_arr</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">label_prof_arr</span><span class="p">(</span><span class="n">input_labels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">halo_up_label</span><span class="p">,</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">wt_halo_df_arr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wt_halo_arr</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">label_prof_arr</span><span class="p">(</span><span class="n">input_label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">halo_up_label</span><span class="p">,</span>
                                                                    <span class="n">input_img_series</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">wt_img</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">wt_init_df_arr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wt_init_arr</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">label_prof_arr</span><span class="p">(</span><span class="n">input_labels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init_up_label</span><span class="p">,</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">wt_init_df_arr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wt_init_arr</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">label_prof_arr</span><span class="p">(</span><span class="n">input_label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init_up_label</span><span class="p">,</span>
                                                                    <span class="n">input_img_series</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">wt_img</span><span class="p">)</span>
 
     <span class="c1"># # WT trans profiles calc</span>
@@ -716,11 +724,11 @@ created with <code>utils.masking.label_prof_arr()</code></p>
     <span class="c1">#                                                                                  input_img_series=self.wt_img)</span>
 
     <span class="c1"># mut profiles calc</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">mut_conn_df_arr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mut_conn_arr</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">label_prof_arr</span><span class="p">(</span><span class="n">input_labels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">connected_up_label</span><span class="p">,</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mut_conn_df_arr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mut_conn_arr</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">label_prof_arr</span><span class="p">(</span><span class="n">input_label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">connected_up_label</span><span class="p">,</span>
                                                                      <span class="n">input_img_series</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mut_img</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">mut_halo_df_arr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mut_halo_arr</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">label_prof_arr</span><span class="p">(</span><span class="n">input_labels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">halo_up_label</span><span class="p">,</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mut_halo_df_arr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mut_halo_arr</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">label_prof_arr</span><span class="p">(</span><span class="n">input_label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">halo_up_label</span><span class="p">,</span>
                                                                      <span class="n">input_img_series</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mut_img</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">mut_init_df_arr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mut_init_arr</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">label_prof_arr</span><span class="p">(</span><span class="n">input_labels</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init_up_label</span><span class="p">,</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">mut_init_df_arr</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mut_init_arr</span> <span class="o">=</span> <span class="n">masking</span><span class="o">.</span><span class="n">label_prof_arr</span><span class="p">(</span><span class="n">input_label</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">init_up_label</span><span class="p">,</span>
                                                                      <span class="n">input_img_series</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">mut_img</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
               </details>
@@ -742,8 +750,9 @@ created with <code>utils.masking.label_prof_arr()</code></p>
 
 
 
+
 <h3 id="domb.red_green.wt_vs_mut.WTvsMut.up_mask_calc" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">up_mask_calc</span></code>
+          <code class="highlight language-python"><span class="n">up_mask_calc</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
@@ -771,7 +780,7 @@ using the differential image method.</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>input_img_series</b>
+              <b><code>input_img_series</code></b>
                   (<code><span title="numpy.ndarray">ndarray</span></code>)
               –
               <div class="doc-md-description">
@@ -779,7 +788,7 @@ using the differential image method.</p>
               </div>
             </li>
             <li>
-              <b>input_img_mask</b>
+              <b><code>input_img_mask</code></b>
                   (<code><span title="numpy.ndarray">ndarray</span></code>)
               –
               <div class="doc-md-description">
@@ -787,7 +796,7 @@ using the differential image method.</p>
               </div>
             </li>
             <li>
-              <b>sd_tolerance</b>
+              <b><code>sd_tolerance</code></b>
                   (<code>int</code>, default:
                       <code>2</code>
 )
@@ -799,7 +808,7 @@ of standard deviations of extracellular noise
               </div>
             </li>
             <li>
-              <b>base_frames</b>
+              <b><code>base_frames</code></b>
                   (<code>int</code>, default:
                       <code>5</code>
 )
@@ -811,7 +820,7 @@ an image of basal fluorescence</p>
               </div>
             </li>
             <li>
-              <b>stim_start</b>
+              <b><code>stim_start</code></b>
                   (<code>int</code>, default:
                       <code>7</code>
 )
@@ -821,7 +830,7 @@ an image of basal fluorescence</p>
               </div>
             </li>
             <li>
-              <b>stim_win</b>
+              <b><code>stim_win</code></b>
                   (<code>int</code>, default:
                       <code>5</code>
 )
@@ -849,21 +858,21 @@ that are used to create an image displaying maximal insertions</p>
     <td class="field-body">
       <ul class="first simple">
           <li>
-<b>up_mask_filt</b>(                <code>ndarray[x, y]</code>
+<b><code>up_mask_filt</code></b>(                <code>ndarray[x, y]</code>
 )            –
             <div class="doc-md-description">
               <p>boolean mask of intensity increase regions</p>
             </div>
           </li>
           <li>
-<b>up_label</b>(                <code>ndarray[x, y]</code>
+<b><code>up_label</code></b>(                <code>ndarray[x, y]</code>
 )            –
             <div class="doc-md-description">
               <p>label image of intensity increase regions  </p>
             </div>
           </li>
           <li>
-<b>img_diff</b>(                <code>ndarray[x, y]</code>
+<b><code>img_diff</code></b>(                <code>ndarray[x, y]</code>
 )            –
             <div class="doc-md-description">
               <p>differential image of intensity changes after stimulation</p>
@@ -876,7 +885,10 @@ that are used to create an image displaying maximal insertions</p>
 </table>
           <details class="quote">
             <summary> <code>src/domb/red_green/wt_vs_mut.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">187</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
 <span class="normal">188</span>
 <span class="normal">189</span>
 <span class="normal">190</span>
@@ -927,10 +939,7 @@ that are used to create an image displaying maximal insertions</p>
 <span class="normal">235</span>
 <span class="normal">236</span>
 <span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">238</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span> <span class="nf">up_mask_calc</span><span class="p">(</span><span class="n">input_img_series</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">input_img_mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
                  <span class="n">sd_tolerance</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                  <span class="n">base_frames</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">stim_start</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">stim_win</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
@@ -996,8 +1005,9 @@ that are used to create an image displaying maximal insertions</p>
 
 
 
+
 <h3 id="domb.red_green.wt_vs_mut.WTvsMut.up_mask_connection" class="doc doc-heading">
-<code class="highlight language-python"><span class="n">up_mask_connection</span></code>
+          <code class="highlight language-python"><span class="n">up_mask_connection</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
@@ -1024,7 +1034,7 @@ that are used to create an image displaying maximal insertions</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b>input_wt_mask</b>
+              <b><code>input_wt_mask</code></b>
                   (<code><span title="numpy.ndarray">ndarray</span></code>)
               –
               <div class="doc-md-description">
@@ -1033,7 +1043,7 @@ typically the mask of wild-type NCS insertions</p>
               </div>
             </li>
             <li>
-              <b>input_mut_mask</b>
+              <b><code>input_mut_mask</code></b>
               –
               <div class="doc-md-description">
                 <p>boolean mask with a lower number/area of insertions,
@@ -1058,7 +1068,7 @@ typically the mask of mutant NCS insertions</p>
     <td class="field-body">
       <ul class="first simple">
           <li>
-<b>fin_mask</b>(                <code>ndarray[x, y]</code>
+<b><code>fin_mask</code></b>(                <code>ndarray[x, y]</code>
 )            –
             <div class="doc-md-description">
               <p>boolean mask that includes only the elements from 'input_wt_mask'
@@ -1066,7 +1076,7 @@ that overlap with the elements from 'input_mut_mask'  </p>
             </div>
           </li>
           <li>
-<b>fin_label</b>(                <code>ndarray[x, y]</code>
+<b><code>fin_label</code></b>(                <code>ndarray[x, y]</code>
 )            –
             <div class="doc-md-description">
               <p>label image for <code>fin_mask</code></p>
@@ -1079,7 +1089,10 @@ that overlap with the elements from 'input_mut_mask'  </p>
 </table>
           <details class="quote">
             <summary> <code>src/domb/red_green/wt_vs_mut.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">244</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
 <span class="normal">245</span>
 <span class="normal">246</span>
 <span class="normal">247</span>
@@ -1111,10 +1124,7 @@ that overlap with the elements from 'input_mut_mask'  </p>
 <span class="normal">273</span>
 <span class="normal">274</span>
 <span class="normal">275</span>
-<span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
-<span class="normal">279</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="normal">276</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
 <span class="k">def</span> <span class="nf">up_mask_connection</span><span class="p">(</span><span class="n">input_wt_mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">input_mutant_mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Function to filter two masks by overlay.</span>
 
@@ -1176,7 +1186,7 @@ that overlap with the elements from 'input_mut_mask'  </p>
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../fret/" class="btn btn-neutral float-left" title="FRET"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../b_fret/" class="btn btn-neutral float-left" title="B-FRET"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../masking/" class="btn btn-neutral float-right" title="Masking">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -1200,7 +1210,7 @@ that overlap with the elements from 'input_mut_mask'  </p>
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../fret/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../b_fret/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../masking/" style="color: #fcfcfc">Next &raquo;</a></span>
