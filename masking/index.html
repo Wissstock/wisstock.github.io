@@ -82,6 +82,10 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#domb.utils.masking.proc_mask">proc_mask()</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.masking.proc_mask_otsu">proc_mask_otsu()</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.masking.series_derivate">series_derivate()</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#domb.utils.masking.trans_prof_arr">trans_prof_arr()</a>
     </li>
     </ul>
@@ -159,20 +163,20 @@ Func fills the area around the mask with a fixed value (1/4 of outer mean intens
 
           <details class="quote">
             <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">background_extraction_along_frames</span><span class="p">(</span><span class="n">series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">background_extraction_along_frames</span><span class="p">(</span><span class="n">series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Time series masking along the time axis.</span>
 <span class="sd">    Func fills the area around the mask with a fixed value (1/4 of outer mean intensity).</span>
 
@@ -274,39 +278,39 @@ Func fills the area around the mask with a fixed value (1/4 of outer mean intens
 </table>
           <details class="quote">
             <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">label_prof_arr</span><span class="p">(</span><span class="n">input_label</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">input_img_series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">label_prof_arr</span><span class="p">(</span><span class="n">input_label</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">input_img_series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calc labeled ROIs profiles for time series </span>
 
 <span class="sd">    Parameters</span>
@@ -364,20 +368,20 @@ Func fills the area around the mask with a fixed value (1/4 of outer mean intens
 
           <details class="quote">
             <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">mask_along_frames</span><span class="p">(</span><span class="n">series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">mask_along_frames</span><span class="p">(</span><span class="n">series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Time series masking along the time axis.</span>
 <span class="sd">    Func fills the area around the mask with a fixed value (1/4 of outer mean intensity).</span>
 
@@ -483,41 +487,41 @@ that overlap with the elements from 'input_mut_mask'  </p>
 </table>
           <details class="quote">
             <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">mask_connection</span><span class="p">(</span><span class="n">input_master_mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">input_minor_mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">mask_connection</span><span class="p">(</span><span class="n">input_master_mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">input_minor_mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Function to filter two masks by overlay.</span>
 
 <span class="sd">    Could be used in stand-alone mode as a static method of the WTvsMut class.</span>
@@ -576,31 +580,31 @@ that overlap with the elements from 'input_mut_mask'  </p>
 
           <details class="quote">
             <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">281</span>
-<span class="normal">282</span>
-<span class="normal">283</span>
-<span class="normal">284</span>
-<span class="normal">285</span>
-<span class="normal">286</span>
-<span class="normal">287</span>
-<span class="normal">288</span>
-<span class="normal">289</span>
-<span class="normal">290</span>
-<span class="normal">291</span>
-<span class="normal">292</span>
-<span class="normal">293</span>
-<span class="normal">294</span>
-<span class="normal">295</span>
-<span class="normal">296</span>
-<span class="normal">297</span>
-<span class="normal">298</span>
-<span class="normal">299</span>
-<span class="normal">300</span>
-<span class="normal">301</span>
-<span class="normal">302</span>
-<span class="normal">303</span>
-<span class="normal">304</span>
-<span class="normal">305</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pb_corr</span><span class="p">(</span><span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">base_win</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;exp&#39;</span><span class="p">):</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span>
+<span class="normal">428</span>
+<span class="normal">429</span>
+<span class="normal">430</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span>
+<span class="normal">448</span>
+<span class="normal">449</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">pb_corr</span><span class="p">(</span><span class="n">img</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">base_win</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;exp&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; ftame series photobleaxhing crrection with exponential fit</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -645,7 +649,350 @@ that overlap with the elements from 'input_mut_mask'  </p>
 
   <div class="doc doc-contents ">
   
-      <p>Mask for single neuron images with bright soma region.
+      <p><strong>NB: used by default in most registration types!</strong></p>
+<p>Mask for single neuron images with bright soma region
+with Sauvola local threshold. Func drops soma and returns the mask for processes only.</p>
+<p>In the original method, a threshold T is calculated
+for every pixel in the image using the following formula
+('m(x,y)' is mean and 's(x,y)' is SD in rectangular window):</p>
+<p><code>T = m(x,y) * (1 + k * ((s(x,y) / r) - 1))</code></p>
+
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>input_img</code></b>
+                  (<code><span title="numpy.ndarray">ndarray</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>input img for mask creation,
+recomend choose max int projection of brighter channel (GFP/YFP in our case)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>proc_sigma</code></b>
+                  (<code>float</code>, default:
+                      <code>1.0</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>sigma value for gaussian blur of input image</p>
+              </div>
+            </li>
+            <li>
+              <b><code>win_size</code></b>
+                  (<code>int</code>, default:
+                      <code>801</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Sauvola local threshold parameter, window size specified as a single <strong>odd</strong> integer</p>
+              </div>
+            </li>
+            <li>
+              <b><code>k_val</code></b>
+                  (<code>float</code>, default:
+                      <code>0.0001</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Sauvola local threshold parameter, value of the positive parameter <code>k</code></p>
+              </div>
+            </li>
+            <li>
+              <b><code>r_val</code></b>
+                  (<code>float</code>, default:
+                      <code>0.5</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>Sauvola local threshold parameter, value of <code>r</code>, the dynamic range of standard deviation</p>
+              </div>
+            </li>
+            <li>
+              <b><code>soma_mask</code></b>
+                  (<code>bool</code>, default:
+                      <code>False</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>if True brighter region on image will identified and masked as soma</p>
+              </div>
+            </li>
+            <li>
+              <b><code>soma_th</code></b>
+                  (<code>float</code>, default:
+                      <code>0.5</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>soma detection threshold in % of max img int</p>
+              </div>
+            </li>
+            <li>
+              <b><code>soma_ext</code></b>
+                  (<code>int</code>, default:
+                      <code>100</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>soma mask extension size in px</p>
+              </div>
+            </li>
+            <li>
+              <b><code>ext_fin_mask</code></b>
+                  (<code>bool</code>, default:
+                      <code>False</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>if <code>True</code> - final processes mask will be extended on proc_ext value</p>
+              </div>
+            </li>
+            <li>
+              <b><code>proc_ext</code></b>
+                  (<code>int</code>, default:
+                      <code>5</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>neuron processes mask extention value in px</p>
+              </div>
+            </li>
+            <li>
+              <b><code>select_largest_mask</code></b>
+                  (<code>bool</code>, default:
+                      <code>False</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>if <code>True</code> - final mask will contain the largest detected element only</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+    <th class="field-name">Returns:</th>
+    <td class="field-body">
+      <ul class="first simple">
+          <li>
+<b><code>proc_mask</code></b>(                <code>ndarray, dtype boolean</code>
+)            –
+            <div class="doc-md-description">
+              <p>neuron processes mask</p>
+            </div>
+          </li>
+      </ul>
+    </td>
+    </tr>
+  </tbody>
+</table>
+          <details class="quote">
+            <summary> <code>src/domb/utils/masking.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">proc_mask</span><span class="p">(</span><span class="n">input_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+              <span class="n">proc_sigma</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">win_size</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">801</span><span class="p">,</span> <span class="n">k_val</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">r_val</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+              <span class="n">soma_mask</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">soma_th</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">soma_ext</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+              <span class="n">ext_fin_mask</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">proc_ext</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+              <span class="n">select_largest_mask</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    __NB: used by default in most registration types!__</span>
+
+<span class="sd">    Mask for single neuron images with bright soma region</span>
+<span class="sd">    with Sauvola local threshold. Func drops soma and returns the mask for processes only.</span>
+
+<span class="sd">    In the original method, a threshold T is calculated</span>
+<span class="sd">    for every pixel in the image using the following formula</span>
+<span class="sd">    (&#39;m(x,y)&#39; is mean and &#39;s(x,y)&#39; is SD in rectangular window):</span>
+
+<span class="sd">    `</span>
+<span class="sd">    T = m(x,y) * (1 + k * ((s(x,y) / r) - 1))</span>
+<span class="sd">    `</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input_img: ndarray</span>
+<span class="sd">        input img for mask creation,</span>
+<span class="sd">        recomend choose max int projection of brighter channel (GFP/YFP in our case)</span>
+<span class="sd">    proc_sigma: float</span>
+<span class="sd">        sigma value for gaussian blur of input image</span>
+<span class="sd">    win_size: int</span>
+<span class="sd">        Sauvola local threshold parameter, window size specified as a single __odd__ integer</span>
+<span class="sd">    k_val: float</span>
+<span class="sd">        Sauvola local threshold parameter, value of the positive parameter `k`</span>
+<span class="sd">    r_val: float  </span>
+<span class="sd">        Sauvola local threshold parameter, value of `r`, the dynamic range of standard deviation</span>
+<span class="sd">    soma_mask: boolean, optional</span>
+<span class="sd">        if True brighter region on image will identified and masked as soma</span>
+<span class="sd">    soma_th: float, optional</span>
+<span class="sd">        soma detection threshold in % of max img int</span>
+<span class="sd">    soma_ext: int, optional</span>
+<span class="sd">        soma mask extension size in px</span>
+<span class="sd">    ext_fin_mask: boolean, optional</span>
+<span class="sd">        if `True` - final processes mask will be extended on proc_ext value</span>
+<span class="sd">    proc_ext: int</span>
+<span class="sd">        neuron processes mask extention value in px</span>
+<span class="sd">    select_largest_mask: bool, optional</span>
+<span class="sd">        if `True` - final mask will contain the largest detected element only</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    proc_mask: ndarray, dtype boolean</span>
+<span class="sd">       neuron processes mask</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">input_img</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="n">input_img</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="n">proc_sigma</span><span class="p">)</span>
+
+    <span class="c1"># processes masking    </span>
+    <span class="n">proc_th</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">threshold_sauvola</span><span class="p">(</span><span class="n">input_img</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="n">win_size</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">k_val</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="n">r_val</span><span class="p">)</span>
+    <span class="n">proc_mask</span> <span class="o">=</span> <span class="n">input_img</span> <span class="o">&gt;</span> <span class="n">proc_th</span>
+
+    <span class="c1"># mask extention</span>
+    <span class="k">if</span> <span class="n">ext_fin_mask</span><span class="p">:</span>
+        <span class="n">proc_dist</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">distance_transform_edt</span><span class="p">(</span><span class="o">~</span><span class="n">proc_mask</span><span class="p">,</span> <span class="n">return_indices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">proc_mask</span> <span class="o">=</span> <span class="n">proc_dist</span> <span class="o">&lt;=</span> <span class="n">proc_ext</span>
+
+    <span class="c1"># soma masking</span>
+    <span class="k">if</span> <span class="n">soma_mask</span><span class="p">:</span>
+        <span class="n">soma_region</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">input_img</span><span class="p">)</span>
+        <span class="n">soma_region</span> <span class="o">=</span> <span class="n">soma_region</span> <span class="o">&gt;</span> <span class="n">soma_region</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">*</span> <span class="n">soma_th</span>
+        <span class="n">soma_region</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">opening</span><span class="p">(</span><span class="n">soma_region</span><span class="p">,</span> <span class="n">footprint</span><span class="o">=</span><span class="n">morphology</span><span class="o">.</span><span class="n">disk</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+        <span class="n">soma_dist</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">distance_transform_edt</span><span class="p">(</span><span class="o">~</span><span class="n">soma_region</span><span class="p">,</span> <span class="n">return_indices</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">soma_region</span> <span class="o">=</span> <span class="n">soma_dist</span> <span class="o">&lt;</span> <span class="n">soma_ext</span>
+        <span class="n">proc_mask</span><span class="p">[</span><span class="n">soma_region</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># minor mask elements filtering</span>
+    <span class="k">if</span> <span class="n">select_largest_mask</span><span class="p">:</span>
+        <span class="k">def</span> <span class="nf">largest_only</span><span class="p">(</span><span class="n">raw_mask</span><span class="p">):</span>
+            <span class="c1"># get larger mask element</span>
+            <span class="n">element_label</span> <span class="o">=</span> <span class="n">measure</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">raw_mask</span><span class="p">)</span>
+            <span class="n">element_area</span> <span class="o">=</span> <span class="p">{</span><span class="n">element</span><span class="o">.</span><span class="n">area</span> <span class="p">:</span> <span class="n">element</span><span class="o">.</span><span class="n">label</span> <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">measure</span><span class="o">.</span><span class="n">regionprops</span><span class="p">(</span><span class="n">element_label</span><span class="p">)}</span>
+            <span class="n">larger_mask</span> <span class="o">=</span> <span class="n">element_label</span> <span class="o">==</span> <span class="n">element_area</span><span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">element_area</span><span class="o">.</span><span class="n">keys</span><span class="p">())]</span>
+            <span class="k">return</span> <span class="n">larger_mask</span>
+        <span class="n">proc_mask</span> <span class="o">=</span> <span class="n">largest_only</span><span class="p">(</span><span class="n">proc_mask</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">proc_mask</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<h2 id="domb.utils.masking.proc_mask_otsu" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">proc_mask_otsu</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Mask for single neuron images with bright soma region with simple Otsu thresholding.
 Fiunc drops soma and returns the mask for processes only.</p>
 
 
@@ -760,65 +1107,65 @@ recomend choose max int projection of brighter channel (YFP)</p>
 </table>
           <details class="quote">
             <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">proc_mask</span><span class="p">(</span><span class="n">input_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">proc_mask_otsu</span><span class="p">(</span><span class="n">input_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
               <span class="n">soma_mask</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">soma_th</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">soma_ext</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
               <span class="n">proc_ext</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">ext_fin_mask</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">proc_sigma</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">.5</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Mask for single neuron images with bright soma region.</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Mask for single neuron images with bright soma region with simple Otsu thresholding.</span>
 <span class="sd">    Fiunc drops soma and returns the mask for processes only.</span>
 
 <span class="sd">    Parameters</span>
@@ -871,6 +1218,235 @@ recomend choose max int projection of brighter channel (YFP)</p>
     <span class="n">proc_mask_fin</span><span class="p">[</span><span class="n">soma_mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
 
     <span class="k">return</span> <span class="n">proc_mask_fin</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<h2 id="domb.utils.masking.series_derivate" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">series_derivate</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Calculation of intensity derivative profile for image series.</p>
+
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>input_img</code></b>
+                  (<code><span title="numpy.ndarray">ndarray</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>input image series</p>
+              </div>
+            </li>
+            <li>
+              <b><code>mask</code></b>
+                  (<code><span title="numpy.ndarray">ndarray</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>cell mask</p>
+              </div>
+            </li>
+            <li>
+              <b><code>left_win</code></b>
+              –
+              <div class="doc-md-description">
+                <p>number of frames for left image</p>
+              </div>
+            </li>
+            <li>
+              <b><code>space</code></b>
+                  (<code>int</code>, default:
+                      <code>0</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>number of skipped frames between left and right images</p>
+              </div>
+            </li>
+            <li>
+              <b><code>left_win</code></b>
+              –
+              <div class="doc-md-description">
+                <p>number of frames for left image</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+    <th class="field-name">Returns:</th>
+    <td class="field-body">
+      <ul class="first simple">
+          <li>
+<b><code>der_arr_win</code></b>(                <code>ndarray[i]</code>
+)            –
+            <div class="doc-md-description">
+              <p>1D array of derivate intensity calculated
+for framed images (left-skip-right), 0-1 normalized</p>
+            </div>
+          </li>
+          <li>
+<b><code>prof_df_arr</code></b>(                <code>ndarray[i]</code>
+)            –
+            <div class="doc-md-description">
+              <p>1D array of derivative intensity calculated frame by frame
+and smoothed with moving average (n=3), 0-1 normalized</p>
+            </div>
+          </li>
+      </ul>
+    </td>
+    </tr>
+  </tbody>
+</table>
+          <details class="quote">
+            <summary> <code>src/domb/utils/masking.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">series_derivate</span><span class="p">(</span><span class="n">input_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+                    <span class="n">left_win</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">space</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">right_win</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Calculation of intensity derivative profile for image series.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input_img: ndarray [t,x,y]</span>
+<span class="sd">        input image series</span>
+<span class="sd">    mask: ndarray, dtype boolean</span>
+<span class="sd">        cell mask</span>
+<span class="sd">    left_win: int</span>
+<span class="sd">        number of frames for left image</span>
+<span class="sd">    space: int</span>
+<span class="sd">        number of skipped frames between left and right images</span>
+<span class="sd">    left_win: int</span>
+<span class="sd">        number of frames for left image</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    der_arr_win: ndarray [i]</span>
+<span class="sd">        1D array of derivate intensity calculated</span>
+<span class="sd">        for framed images (left-skip-right), 0-1 normalized</span>
+<span class="sd">    prof_df_arr: ndarray [i]</span>
+<span class="sd">        1D array of derivative intensity calculated frame by frame</span>
+<span class="sd">        and smoothed with moving average (n=3), 0-1 normalized</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">der_img</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">der_arr_win</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">der_arr_point</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">input_img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="p">(</span><span class="n">left_win</span><span class="o">+</span><span class="n">space</span><span class="o">+</span><span class="n">right_win</span><span class="p">)):</span>
+        <span class="n">der_frame</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">input_img</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">left_win</span><span class="o">+</span><span class="n">space</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">left_win</span><span class="o">+</span><span class="n">space</span><span class="o">+</span><span class="n">right_win</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">input_img</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="n">left_win</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
+        <span class="n">der_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">der_frame</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+
+        <span class="n">der_frame_point</span> <span class="o">=</span> <span class="n">input_img</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">input_img</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">der_val_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">der_frame_point</span><span class="p">),</span> <span class="n">where</span><span class="o">=</span><span class="n">mask</span><span class="p">)</span>
+
+        <span class="n">der_img</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">der_frame</span><span class="p">)</span>
+        <span class="n">der_arr_win</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">der_val</span><span class="p">)</span>
+        <span class="n">der_arr_point</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">der_val_point</span><span class="p">)</span>
+
+    <span class="n">der_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">der_img</span><span class="p">)</span>
+
+    <span class="n">der_arr_win</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">der_arr_win</span><span class="p">)</span>
+    <span class="n">der_arr_win</span> <span class="o">=</span> <span class="p">(</span><span class="n">der_arr_win</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">der_arr_win</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">der_arr_win</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">der_arr_win</span><span class="p">))</span>
+    <span class="n">der_arr_win</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">der_arr_win</span><span class="p">,</span> <span class="p">(</span><span class="n">left_win</span><span class="o">+</span><span class="n">space</span><span class="o">+</span><span class="n">right_win</span><span class="p">),</span> <span class="n">constant_values</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:</span><span class="n">input_img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+    <span class="k">def</span> <span class="nf">moving_average</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+        <span class="n">ret</span><span class="p">[</span><span class="n">n</span><span class="p">:]</span> <span class="o">=</span> <span class="n">ret</span><span class="p">[</span><span class="n">n</span><span class="p">:]</span> <span class="o">-</span> <span class="n">ret</span><span class="p">[:</span><span class="o">-</span><span class="n">n</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">ret</span><span class="p">[</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:]</span> <span class="o">/</span> <span class="n">n</span>
+
+    <span class="n">der_arr_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">der_arr_point</span><span class="p">)</span>
+    <span class="n">der_arr_point</span> <span class="o">=</span> <span class="p">(</span><span class="n">der_arr_point</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">der_arr_point</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">der_arr_point</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">der_arr_point</span><span class="p">))</span>
+    <span class="n">der_arr_point</span> <span class="o">=</span> <span class="n">moving_average</span><span class="p">(</span><span class="n">der_arr_point</span><span class="p">)</span>
+    <span class="n">der_arr_point</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pad</span><span class="p">(</span><span class="n">der_arr_point</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">constant_values</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:</span><span class="n">input_img</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+
+    <span class="k">return</span> <span class="n">der_arr_win</span><span class="p">,</span> <span class="n">der_arr_point</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>
@@ -968,41 +1544,41 @@ each frame should be same size wiht cell mask array.</p>
 </table>
           <details class="quote">
             <summary> <code>src/domb/utils/masking.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span>
-<span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span>
-<span class="normal">226</span>
-<span class="normal">227</span>
-<span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">trans_prof_arr</span><span class="p">(</span><span class="n">input_total_mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">trans_prof_arr</span><span class="p">(</span><span class="n">input_total_mask</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
                    <span class="n">input_label</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
                    <span class="n">input_img_series</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Calc ratio mask int/ROIs int for time series </span>
