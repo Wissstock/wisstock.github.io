@@ -74,6 +74,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#domb.utils.plot.CMaps">CMaps</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#domb.utils.plot.overlay_line_plot">overlay_line_plot()</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#domb.utils.plot.stat_line_plot">stat_line_plot()</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#domb.utils.plot.toRGB">toRGB()</a>
@@ -361,6 +363,198 @@ especially suitable for differential images</p>
 
 
 
+<h2 id="domb.utils.plot.overlay_line_plot" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">overlay_line_plot</span></code>
+
+</h2>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Line plot with variance whiskers for array <code>[t,val],
+could take as input results of</code>util.masking.label_prof_arr()` function.
+Plots every row from the input array as an individual line</p>
+
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>arr_list</code></b>
+              –
+              <div class="doc-md-description">
+                <p>list of 2D arrays with profiles <code>[t, val]</code></p>
+              </div>
+            </li>
+            <li>
+              <b><code>lab_list</code></b>
+              –
+              <div class="doc-md-description">
+                <p>list of labels for lines, should be same len with arr_list</p>
+              </div>
+            </li>
+            <li>
+              <b><code>min_amp</code></b>
+                  (<code>float</code>, default:
+                      <code>0</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>minimal amplitude of displayed profiles</p>
+              </div>
+            </li>
+            <li>
+              <b><code>max_amp</code></b>
+                  (<code>float</code>, default:
+                      <code>10</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>maximal amplitude of displayed profiles</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+          <details class="quote">
+            <summary> <code>src/domb/utils/plot.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">overlay_line_plot</span><span class="p">(</span><span class="n">input_arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+                      <span class="n">t_scale</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+                      <span class="n">min_amp</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">max_amp</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+                      <span class="n">app_bar_dict</span><span class="p">:</span><span class="nb">dict</span><span class="p">()</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_app_bars</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                      <span class="n">stim_t</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_stim</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                      <span class="n">figsize</span><span class="p">:</span><span class="nb">tuple</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">x_lab</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">y_lab</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">plot_title</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span>
+                      <span class="n">save_path</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Line plot with variance whiskers for array `[t,val],</span>
+<span class="sd">    could take as input results of `util.masking.label_prof_arr()` function.</span>
+<span class="sd">    Plots every row from the input array as an individual line</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    arr_list: list</span>
+<span class="sd">        list of 2D arrays with profiles `[t, val]`</span>
+<span class="sd">    lab_list: list</span>
+<span class="sd">        list of labels for lines, should be same len with arr_list</span>
+<span class="sd">    min_amp: float, optional</span>
+<span class="sd">        minimal amplitude of displayed profiles</span>
+<span class="sd">    max_amp: float, optional</span>
+<span class="sd">        maximal amplitude of displayed profiles</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">time_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">input_arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">t_scale</span><span class="p">,</span> \
+                            <span class="n">num</span><span class="o">=</span><span class="n">input_arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="n">max_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">num_ROI</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">input_arr</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">prof_ROI</span> <span class="o">=</span> <span class="n">input_arr</span><span class="p">[</span><span class="n">num_ROI</span><span class="p">]</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">prof_ROI</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">min_amp</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">prof_ROI</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">&gt;</span> <span class="n">max_amp</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time_line</span><span class="p">,</span> <span class="n">prof_ROI</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">.65</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+            <span class="n">max_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">prof_ROI</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+
+    <span class="k">if</span> <span class="n">show_stim</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">s_t</span> <span class="ow">in</span> <span class="n">stim_t</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">s_t</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">show_app_bars</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">bar_name</span> <span class="ow">in</span> <span class="n">app_bar_dict</span><span class="p">:</span>
+                <span class="n">bar_lim</span> <span class="o">=</span> <span class="n">app_bar_dict</span><span class="p">[</span><span class="n">bar_name</span><span class="p">]</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bar_lim</span><span class="p">,</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">max_list</span><span class="p">)</span><span class="o">+</span><span class="mf">0.05</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">bar_lim</span><span class="p">),</span>
+                         <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">x_lab</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">y_lab</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">plot_title</span><span class="si">}</span><span class="s1">, min </span><span class="si">{</span><span class="n">min_amp</span><span class="si">}</span><span class="s1">, max </span><span class="si">{</span><span class="n">max_amp</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">save_path</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
 <h2 id="domb.utils.plot.stat_line_plot" class="doc doc-heading">
           <code class="highlight language-python"><span class="n">stat_line_plot</span></code>
 
@@ -369,7 +563,7 @@ especially suitable for differential images</p>
 
   <div class="doc doc-contents ">
   
-      <p>Line plot with variance wiskers for set of arrays <code>[t,val],
+      <p>Line plot with variance whiskers for set of arrays <code>[t,val],
 could take as input results of</code>util.masking.label_prof_arr()` function</p>
 
 
@@ -476,12 +670,32 @@ could take as input results of</code>util.masking.label_prof_arr()` function</p>
 <span class="normal">202</span>
 <span class="normal">203</span>
 <span class="normal">204</span>
-<span class="normal">205</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">stat_line_plot</span><span class="p">(</span><span class="n">arr_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">stat_line_plot</span><span class="p">(</span><span class="n">arr_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
                    <span class="n">lab_list</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span>
+                   <span class="n">t_scale</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                    <span class="n">stat_method</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;se&#39;</span><span class="p">,</span>
-                   <span class="n">stim_t</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">show_stim</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">t_scale</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-                   <span class="n">figsize</span><span class="p">:</span><span class="nb">tuple</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">x_lab</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">y_lab</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">plot_title</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;NA&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Line plot with variance wiskers for set of arrays `[t,val],</span>
+                   <span class="n">app_bar_dict</span><span class="p">:</span><span class="nb">dict</span><span class="p">()</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_app_bars</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                   <span class="n">stim_t</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_stim</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                   <span class="n">figsize</span><span class="p">:</span><span class="nb">tuple</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">x_lab</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">y_lab</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="n">plot_title</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;NA&#39;</span><span class="p">,</span>
+                   <span class="n">save_path</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Line plot with variance whiskers for set of arrays `[t,val],</span>
 <span class="sd">    could take as input results of `util.masking.label_prof_arr()` function</span>
 
 <span class="sd">    Parameters</span>
@@ -516,25 +730,39 @@ could take as input results of</code>util.masking.label_prof_arr()` function</p>
     <span class="n">stat_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;se&#39;</span><span class="p">:</span><span class="n">arr_se_stat</span><span class="p">,</span>
                  <span class="s1">&#39;iqr&#39;</span><span class="p">:</span><span class="n">arr_iqr_stat</span><span class="p">,</span>
                  <span class="s1">&#39;ci&#39;</span><span class="p">:</span><span class="n">arr_ci_stat</span><span class="p">}</span>
-
+    <span class="n">max_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr_list</span><span class="p">)):</span>
         <span class="n">arr</span> <span class="o">=</span> <span class="n">arr_list</span><span class="p">[</span><span class="n">num</span><span class="p">]</span>
         <span class="n">lab</span> <span class="o">=</span> <span class="n">lab_list</span><span class="p">[</span><span class="n">num</span><span class="p">]</span>
         <span class="n">arr_val</span><span class="p">,</span> <span class="n">arr_var</span> <span class="o">=</span> <span class="n">stat_dict</span><span class="p">[</span><span class="n">stat_method</span><span class="p">](</span><span class="n">arr</span><span class="p">)</span>
+        <span class="n">max_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arr_val</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
 
         <span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">time_line</span><span class="p">,</span> <span class="n">arr_val</span><span class="p">,</span>
                      <span class="n">yerr</span> <span class="o">=</span> <span class="n">arr_var</span><span class="p">,</span>
                      <span class="n">fmt</span> <span class="o">=</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">lab</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="n">show_stim</span><span class="p">:</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">stim_t</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">s_t</span> <span class="ow">in</span> <span class="n">stim_t</span><span class="p">:</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">s_t</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">show_app_bars</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">bar_name</span> <span class="ow">in</span> <span class="n">app_bar_dict</span><span class="p">:</span>
+                <span class="n">bar_lim</span> <span class="o">=</span> <span class="n">app_bar_dict</span><span class="p">[</span><span class="n">bar_name</span><span class="p">]</span>
+                <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bar_lim</span><span class="p">,</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">max_list</span><span class="p">)</span><span class="o">+</span><span class="mf">0.05</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">bar_lim</span><span class="p">),</span>
+                         <span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">.25</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">x_lab</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">y_lab</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">plot_title</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">save_path</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">save_path</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
           </details>
   </div>

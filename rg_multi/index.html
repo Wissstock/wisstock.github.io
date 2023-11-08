@@ -67,7 +67,13 @@
     </li>
     <li class="toctree-l3"><a class="reference internal" href="#domb.red_green.wt_vs_mut_multistim.wt_vs_mut_multistim">wt_vs_mut_multistim</a>
         <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#domb.red_green.wt_vs_mut_multistim.wt_vs_mut_multistim.diff_img_pic">diff_img_pic()</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#domb.red_green.wt_vs_mut_multistim.wt_vs_mut_multistim.mask_diff_pic">mask_diff_pic()</a>
+    </li>
     <li class="toctree-l4"><a class="reference internal" href="#domb.red_green.wt_vs_mut_multistim.wt_vs_mut_multistim.up_mask_calc">up_mask_calc()</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#domb.red_green.wt_vs_mut_multistim.wt_vs_mut_multistim.up_mask_calc_old">up_mask_calc_old()</a>
     </li>
         </ul>
     </li>
@@ -322,8 +328,7 @@ created with <code>utils.masking.mask_connection()</code></p>
 </table>
               <details class="quote">
                 <summary>Source code in <code>src/domb/red_green/wt_vs_mut_multistim.py</code></summary>
-                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 20</span>
-<span class="normal"> 21</span>
+                <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 21</span>
 <span class="normal"> 22</span>
 <span class="normal"> 23</span>
 <span class="normal"> 24</span>
@@ -406,7 +411,13 @@ created with <code>utils.masking.mask_connection()</code></p>
 <span class="normal">101</span>
 <span class="normal">102</span>
 <span class="normal">103</span>
-<span class="normal">104</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wt_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mut_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wt_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">mut_img</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
              <span class="n">proc_mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">narrow_proc_mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
              <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Class is designed to create differential images and insertion masks</span>
@@ -470,15 +481,20 @@ created with <code>utils.masking.mask_connection()</code></p>
     <span class="bp">self</span><span class="o">.</span><span class="n">proc_mask</span> <span class="o">=</span> <span class="n">proc_mask</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">narrow_proc_mask</span> <span class="o">=</span> <span class="n">narrow_proc_mask</span>
 
+    <span class="n">cell_contour_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">proc_mask</span><span class="p">)</span>
+    <span class="n">cell_contour_mask</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">narrow_proc_mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="c1"># WT masking</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">wt_up_mask_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wt_up_label_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">wt_diff_img_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_mask_calc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wt_img</span><span class="p">,</span>
-                                                                                           <span class="bp">self</span><span class="o">.</span><span class="n">proc_mask</span><span class="p">,</span>
+                                                                                           <span class="n">cell_contour_mask</span><span class="p">,</span>
                                                                                            <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
     <span class="c1"># mutant masking</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">mut_up_mask_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mut_up_label_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">mut_diff_img_list</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">up_mask_calc</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mut_img</span><span class="p">,</span>
-                                                                                              <span class="bp">self</span><span class="o">.</span><span class="n">proc_mask</span><span class="p">,</span>
+                                                                                              <span class="n">cell_contour_mask</span><span class="p">,</span>
                                                                                               <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># self.wt_diff_img_series = self.diff_img_series_calc(self.wt_img)</span>
+    <span class="c1"># self.mut_diff_img_series = self.diff_img_series_calc(self.mut_img)</span>
 
     <span class="c1"># masks modification</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">connected_up_mask_list</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">connected_up_label_list</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">proc_mask</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">proc_mask</span><span class="p">)</span>
@@ -512,8 +528,469 @@ created with <code>utils.masking.mask_connection()</code></p>
 
 
 
+<h3 id="domb.red_green.wt_vs_mut_multistim.wt_vs_mut_multistim.diff_img_pic" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">diff_img_pic</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Differential images for each simulation.</p>
+
+          <details class="quote">
+            <summary> <code>src/domb/red_green/wt_vs_mut_multistim.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">diff_img_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Differential images for each simulation.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cell_contour</span> <span class="o">=</span> <span class="n">measure</span><span class="o">.</span><span class="n">find_contours</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">proc_mask</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="n">stim_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wt_up_mask_list</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">stim_num</span><span class="p">):</span>
+        <span class="n">ax0</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">stim_num</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;WT (</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wt_up_label_list</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="si">}</span><span class="s1"> ROIs)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wt_diff_img_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">CMaps</span><span class="p">()</span><span class="o">.</span><span class="n">cmap_red_green</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ce_c</span> <span class="ow">in</span> <span class="n">cell_contour</span><span class="p">:</span>
+            <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ce_c</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ce_c</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+        <span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">stim_num</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">+</span><span class="n">stim_num</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;Mut. (</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mut_up_label_list</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="si">}</span><span class="s1"> ROIs)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mut_diff_img_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">CMaps</span><span class="p">()</span><span class="o">.</span><span class="n">cmap_red_green</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ce_c</span> <span class="ow">in</span> <span class="n">cell_contour</span><span class="p">:</span>
+            <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ce_c</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ce_c</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">ax1</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<h3 id="domb.red_green.wt_vs_mut_multistim.wt_vs_mut_multistim.mask_diff_pic" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">mask_diff_pic</span></code>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>WT vs. mutant up masks comparison with overlay (red - WT, green - mutant).</p>
+
+          <details class="quote">
+            <summary> <code>src/domb/red_green/wt_vs_mut_multistim.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">mask_diff_pic</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; WT vs. mutant up masks comparison with overlay (red - WT, green - mutant).</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">cell_contour</span> <span class="o">=</span> <span class="n">measure</span><span class="o">.</span><span class="n">find_contours</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">proc_mask</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="n">stim_num</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">wt_up_mask_list</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">stim_num</span><span class="p">):</span>
+        <span class="n">wt_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wt_up_mask_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span> 
+        <span class="n">mut_mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mut_up_mask_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">int</span><span class="p">)</span>
+        <span class="n">sum_mask</span> <span class="o">=</span> <span class="n">wt_mask</span> <span class="o">+</span> <span class="n">mut_mask</span>
+        <span class="n">tot_mask</span> <span class="o">=</span> <span class="n">sum_mask</span> <span class="o">!=</span> <span class="mi">0</span>
+
+        <span class="c1"># up_mask_diff = plot.toRGB(r_img=wt_mask,</span>
+        <span class="c1">#                           g_img=mut_mask,</span>
+        <span class="c1">#                           b_img=np.zeros_like(wt_mask))</span>
+        <span class="n">ax0</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">stim_num</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mut_img</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">*-</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">)</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="o">~</span><span class="n">tot_mask</span><span class="p">,</span> <span class="n">sum_mask</span><span class="p">)</span><span class="o">*-</span><span class="mi">1</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">plot</span><span class="o">.</span><span class="n">CMaps</span><span class="p">()</span><span class="o">.</span><span class="n">cmap_red_green</span><span class="p">)</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;WT </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">wt_up_label_list</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="si">}</span><span class="s1"> ROIs</span><span class="se">\n</span><span class="s1">Mut. </span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mut_up_label_list</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span><span class="si">}</span><span class="s1"> ROIs&#39;</span><span class="p">,</span>
+                 <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">ce_c</span> <span class="ow">in</span> <span class="n">cell_contour</span><span class="p">:</span>
+            <span class="n">ax0</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ce_c</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ce_c</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span>
+        <span class="n">ax0</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
 <h3 id="domb.red_green.wt_vs_mut_multistim.wt_vs_mut_multistim.up_mask_calc" class="doc doc-heading">
           <code class="highlight language-python"><span class="n">up_mask_calc</span></code>
+  
+  <span class="doc doc-labels">
+      <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
+  </span>
+
+</h3>
+
+
+  <div class="doc doc-contents ">
+  
+      <p>Function for generating a set of insertion regions mask
+for image series with multiple stimuli/applications using the differential image method.</p>
+<p>Could be used in stand-alone mode as a static method of the WTvsMut class.</p>
+
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+      <th class="field-name">Parameters:</th>
+      <td class="field-body">
+        <ul class="first simple">
+            <li>
+              <b><code>input_img_series</code></b>
+                  (<code><span title="numpy.ndarray">ndarray</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>image time series</p>
+              </div>
+            </li>
+            <li>
+              <b><code>input_img_mask</code></b>
+                  (<code><span title="numpy.ndarray">ndarray</span></code>)
+              –
+              <div class="doc-md-description">
+                <p>cell region boolean mask</p>
+              </div>
+            </li>
+            <li>
+              <b><code>sd_tolerance</code></b>
+                  (<code>int</code>, default:
+                      <code>2</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>insertion ("up") region detection threshold: the number
+of standard deviations of extracellular noise
+(measured in the area outside of <code>input_img_mask</code>)</p>
+              </div>
+            </li>
+            <li>
+              <b><code>base_frames</code></b>
+                  (<code>int</code>, default:
+                      <code>2</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>number of frames from the beginning
+of the image series used to create
+an image of basal fluorescence</p>
+              </div>
+            </li>
+            <li>
+              <b><code>stim_list</code></b>
+                  (<code>list[int]</code>, default:
+                      <code>[10]</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>indexes of the frames where stimulations begins</p>
+              </div>
+            </li>
+            <li>
+              <b><code>stim_win</code></b>
+                  (<code>int</code>, default:
+                      <code>1</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>stimulation window, the number of frames following each <code>stim_list</code> indexes
+that are used to create set of images displaying maximal insertions after each stimuli</p>
+              </div>
+            </li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table class="field-list">
+  <colgroup>
+    <col class="field-name" />
+    <col class="field-body" />
+  </colgroup>
+  <tbody valign="top">
+    <tr class="field">
+    <th class="field-name">Returns:</th>
+    <td class="field-body">
+      <ul class="first simple">
+          <li>
+<b><code>up_mask_filt_list</code></b>(                <code>ndarray[stimuli, x, y]</code>
+)            –
+            <div class="doc-md-description">
+              <p>boolean masks of intensity increase regions</p>
+            </div>
+          </li>
+          <li>
+<b><code>up_label_list</code></b>(                <code>ndarray[stimuli, x, y]</code>
+)            –
+            <div class="doc-md-description">
+              <p>label images of intensity increase regions  </p>
+            </div>
+          </li>
+          <li>
+<b><code>img_diff_list</code></b>(                <code>ndarray[stimuli, x, y]</code>
+)            –
+            <div class="doc-md-description">
+              <p>differential images of intensity changes after stimulation</p>
+            </div>
+          </li>
+      </ul>
+    </td>
+    </tr>
+  </tbody>
+</table>
+          <details class="quote">
+            <summary> <code>src/domb/red_green/wt_vs_mut_multistim.py</code></summary>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">up_mask_calc</span><span class="p">(</span><span class="n">input_img_series</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">input_img_mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+                 <span class="n">sd_tolerance</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stim_list</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span>
+                 <span class="n">base_frames</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">stim_win</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stim_shift</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Function for generating a set of insertion regions mask</span>
+<span class="sd">    for image series with multiple stimuli/applications using the differential image method.</span>
+
+<span class="sd">    Could be used in stand-alone mode as a static method of the WTvsMut class.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    input_img_series: ndarray [t,x,y]</span>
+<span class="sd">        image time series</span>
+<span class="sd">    input_img_mask: ndarray [x,y]</span>
+<span class="sd">        cell region boolean mask</span>
+<span class="sd">    sd_tolerance: int</span>
+<span class="sd">        insertion (&quot;up&quot;) region detection threshold: the number</span>
+<span class="sd">        of standard deviations of extracellular noise</span>
+<span class="sd">        (measured in the area outside of `input_img_mask`)</span>
+<span class="sd">    base_frames: int</span>
+<span class="sd">        number of frames from the beginning</span>
+<span class="sd">        of the image series used to create</span>
+<span class="sd">        an image of basal fluorescence</span>
+<span class="sd">    stim_list: list[int]</span>
+<span class="sd">        indexes of the frames where stimulations begins</span>
+<span class="sd">    stim_win: int</span>
+<span class="sd">        stimulation window, the number of frames following each `stim_list` indexes</span>
+<span class="sd">        that are used to create set of images displaying maximal insertions after each stimuli</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    up_mask_filt_list: ndarray [stimuli, x,y]</span>
+<span class="sd">        boolean masks of intensity increase regions</span>
+<span class="sd">    up_label_list: ndarray [stimuli, x,y]</span>
+<span class="sd">        label images of intensity increase regions  </span>
+<span class="sd">    img_diff_list: ndarray [stimuli, x,y]</span>
+<span class="sd">       differential images of intensity changes after stimulation</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ref_img_series</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="n">input_img_series</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">channel_axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+    <span class="n">up_mask_filt_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">up_label_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">img_diff_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">stim_i_pairs_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">stim_i</span> <span class="ow">in</span> <span class="n">stim_list</span><span class="p">:</span>
+        <span class="n">base_i</span> <span class="o">=</span> <span class="n">stim_i</span><span class="o">-</span><span class="n">base_frames</span>
+
+        <span class="n">img_base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ref_img_series</span><span class="p">[</span><span class="n">base_i</span><span class="p">:</span><span class="n">stim_i</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> 
+
+        <span class="n">start_i</span> <span class="o">=</span> <span class="n">stim_i</span><span class="o">+</span><span class="n">stim_shift</span>
+        <span class="n">fin_i</span> <span class="o">=</span> <span class="n">stim_i</span><span class="o">+</span><span class="n">stim_win</span> <span class="o">+</span> <span class="n">stim_shift</span>
+        <span class="n">img_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ref_img_series</span><span class="p">[</span><span class="n">start_i</span><span class="p">:</span><span class="n">fin_i</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">img_diff</span> <span class="o">=</span> <span class="n">img_max</span> <span class="o">-</span> <span class="n">img_base</span>
+        <span class="n">img_diff_norm</span> <span class="o">=</span> <span class="n">img_diff</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">img_diff</span><span class="p">))</span>
+
+        <span class="n">diff_sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">img_diff</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">input_img_mask</span><span class="p">)</span>
+        <span class="n">up_mask</span> <span class="o">=</span> <span class="n">img_diff</span> <span class="o">&gt;</span> <span class="n">diff_sd</span> <span class="o">*</span> <span class="n">sd_tolerance</span>
+        <span class="c1"># up_mask =  img_diff_norm &gt; sd_tolerance</span>
+
+        <span class="c1"># NEW MASK PROCESSING</span>
+        <span class="n">up_mask_filt</span> <span class="o">=</span> <span class="n">ndi</span><span class="o">.</span><span class="n">binary_fill_holes</span><span class="p">(</span><span class="n">up_mask</span><span class="p">)</span>
+        <span class="n">up_mask_filt</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">remove_small_objects</span><span class="p">(</span><span class="n">up_mask_filt</span><span class="p">,</span> <span class="n">min_size</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+        <span class="n">up_mask_filt</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">expand_labels</span><span class="p">(</span><span class="n">up_mask_filt</span><span class="p">,</span> <span class="n">distance</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># OLD MASK PROCESSING</span>
+        <span class="c1"># up_mask_filt = morphology.opening(up_mask, footprint=morphology.disk(3))</span>
+        <span class="c1"># up_mask_filt = morphology.dilation(up_mask_filt, footprint=morphology.disk(2))</span>
+
+        <span class="n">up_mask_filt</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">up_mask_filt</span><span class="p">)</span>
+        <span class="n">up_label</span> <span class="o">=</span> <span class="n">measure</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">up_mask_filt</span><span class="p">)</span>
+
+        <span class="n">up_mask_filt_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">up_mask_filt</span><span class="p">)</span>
+        <span class="n">up_label_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">up_label</span><span class="p">)</span>
+        <span class="n">img_diff_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img_diff_norm</span><span class="p">)</span>
+
+        <span class="n">stim_i_pairs_list</span><span class="o">.</span><span class="n">append</span><span class="p">([[</span><span class="n">base_i</span><span class="p">,</span> <span class="n">stim_i</span><span class="p">],[</span><span class="n">start_i</span><span class="p">,</span> <span class="n">fin_i</span><span class="p">]])</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">stim_i_pairs_list</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">up_mask_filt_list</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">up_label_list</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img_diff_list</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+          </details>
+  </div>
+
+</div>
+
+
+<div class="doc doc-object doc-function">
+
+
+
+
+<h3 id="domb.red_green.wt_vs_mut_multistim.wt_vs_mut_multistim.up_mask_calc_old" class="doc doc-heading">
+          <code class="highlight language-python"><span class="n">up_mask_calc_old</span></code>
   
   <span class="doc doc-labels">
       <small class="doc doc-label doc-label-staticmethod"><code>staticmethod</code></small>
@@ -646,71 +1123,81 @@ that are used to create set of images displaying maximal insertions after each s
 </table>
           <details class="quote">
             <summary> <code>src/domb/red_green/wt_vs_mut_multistim.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
-<span class="k">def</span> <span class="nf">up_mask_calc</span><span class="p">(</span><span class="n">input_img_series</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">input_img_mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@staticmethod</span>
+<span class="k">def</span> <span class="nf">up_mask_calc_old</span><span class="p">(</span><span class="n">input_img_series</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">input_img_mask</span><span class="p">:</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
                  <span class="n">sd_tolerance</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">base_frames</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
                  <span class="n">stim_list</span><span class="p">:</span><span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">stim_win</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">5</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Function for generating a set of insertion regions mask</span>
@@ -750,27 +1237,37 @@ that are used to create set of images displaying maximal insertions after each s
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">ref_img_series</span> <span class="o">=</span> <span class="n">filters</span><span class="o">.</span><span class="n">gaussian</span><span class="p">(</span><span class="n">input_img_series</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mf">1.25</span><span class="p">,</span> <span class="n">channel_axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
-    <span class="n">img_base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ref_img_series</span><span class="p">[:</span><span class="n">base_frames</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">img_base</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ref_img_series</span><span class="p">[:</span><span class="n">base_frames</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
     <span class="n">up_mask_filt_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">up_label_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="n">img_diff_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">stim_i_pairs_list</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">stim_start</span> <span class="ow">in</span> <span class="n">stim_list</span><span class="p">:</span>
-        <span class="n">img_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ref_img_series</span><span class="p">[</span><span class="n">stim_start</span><span class="p">:</span><span class="n">stim_start</span><span class="o">+</span><span class="n">stim_win</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">start_i</span> <span class="o">=</span> <span class="n">stim_start</span>
+        <span class="n">stop_i</span> <span class="o">=</span> <span class="n">stim_start</span><span class="o">+</span><span class="n">stim_win</span><span class="o">+</span><span class="mi">1</span>
+
+        <span class="n">stim_i_pairs_list</span><span class="o">.</span><span class="n">append</span><span class="p">([</span><span class="n">start_i</span><span class="p">,</span> <span class="n">stop_i</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="n">img_max</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ref_img_series</span><span class="p">[</span><span class="n">start_i</span><span class="p">:</span><span class="n">stop_i</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
         <span class="n">img_diff</span> <span class="o">=</span> <span class="n">img_max</span> <span class="o">-</span> <span class="n">img_base</span>
-        <span class="n">img_diff</span> <span class="o">=</span> <span class="n">img_diff</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">img_diff</span><span class="p">))</span>
+        <span class="n">img_diff_norm</span> <span class="o">=</span> <span class="n">img_diff</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">img_diff</span><span class="p">))</span>
 
-        <span class="n">diff_sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_where</span><span class="p">(</span><span class="o">~</span><span class="n">input_img_mask</span><span class="p">,</span> <span class="n">img_diff</span><span class="p">))</span>
+        <span class="n">diff_sd</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">img_diff</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="n">input_img_mask</span><span class="p">)</span>
         <span class="n">up_mask</span> <span class="o">=</span> <span class="n">img_diff</span> <span class="o">&gt;</span> <span class="n">diff_sd</span> <span class="o">*</span> <span class="n">sd_tolerance</span>
+        <span class="c1"># up_mask =  img_diff_norm &gt; sd_tolerance</span>
 
         <span class="n">up_mask_filt</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">opening</span><span class="p">(</span><span class="n">up_mask</span><span class="p">,</span> <span class="n">footprint</span><span class="o">=</span><span class="n">morphology</span><span class="o">.</span><span class="n">disk</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
         <span class="n">up_mask_filt</span> <span class="o">=</span> <span class="n">morphology</span><span class="o">.</span><span class="n">dilation</span><span class="p">(</span><span class="n">up_mask_filt</span><span class="p">,</span> <span class="n">footprint</span><span class="o">=</span><span class="n">morphology</span><span class="o">.</span><span class="n">disk</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+        <span class="n">up_mask_filt</span> <span class="o">=</span> <span class="n">segmentation</span><span class="o">.</span><span class="n">clear_border</span><span class="p">(</span><span class="n">up_mask_filt</span><span class="p">)</span>
         <span class="n">up_label</span> <span class="o">=</span> <span class="n">measure</span><span class="o">.</span><span class="n">label</span><span class="p">(</span><span class="n">up_mask_filt</span><span class="p">)</span>
 
         <span class="n">up_mask_filt_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">up_mask_filt</span><span class="p">)</span>
         <span class="n">up_label_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">up_label</span><span class="p">)</span>
-        <span class="n">img_diff_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img_diff</span><span class="p">)</span>
+        <span class="n">img_diff_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img_diff_norm</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="n">stim_i_pairs_list</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">up_mask_filt_list</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">up_label_list</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img_diff_list</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
