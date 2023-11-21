@@ -110,11 +110,9 @@
     ├── reg_type                  # data types for different registration designs
     │   └── wf_x2_m2.py             #  widefield, 2 excitation wavelengths, 2 emission channels
     |
-    |
     ├── red_green                 # translocation detection using differential image comparison
     │   ├── wt_vs_mut.py            # co-imaging of two NCSs with single stimuli, requires wf_x2_m2 as input
     │   └── wt_vs_mut_multistim.py  # co-imaging of two NCSs with multiple stimuli, requires wf_x2_m2 as input
-    │
     |
     ├── fret                      # Förster resonance energy transfer (FRET) estimation
     │   ├── e_fret                  # 3-cube approach for FRET efficiency estimation
@@ -122,18 +120,27 @@
     │   │   └── e_app.py              # FRET efficiency calculation, requires wf_x2_m2 as input
     │   └── b_fret                # Bayesian inference implementation for 3-cube E-FRET approach
     |
-    └── util                      # utilities
+    └── utils                     # utilities
         ├── masking.py              # functions for masking multi-dimensional images
-        ├── plot.py                   # functions for various pretty plotting
-        └── oiffile.py                # Olympus OIF/OIB files uploading
+        ├── plot.py                 # functions for various pretty plotting
+        └── oiffile.py              # Olympus OIF/OIB files uploading
 
 </code></pre>
 <h1 id="installation">Installation</h1>
-<p>Go ahead and clone the package repository. As a starting point, set up a fresh conda environment using this command:</p>
-<pre><code>conda env create -n domb
+<p>Set up a new conda environment with Python 3.9:</p>
+<pre><code>conda create -y -n domb -c conda-forge python=3.9
+conda acticate domb
 </code></pre>
-<p>Once the environment is ready to go, activate it. To install the package, simply navigate to the repository folder and run: </p>
-<pre><code>pip install .
+<h3 id="from-pip">From pip</h3>
+<pre><code>pip install domb
+</code></pre>
+<h3 id="from-github">From GitHub</h3>
+<p>Clone the repo:</p>
+<pre><code>git clone -b master git@github.com:wisstock/DoMB_tools.git
+</code></pre>
+<p>To install the package, simply navigate to the repository folder and run: </p>
+<pre><code>cd DoMB_tools
+pip install .
 </code></pre>
 <p>But if you're planning to make changes and work on the source code actively, you might want to consider using the editable mode:</p>
 <pre><code>pip install -e .
@@ -158,6 +165,7 @@ software for confocal microscopy.</p>
 </ul>
 <h3 id="b-fret">B-FRET</h3>
 <p><em>Copyright © 2022 <a href="https://github.com/emonetlab">Emonet Lab</a>, <a href="https://www.pnas.org/doi/10.1073/pnas.2211807120">Kamino et al.,2023</a></em></p>
+<p><strong><em>This module is currently not implemented!</em></strong></p>
 <p>This package uses Bayesian inference to generate posterior distributions of FRET signals from noisy measured FRET data. B-FRET, generally applicable to standard 3-cube FRET-imaging data. Based on Bayesian filtering theory, B-FRET implements a statistically optimal way to infer molecular interactions and thus drastically improves the SNR. </p>
               
             </div>
@@ -206,5 +214,5 @@ software for confocal microscopy.</p>
 
 <!--
 MkDocs version : 1.5.2
-Build Date UTC : 2023-11-08 13:11:53.672593+00:00
+Build Date UTC : 2023-11-21 14:52:37.433063+00:00
 -->

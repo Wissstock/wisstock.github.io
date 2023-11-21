@@ -202,6 +202,9 @@ if fluorescence proteins doesn't overlap (<code>{'fp1': index, 'fp2': index}</co
             </li>
             <li>
               <b><code>wf_sigma</code></b>
+                  (<code>float</code>, default:
+                      <code>0.5</code>
+)
               –
               <div class="doc-md-description">
                 <p>sigma value for Gaussian filter applied to input image series</p>
@@ -446,7 +449,7 @@ with photobleaching correction</p>
 <span class="normal">131</span>
 <span class="normal">132</span>
 <span class="normal">133</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_path</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span> <span class="n">img_name</span><span class="p">:</span><span class="nb">str</span><span class="p">,</span>
-            <span class="n">ch_order</span><span class="p">:</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">:</span><span class="nb">int</span><span class="p">],</span> <span class="n">use_gauss</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">gauss_sigma</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">border_crop</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">ch_order</span><span class="p">:</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">:</span><span class="nb">int</span><span class="p">],</span> <span class="n">use_gauss</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">wf_sigma</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">border_crop</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
             <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Class is designed to store experiment data from wide-field imaging</span>
 <span class="sd">    using two different excitation wavelengths and two emission channels (__2 eXcitation &amp; 2 eMission__).</span>
@@ -814,13 +817,13 @@ with photobleaching correction</p>
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    ch0_img: ndarray [t,x,y]</span>
-<span class="sd">       image series for channel 0</span>
+<span class="sd">        image series for channel 0</span>
 <span class="sd">    ch1_img: ndarray [t,x,y]</span>
-<span class="sd">       image series for channel 0</span>
+<span class="sd">        image series for channel 0</span>
 <span class="sd">    ch2_img: ndarray [t,x,y]</span>
-<span class="sd">       image series for channel 0</span>
+<span class="sd">        image series for channel 0</span>
 <span class="sd">    ch3_img: ndarray [t,x,y]</span>
-<span class="sd">       image series for channel 0</span>
+<span class="sd">        image series for channel 0</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># chennels split</span>

@@ -388,17 +388,11 @@ Plots every row from the input array as an individual line</p>
       <td class="field-body">
         <ul class="first simple">
             <li>
-              <b><code>arr_list</code></b>
+              <b><code>input_arr</code></b>
+                  (<code><span title="numpy.ndarray">ndarray</span></code>)
               –
               <div class="doc-md-description">
                 <p>list of 2D arrays with profiles <code>[t, val]</code></p>
-              </div>
-            </li>
-            <li>
-              <b><code>lab_list</code></b>
-              –
-              <div class="doc-md-description">
-                <p>list of labels for lines, should be same len with arr_list</p>
               </div>
             </li>
             <li>
@@ -428,8 +422,7 @@ Plots every row from the input array as an individual line</p>
 </table>
           <details class="quote">
             <summary> <code>src/domb/utils/plot.py</code></summary>
-            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">225</span>
-<span class="normal">226</span>
+            <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">226</span>
 <span class="normal">227</span>
 <span class="normal">228</span>
 <span class="normal">229</span>
@@ -484,8 +477,7 @@ Plots every row from the input array as an individual line</p>
 <span class="normal">278</span>
 <span class="normal">279</span>
 <span class="normal">280</span>
-<span class="normal">281</span>
-<span class="normal">282</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">overlay_line_plot</span><span class="p">(</span><span class="n">input_arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+<span class="normal">281</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">overlay_line_plot</span><span class="p">(</span><span class="n">input_arr</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
                       <span class="n">t_scale</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                       <span class="n">min_amp</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">max_amp</span><span class="p">:</span><span class="nb">float</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
                       <span class="n">app_bar_dict</span><span class="p">:</span><span class="nb">dict</span><span class="p">()</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_app_bars</span><span class="p">:</span><span class="nb">bool</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
@@ -498,10 +490,8 @@ Plots every row from the input array as an individual line</p>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    arr_list: list</span>
+<span class="sd">    input_arr: ndarray [dF_value,t]</span>
 <span class="sd">        list of 2D arrays with profiles `[t, val]`</span>
-<span class="sd">    lab_list: list</span>
-<span class="sd">        list of labels for lines, should be same len with arr_list</span>
 <span class="sd">    min_amp: float, optional</span>
 <span class="sd">        minimal amplitude of displayed profiles</span>
 <span class="sd">    max_amp: float, optional</span>
@@ -592,6 +582,16 @@ could take as input results of</code>util.masking.label_prof_arr()` function</p>
               –
               <div class="doc-md-description">
                 <p>list of labels for lines, should be same len with arr_list</p>
+              </div>
+            </li>
+            <li>
+              <b><code>t_scale</code></b>
+                  (<code>int</code>, default:
+                      <code>2</code>
+)
+              –
+              <div class="doc-md-description">
+                <p>time scale for x-axis, in seconds between two frames</p>
               </div>
             </li>
             <li>
@@ -687,7 +687,8 @@ could take as input results of</code>util.masking.label_prof_arr()` function</p>
 <span class="normal">219</span>
 <span class="normal">220</span>
 <span class="normal">221</span>
-<span class="normal">222</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">stat_line_plot</span><span class="p">(</span><span class="n">arr_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
+<span class="normal">222</span>
+<span class="normal">223</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">stat_line_plot</span><span class="p">(</span><span class="n">arr_list</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span>
                    <span class="n">lab_list</span><span class="p">:</span><span class="nb">list</span><span class="p">,</span>
                    <span class="n">t_scale</span><span class="p">:</span><span class="nb">int</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
                    <span class="n">stat_method</span><span class="p">:</span><span class="nb">str</span><span class="o">=</span><span class="s1">&#39;se&#39;</span><span class="p">,</span>
@@ -704,10 +705,11 @@ could take as input results of</code>util.masking.label_prof_arr()` function</p>
 <span class="sd">        list of 2D arrays with profiles `[t, val]`</span>
 <span class="sd">    lab_list: list</span>
 <span class="sd">        list of labels for lines, should be same len with arr_list</span>
+<span class="sd">    t_scale: float</span>
+<span class="sd">        time scale for x-axis, in seconds between two frames</span>
 <span class="sd">    stat_method: str, optional {&#39;se&#39;, &#39;iqr&#39;, &#39;ci&#39;}</span>
 <span class="sd">        method for line plot calculation: `se` - mean +/- standat error of mean,</span>
 <span class="sd">        `iqr` - median +/- IQR, `ci` - mean +/- 95% confidence interval</span>
-
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">time_line</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">arr_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">t_scale</span><span class="p">,</span> \
                             <span class="n">num</span><span class="o">=</span><span class="n">arr_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
