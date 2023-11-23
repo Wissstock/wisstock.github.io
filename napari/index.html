@@ -137,18 +137,22 @@
 <p><img alt="" src="../pic/pic_0.png" /></p>
 <h3 id="red-green-series">Red-Green Series</h3>
 <p>Primary method for detecting fluorescent-labeled targets redistribution in time. Returns a series of differential images representing the intensity difference between the current frame and the previous one as new image with the <code>_red-green</code> suffix.</p>
-<p>Parameters:
-- <code>left frames</code> - number of previous frames for pixel-wise averaging.
-- <code>space frames</code> - number of frames between the last left and first right frames.
-- <code>right frames</code> - number of subsequent frames for pixel-wise averaging.
-- <code>save mask series</code> - if selected, a series of labels will be created for each frame of the differential image with the threshold <code>insertion threshold</code>.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>left frames</code> - number of previous frames for pixel-wise averaging.</li>
+<li><code>space frames</code> - number of frames between the last left and first right frames.</li>
+<li><code>right frames</code> - number of subsequent frames for pixel-wise averaging.</li>
+<li><code>save mask series</code> - if selected, a series of labels will be created for each frame of the differential image with the threshold <code>insertion threshold</code>.</li>
+</ul>
 <p><img alt="" src="../pic/pic_1.png" /></p>
 <h3 id="up-mask">Up Mask</h3>
 <p>Generates labels for insertion sites (regions with increasing intensity) based on <code>-red-green</code> images. Returns labels layer with <code>_up-labels</code> suffix.</p>
-<p>Parameters:
-- <code>detection img index</code> - index of the frame from <code>-red-green</code> image used for insertion sites detection.
-- <code>insertion threshold</code> - threshold value for insertion site detection, intensity on selected <code>_red-green</code> frame normalized in -1 - 0 range.
-- <code>save mask</code> - if selected, a total up mask (containing all ROIs) will be created with the <code>_up-mask</code> suffix.</p>
+<p>Parameters:</p>
+<ul>
+<li><code>detection img index</code> - index of the frame from <code>-red-green</code> image used for insertion sites detection.</li>
+<li><code>insertion threshold</code> - threshold value for insertion site detection, intensity on selected <code>_red-green</code> frame normalized in -1 - 0 range.</li>
+<li><code>save mask</code> - if selected, a total up mask (containing all ROIs) will be created with the <code>_up-mask</code> suffix.</li>
+</ul>
 <p><img alt="" src="../pic/pic_2.png" /></p>
 <h3 id="individual-labels-profiles">Individual Labels Profiles</h3>
 <p>Builds a plot with mean intensity profiles for each ROI in <code>labels</code> using absolute intensity (if <code>raw intensity</code> is selected) or relative intensities (ΔF/F0).</p>
@@ -156,14 +160,24 @@
 <p>The baseline intensity for ΔF/F0 profiles is estimated as the mean intensity of the initial profile points (<code>ΔF win</code>).</p>
 <p>Filters ROIs by minimum (<code>min amplitude</code>) and maximum (<code>max amplitude</code>) intensity amplitudes.</p>
 <p><em>Note: Intensity filtering is most relevant for ΔF/F0 profiles.</em></p>
+<p>Additionally, you can save ROI intensity profiles as .csv using the <code>save data frame</code> option and specifying the <code>saving path</code>. The output data frames <code>%img_name%_lab_prof.csv</code> will contain the following columns:</p>
+<ul>
+<li><strong>id</strong> - unique image ID, the name of the input <code>napari.Image</code> object.</li>
+<li><strong>roi</strong> - ROI number, consecutively numbered starting from 1.</li>
+<li><strong>int</strong> - ROI mean intensity, raw or ΔF/F0 according to the <code>raw intensity</code> option.</li>
+<li><strong>time</strong> - frame time point according to the <code>time scale</code>.</li>
+</ul>
+<p><em>Note: The data frame will contain information for all ROIs; filtering options pertain to plotting only.</em></p>
 <p><img alt="" src="../pic/pic_3.png" /></p>
 <h3 id="labels-profile">Labels Profile</h3>
 <p>Builds a plot with the averaged intensity of all ROIs in <code>labels</code>. Can take two images (<code>img 0</code> and <code>img 1</code>) as input if <code>two profiles</code> are selected.</p>
 <p>The <code>time scale</code> and <code>ΔF win</code> are the same as in the <strong>Individual Labels Profiles</strong>.</p>
-<p>The <code>stat method</code> provides methods for calculating intensity errors:
-- <code>se</code> - standard error of mean.
-- <code>iqr</code> - interquartile range.
-- <code>ci</code> - 95% confidence interval for t-distribution.</p>
+<p>The <code>stat method</code> provides methods for calculating intensity errors:</p>
+<ul>
+<li><code>se</code> - standard error of mean.</li>
+<li><code>iqr</code> - interquartile range.</li>
+<li><code>ci</code> - 95% confidence interval for t-distribution.</li>
+</ul>
 <p><img alt="" src="../pic/pic_4.png" /></p>
               
             </div>
