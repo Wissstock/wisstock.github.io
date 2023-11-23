@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>napari plugin - DoMB</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "napari plugin";
+        var mkdocs_page_input_path = "napari.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> DoMB
+        </a>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">napari plugin</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#domb-tools-for-napari">DoMB Tools for napari</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#widgets">Widgets</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#image-preprocessing">Image Preprocessing</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#red-green-series">Red-Green Series</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#up-mask">Up Mask</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#individual-labels-profiles">Individual Labels Profiles</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#labels-profile">Labels Profile</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Registrations Types</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../wf_x2_m2/">WF x2 m2</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Modules</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="#">FRET</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../e_fret/">E-FRET</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../b_fret/">B-FRET</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Red-Green</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../rg_singl/">Single Stim</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../rg_multi/">Multiple Stim</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Utils</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../masking/">Masking</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../plotting/">Plotting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../oiffile/">OIF File</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">DoMB</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li class="breadcrumb-item active">napari plugin</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/wisstock/DoMB_tools/edit/master/docs/napari.md">Edit on DoMB Tools</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="domb-napari">domb-napari</h1>
+<h2 id="domb-tools-for-napari">DoMB Tools for napari</h2>
+<p><a href="https://napari-hub.org/plugins/domb-napari"><img alt="napari hub" src="https://img.shields.io/endpoint?url=https://api.napari-hub.org/shields/domb-napari" /></a>
+<img alt="PyPI - Version" src="https://img.shields.io/pypi/v/domb-napari" />
+<img alt="PyPI - License" src="https://img.shields.io/pypi/l/domb-napari" />
+<img alt="Website" src="https://img.shields.io/website?up_message=domb.bio&amp;up_color=%23038C93&amp;url=https%3A%2F%2Fdomb.bio%2F" /></p>
+<p>A napari plugin offers widgets to analyze fluorescence-labeled proteins redistribution in widefield epifluorescence time-lapse acquisitions. Useful for studying calcium-dependent translocation of neuronal calcium sensors, synaptic receptors traffic during long-term plasticity induction, membrane protein tracking, etc.</p>
+<p><img alt="" src="../pic/translocation.gif" />
+<strong>Hippocalcin (neuronal calcium sensor) redistributes in dendritic branches upon NMDA application</strong></p>
+<h2 id="widgets">Widgets</h2>
+<h3 id="image-preprocessing">Image Preprocessing</h3>
+<p>Provides functions for preprocessing multi-channel fluorescence acquisitions:
+- If the input image has 4 dimensions (time, channel, x-axis, y-axis), channels will be split into individual 3 dimensions images (time, x-axis, y-axis) with the <code>_ch%index%</code> suffix.
+- If the <code>gaussian blur</code> option is selected, the image will be blurred with a Gaussian filter using sigma=<code>gaussian sigma</code>.
+- If the <code>photobleaching correction</code> option is selected, the image will undergo correction with exponential (method <code>exp</code>) or bi-exponential (method <code>bi_exp</code>) fitting.</p>
+<p><img alt="" src="../pic/pic_0.png" /></p>
+<h3 id="red-green-series">Red-Green Series</h3>
+<p>Primary method for detecting fluorescent-labeled targets redistribution in time. Returns a series of differential images representing the intensity difference between the current frame and the previous one as new image with the <code>_red-green</code> suffix.</p>
+<p>Parameters:
+- <code>left frames</code> - number of previous frames for pixel-wise averaging.
+- <code>space frames</code> - number of frames between the last left and first right frames.
+- <code>right frames</code> - number of subsequent frames for pixel-wise averaging.
+- <code>save mask series</code> - if selected, a series of labels will be created for each frame of the differential image with the threshold <code>insertion threshold</code>.</p>
+<p><img alt="" src="../pic/pic_1.png" /></p>
+<h3 id="up-mask">Up Mask</h3>
+<p>Generates labels for insertion sites (regions with increasing intensity) based on <code>-red-green</code> images. Returns labels layer with <code>_up-labels</code> suffix.</p>
+<p>Parameters:
+- <code>detection img index</code> - index of the frame from <code>-red-green</code> image used for insertion sites detection.
+- <code>insertion threshold</code> - threshold value for insertion site detection, intensity on selected <code>_red-green</code> frame normalized in -1 - 0 range.
+- <code>save mask</code> - if selected, a total up mask (containing all ROIs) will be created with the <code>_up-mask</code> suffix.</p>
+<p><img alt="" src="../pic/pic_2.png" /></p>
+<h3 id="individual-labels-profiles">Individual Labels Profiles</h3>
+<p>Builds a plot with mean intensity profiles for each ROI in <code>labels</code> using absolute intensity (if <code>raw intensity</code> is selected) or relative intensities (ΔF/F0).</p>
+<p>The <code>time scale</code> sets the number of seconds between frames for x-axis scaling.</p>
+<p>The baseline intensity for ΔF/F0 profiles is estimated as the mean intensity of the initial profile points (<code>ΔF win</code>).</p>
+<p>Filters ROIs by minimum (<code>min amplitude</code>) and maximum (<code>max amplitude</code>) intensity amplitudes.</p>
+<p><em>Note: Intensity filtering is most relevant for ΔF/F0 profiles.</em></p>
+<p><img alt="" src="../pic/pic_3.png" /></p>
+<h3 id="labels-profile">Labels Profile</h3>
+<p>Builds a plot with the averaged intensity of all ROIs in <code>labels</code>. Can take two images (<code>img 0</code> and <code>img 1</code>) as input if <code>two profiles</code> are selected.</p>
+<p>The <code>time scale</code> and <code>ΔF win</code> are the same as in the <strong>Individual Labels Profiles</strong>.</p>
+<p>The <code>stat method</code> provides methods for calculating intensity errors:
+- <code>se</code> - standard error of mean.
+- <code>iqr</code> - interquartile range.
+- <code>ci</code> - 95% confidence interval for t-distribution.</p>
+<p><img alt="" src="../pic/pic_4.png" /></p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../wf_x2_m2/" class="btn btn-neutral float-right" title="WF x2 m2">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../wf_x2_m2/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

@@ -44,6 +44,10 @@
     </ul>
                 </li>
               </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="napari/">napari plugin</a>
+                </li>
+              </ul>
               <p class="caption"><span class="caption-text">Registrations Types</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="wf_x2_m2/">WF x2 m2</a>
@@ -103,10 +107,14 @@
               
                 <h1 id="domb-tools">DoMB Tools</h1>
 <h2 id="python-toolkit-of-department-of-molecular-biophysics">Python Toolkit of Department of Molecular Biophysics</h2>
+<p><img alt="PyPI - Version" src="https://img.shields.io/pypi/v/domb" />
+<img alt="PyPI - License" src="https://img.shields.io/pypi/l/domb" />
+<img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/domb" />
+<img alt="Website" src="https://img.shields.io/website?up_message=domb.bio&amp;up_color=%23038C93&amp;url=https%3A%2F%2Fdomb.bio%2F" /></p>
 <h1 id="description">Description</h1>
-<p><strong>Registrations types</strong> combine acquired data (images, electrophysiological recordings, metadata) into unified data structures. Attributes within this structure support subsequent analysis through <em>modules</em> functions.</p>
-<p><strong>Modules</strong> offer distinct data analysis approaches with predefined pipelines. These pipelines transform inputs into approach-specific illustrations and organized pre-processed images, optimized for further quantitative analysis. Modules require specific <em>registration types</em> as inputs.</p>
-<p><strong>Utilities</strong> provide reusable functions for multidimensional image processing, advanced visualization, and specific data format (OIF/OIB, HEKA) uploading.</p>
+<p><strong>Registration types</strong> integrate acquired data (images, electrophysiological recordings, metadata) into unified data structures. Attributes within this structure support subsequent analysis through functions in the <em>modules</em>.</p>
+<p><strong>Modules</strong> provide distinct data analysis approaches with predefined pipelines. These pipelines transform inputs into approach-specific illustrations and organized pre-processed images, optimized for further quantitative analysis. Modules require specific <em>registration types</em> as inputs.</p>
+<p><strong>Utilities</strong> offer reusable functions for multidimensional image processing, advanced visualization, and uploading data in specific formats (OIF/OIB, HEKA, etc.).</p>
 <h1 id="structure-overview">Structure Overview</h1>
 <pre><code>└── domb
     ├── reg_type                  # data types for different registration designs
@@ -140,7 +148,7 @@ conda acticate domb
 <p>Clone the repo:</p>
 <pre><code>git clone -b master git@github.com:wisstock/DoMB_tools.git
 </code></pre>
-<p>To install the package, simply navigate to the repository folder and run: </p>
+<p>To install the package, simply navigate to the repository folder and install with pip: </p>
 <pre><code>cd DoMB_tools
 python -m pip install .
 </code></pre>
@@ -173,7 +181,7 @@ software for confocal microscopy.</p>
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="wf_x2_m2/" class="btn btn-neutral float-right" title="WF x2 m2">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="napari/" class="btn btn-neutral float-right" title="napari plugin">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -197,7 +205,7 @@ software for confocal microscopy.</p>
     
     
     
-      <span><a href="wf_x2_m2/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="napari/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
@@ -216,5 +224,5 @@ software for confocal microscopy.</p>
 
 <!--
 MkDocs version : 1.5.2
-Build Date UTC : 2023-11-22 09:43:00.253505+00:00
+Build Date UTC : 2023-11-23 09:19:54.253670+00:00
 -->
